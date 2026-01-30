@@ -153,25 +153,12 @@ function BookCall() {
         background: 'linear-gradient(135deg, #dbeafe 0%, #e0e7ff 25%, #c7d2fe 50%, #a5b4fc 75%, #8b5cf6 100%)'
       }}
     >
-      {/* Header */}
-      <div className="w-full flex-shrink-0 relative z-10" style={{ background: 'transparent' }}>
-        <div className="max-w-6xl mx-auto px-6 py-4">
-          <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-gray-900 text-center">
-            <span>Start </span>
-            <span className="inline-flex align-middle mx-2">
-              <span className="w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-xl shadow-md flex items-center justify-center">
-                <span className="w-6 h-6 lg:w-7 lg:h-7 bg-black rounded-md"></span>
-              </span>
-            </span>
-            <span>for free.</span>
-          </h2>
-         
-        </div>
-      </div>
-
       {/* Form Container */}
-      <div className="flex-1 flex items-center justify-center py-4 px-4 sm:px-6 overflow-y-auto relative z-10">
-        <div className="max-w-sm w-full">
+      <div className="flex-1 flex flex-col items-center justify-center py-6 px-4 sm:px-6 overflow-y-auto relative z-10">
+        <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-gray-900 text-center mb-6">
+          Start for Free
+        </h2>
+        <div className="max-w-sm w-full mt-0">
           <div className="rounded-2xl shadow-2xl p-4 sm:p-6 relative overflow-hidden bg-slate-200/95 backdrop-blur-sm">
           {/* Header - Optimized structure */}
           <header className="text-center mb-4 relative z-10">
