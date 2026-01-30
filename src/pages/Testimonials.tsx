@@ -3,6 +3,9 @@ import Footer from "@/components/Footer"
 import CareersHero from "@/components/CareersHero"
 import TestimonialsGallery from "@/components/TestimonialsGallery"
 import VideoTestimonials from "@/components/VideoTestimonials"
+import TestimonialV2 from "@/components/ui/testimonial-v2"
+import ClientFeedback from "@/components/ui/testimonial"
+import MeetOurMentors from "@/components/ui/animated-testimonial"
 
 const Testimonials = () => {
   return (
@@ -10,7 +13,12 @@ const Testimonials = () => {
       <Navbar />
       <main className="pt-24 sm:pt-28 lg:pt-32">
         <CareersHero />
+        <div className="dark">
+          <MeetOurMentors />
+          <TestimonialV2 />
+        </div>
         <VideoTestimonials />
+        <ClientFeedback />
         <TestimonialsGallery />
       </main>
       <Footer />

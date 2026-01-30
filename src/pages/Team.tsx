@@ -80,7 +80,7 @@ const teamMembers: TeamMember[] = [
   {
     id: "gokul",
     name: "Gokul",
-    role: "Leads Tech",
+    role: "Tech Lead",
     photo: "/Team Pics/Gokul.jpg",
     collegeImage: "/Team Colleges/Dayananda sagar (Gokul).png",
     companyImage: "/Team Companies/Mentorque (Gokul).png",

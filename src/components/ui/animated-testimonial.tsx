@@ -219,7 +219,7 @@ const AnimatedTestimonials = ({
 export function MeetOurMentors() {
   return (
     <section
-      className="relative w-full overflow-hidden bg-transparent py-16 md:py-20"
+      className="relative w-full overflow-hidden bg-transparent pt-16 pb-6 md:pt-20 md:pb-8"
       aria-labelledby="mentors-heading"
     >
       <div className="container mx-auto px-4 text-center md:px-8">
