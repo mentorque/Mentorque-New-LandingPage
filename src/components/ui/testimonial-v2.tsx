@@ -151,7 +151,7 @@ const TestimonialsSection = () => {
   return (
     <section
       aria-labelledby="testimonials-heading"
-      className="bg-transparent py-24 relative overflow-hidden"
+      className="bg-transparent pt-8 pb-24 md:pt-10 relative overflow-hidden"
     >
       <motion.div
         initial={{ opacity: 0, y: 50, rotate: -2 }}
