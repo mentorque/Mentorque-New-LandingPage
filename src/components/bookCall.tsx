@@ -149,7 +149,7 @@ function BookCall() {
       setTimeout(() => {
         setShowSuccess(false);
         setSubmitStatus("");
-      }, 6000);
+      }, 3000);
     } catch {
       setSubmitStatus("error");
     } finally {
