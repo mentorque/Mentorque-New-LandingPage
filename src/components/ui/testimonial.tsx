@@ -194,31 +194,6 @@ function ClientFeedback() {
           </div>
           <div className="h-full md:flex lg:flex-col lg:space-y-2 lg:gap-0 gap-2">
             <TimelineContent
-              animationNum={5}
-              customVariants={revealVariants}
-              timelineRef={testimonialRef}
-              className="lg:flex-[3] flex-[4] flex flex-col justify-between relative bg-blue-700/90 text-neutral-100 overflow-hidden rounded-lg border border-blue-600/50 shadow-lg shadow-blue-950/30 p-5"
-            >
-              <article className="mt-auto">
-                <p className="text-blue-100/90">
-                  &quot;Mentorque has been a key partner in our growth journey.&quot;
-                </p>
-                <div className="flex justify-between pt-5">
-                  <div>
-                    <h2 className="font-semibold text-xl text-neutral-100">Udith</h2>
-                    <p className="text-blue-200/80">Candidate</p>
-                  </div>
-                  <img
-                    src="/Testimonials-People/udith-testimonial.jpeg"
-                    alt="Udith"
-                    width={64}
-                    height={64}
-                    className="w-16 h-16 rounded-xl object-cover ring-2 ring-neutral-500/40"
-                  />
-                </div>
-              </article>
-            </TimelineContent>
-            <TimelineContent
               animationNum={6}
               customVariants={revealVariants}
               timelineRef={testimonialRef}

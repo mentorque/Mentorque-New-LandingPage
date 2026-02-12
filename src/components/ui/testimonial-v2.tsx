@@ -42,12 +42,6 @@ const testimonials: Testimonial[] = [
     role: "Tech Professional",
   },
   {
-    text: "Four calls with the team helped me get multiple callbacks from Amazon, TestGorilla, and more.",
-    image: "/Testimonials-People/udith-testimonial.jpeg",
-    name: "Udith",
-    role: "Candidate",
-  },
-  {
     text: "The support team is exceptional, guiding us through setup and providing ongoing assistance, ensuring our satisfaction.",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150",
     name: "Saman Malik",
@@ -69,7 +63,7 @@ const testimonials: Testimonial[] = [
 
 const firstColumn = testimonials.slice(0, 3);
 const secondColumn = testimonials.slice(3, 6);
-const thirdColumn = testimonials.slice(6, 9);
+const thirdColumn = testimonials.slice(6, 8);
 
 // --- Sub-Components ---
 const TestimonialsColumn = (props: {

@@ -95,14 +95,6 @@ const TestimonialCarousel = () => {
       rating: 5,
       avatar: "/Testimonials-People/pramod-testimonial.png",
     },
-    {
-      id: 14,
-      name: "Udith",
-      content:
-        "Four calls with the team helped me get multiple callbacks from Amazon, TestGorilla, and more.",
-      rating: 5,
-      avatar: "/Testimonials-People/udith-testimonial.jpeg",
-    },
   ];
 
   const uniqueTestimonials = regularTestimonials.filter((testimonial, index, self) => {
