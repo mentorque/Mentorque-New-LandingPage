@@ -2,114 +2,18 @@
 import type React from "react"
 import { useRef } from "react"
 import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react"
+import { TESTIMONIALS } from "@/data/testimonials"
 
 const TestimonialCarousel = () => {
   const row1Ref = useRef<HTMLDivElement>(null)
 
-  const regularTestimonials = [
-    {
-      id: 9,
-      name: "Sree",
-      content:
-        "After six months with no interview calls, I heard back from Optum, Amazon, and eBay within two weeks of joining Mentorque and landed a Vodafone Order Analyst role.",
-      rating: 5,
-      avatar: "/Testimonials-People/sreelaxmi-testimonial.jpeg",
-    },
-    {
-      id: 11,
-      name: "Sowmya",
-      content:
-        "Mentorque sharpened my application strategy within weeks I received calls from Amazon and Bounce.io and secured an IT consultant role at TP Dublin.",
-      rating: 5,
-      avatar: "/Testimonials-People/sowmya-testimonial.jpeg",
-    },
-    {
-      id: 12,
-      name: "Morgan",
-      content:
-        "Working with the team helped me land multiple interview calls in a week using their strategies and automation tools to find and connect with HRs. Highly recommended if you want a faster breakthrough in a tough job market.",
-      rating: 5,
-      avatar: "/Testimonials-People/morgan-testimonial.jpeg",
-    },
-    {
-      id: 10,
-      name: "Shubham",
-      content:
-        "The personalised guidance made all the difference. I received interview calls from DE Shaw, Q2, Saviynt, and AQR Capital. I’d recommend Mentorque to anyone trying to land calls from top firms.",
-      rating: 5,
-      avatar: "/Testimonials-People/shubham-testimonial.png",
-    },
-    {
-      id: 1,
-      name: "Nilesh Khatiya",
-      content:
-        "Doing self prep, I couldn't even get any call backs from companies. The resume and portfolios built by Reshu and team were a gamechanger. 100% recommended.",
-      rating: 5,
-      avatar: "/nilesh.jpeg",
-    },
-    {
-      id: 2,
-      name: "Jagruthi C",
-      content:
-        "Agniva’s guidance, personal progress tracking and LLM powered resume tools simplified my job hunt process and saved me a lot of time.",
-      rating: 4,
-      avatar: "/jagruti.jpeg",
-    },
-    {
-      id: 3,
-      name: "Debmalya Das",
-      content:
-        "Few sessions with Agniva and Raajit saved me months of trial and error. Would highly recommend for getting calls faster!",
-      rating: 5,
-      avatar: "/3.jpeg",
-    },
-    {
-      id: 4,
-      name: "Dev",
-      content:
-        "Steadfast support from Reshu plus the chrome extension made my job search much more faster and effective.",
-      rating: 5,
-      avatar: "/dev.jpeg",
-    },
-    {
-      id: 5,
-      name: "Anshul Shetty",
-      content:
-        "The resume session helped me realise crucial ATS related mistakes and hear back from mutiple companies including Amazon.",
-      rating: 4,
-      avatar: "/anshul.jpeg",
-    },
-    {
-      id: 6,
-      name: "Rigved Harmalker",
-      content:
-        "The mock interviews with Raajit and Agniva were crucial in securing my internship offer.",
-      rating: 5,
-      avatar: "/rigved.jpeg",
-    },
-    {
-      id: 13,
-      name: "Pramod",
-      content:
-        "Mentorque revamped my profile and added industry-relevant projects that showcased my skills. Soon after, I received interview calls from Landmark Group, Alaan Pay, and Intervue.io.",
-      rating: 5,
-      avatar: "/Testimonials-People/pramod-testimonial.png",
-    },
-    {
-      id: 14,
-      name: "Udith",
-      content:
-        "Four calls with the team helped me get multiple callbacks from Amazon, TestGorilla, and more.",
-      rating: 5,
-      avatar: "/Testimonials-People/udith-testimonial.jpeg",
-    },
-  ];
-
-  const uniqueTestimonials = regularTestimonials.filter((testimonial, index, self) => {
-    return index === self.findIndex((item) => item.id === testimonial.id)
-  })
-  
-
+  const uniqueTestimonials = TESTIMONIALS.map((t) => ({
+    id: t.id,
+    name: t.name,
+    content: t.content,
+    rating: t.rating ?? 5,
+    avatar: t.avatar,
+  }))
   const scrollCarousel = (ref: React.RefObject<HTMLDivElement>, direction: "left" | "right") => {
     if (ref.current) {
       const scrollAmount = window.innerWidth < 768 ? 280 : 370

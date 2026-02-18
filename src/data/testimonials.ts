@@ -1,214 +1,125 @@
-export interface TestimonialItem {
-  id: number
-  image: string
-  rotation: number
-  desktop: { top: string; left: string }
-  mobile: { top: string; left: string }
-  width: string
-  mobileWidth: string
-  delay: number
-}
+/**
+ * Single source of testimonial data for Testimonials.tsx and testimonial-v2.
+ * Local avatars only; no Unsplash or dummy data.
+ */
 
-export const testimonialsData: TestimonialItem[] = [
-  {
-    id: 1,
-    image: "/hi.PNG",
-    rotation: -2,
-    desktop: { top: "4%", left: "2%" },
-    mobile: { top: "2%", left: "2%" },
-    width: "260px",
-    mobileWidth: "46%",
-    delay: 0,
-  },
-  {
-    id: 2,
-    image: "/screen/imp1.jpg",
-    rotation: 1.5,
-    desktop: { top: "6%", left: "22%" },
-    mobile: { top: "2%", left: "52%" },
-    width: "265px",
-    mobileWidth: "46%",
-    delay: 0.06,
-  },
-  {
-    id: 3,
-    image: "/screen/15.png",
-    rotation: -1.8,
-    desktop: { top: "3%", left: "43%" },
-    mobile: { top: "28%", left: "2%" },
-    width: "258px",
-    mobileWidth: "46%",
-    delay: 0.12,
-  },
-  {
-    id: 4,
-    image: "/screen/16.png",
-    rotation: 2.2,
-    desktop: { top: "5%", left: "64%" },
-    mobile: { top: "28%", left: "52%" },
-    width: "262px",
-    mobileWidth: "46%",
-    delay: 0.18,
-  },
-  {
-    id: 5,
-    image: "/screen/17.png",
-    rotation: -1.5,
-    desktop: { top: "7%", left: "84%" },
-    mobile: { top: "54%", left: "2%" },
-    width: "266px",
-    mobileWidth: "46%",
-    delay: 0.24,
-  },
-  {
-    id: 6,
-    image: "/screen/18.jpeg",
-    rotation: 2,
-    desktop: { top: "30%", left: "3%" },
-    mobile: { top: "54%", left: "52%" },
-    width: "263px",
-    mobileWidth: "46%",
-    delay: 0.3,
-  },
-  {
-    id: 7,
-    image: "/screen/19.jpeg",
-    rotation: -2.3,
-    desktop: { top: "28%", left: "23%" },
-    mobile: { top: "80%", left: "2%" },
-    width: "259px",
-    mobileWidth: "46%",
-    delay: 0.36,
-  },
-  {
-    id: 8,
-    image: "/screen/20.jpeg",
-    rotation: 1.7,
-    desktop: { top: "31%", left: "44%" },
-    mobile: { top: "80%", left: "52%" },
-    width: "264px",
-    mobileWidth: "46%",
-    delay: 0.42,
-  },
+export type TestimonialEntry = {
+  id: number;
+  name: string;
+  content: string;
+  avatar: string;
+  role: string;
+  rating?: number;
+};
+
+export const TESTIMONIALS: TestimonialEntry[] = [
   {
     id: 9,
-    image: "/screen/6.jpg",
-    rotation: -1.9,
-    desktop: { top: "29%", left: "65%" },
-    mobile: { top: "106%", left: "2%" },
-    width: "261px",
-    mobileWidth: "46%",
-    delay: 0.48,
-  },
-  {
-    id: 10,
-    image: "/screen/7.jpg",
-    rotation: 2.1,
-    desktop: { top: "32%", left: "85%" },
-    mobile: { top: "106%", left: "52%" },
-    width: "267px",
-    mobileWidth: "46%",
-    delay: 0.54,
+    name: "Sree Laxmi",
+    content:
+      "After six months with no interview calls, I heard back from Optum, Amazon, and eBay within two weeks of joining Mentorque and landed a Vodafone Order Analyst role.",
+    avatar: "/Testimonials-People/sreelaxmi-testimonial.jpeg",
+    role: "Order Analyst",
+    rating: 5,
   },
   {
     id: 11,
-    image: "/screen/10.jpg",
-    rotation: -1.6,
-    desktop: { top: "56%", left: "4%" },
-    mobile: { top: "132%", left: "2%" },
-    width: "260px",
-    mobileWidth: "46%",
-    delay: 0.6,
+    name: "Sowmya",
+    content:
+      "Mentorque sharpened my application strategy within weeks I received calls from Amazon and Bounce.io and secured an IT consultant role at TP Dublin.",
+    avatar: "/Testimonials-People/sowmya-testimonial.jpeg",
+    role: "IT Consultant",
+    rating: 5,
   },
   {
     id: 12,
-    image: "/screen/12.png",
-    rotation: 2.4,
-    desktop: { top: "54%", left: "24%" },
-    mobile: { top: "132%", left: "52%" },
-    width: "265px",
-    mobileWidth: "46%",
-    delay: 0.66,
+    name: "Morgan",
+    content:
+      "Working with the team helped me land multiple interview calls in a week using their strategies and automation tools to find and connect with HRs. Highly recommended if you want a faster breakthrough in a tough job market.",
+    avatar: "/Testimonials-People/morgan-testimonial.jpeg",
+    role: "Professional",
+    rating: 5,
+  },
+  {
+    id: 10,
+    name: "Shubham",
+    content:
+      "The personalised guidance made all the difference. I received interview calls from DE Shaw, Q2, Saviynt, and AQR Capital. I'd recommend Mentorque to anyone trying to land calls from top firms.",
+    avatar: "/Testimonials-People/shubham-testimonial.png",
+    role: "Software Professional",
+    rating: 5,
+  },
+  {
+    id: 1,
+    name: "Nilesh Khatiya",
+    content:
+      "Doing self prep, I couldn't even get any call backs from companies. The resume and portfolios built by Reshu and team were a gamechanger. 100% recommended.",
+    avatar: "/nilesh.jpeg",
+    role: "Mentorque User",
+    rating: 5,
+  },
+  {
+    id: 2,
+    name: "Jagruthi C",
+    content:
+      "Agniva's guidance, personal progress tracking and LLM powered resume tools simplified my job hunt process and saved me a lot of time.",
+    avatar: "/jagruti.jpeg",
+    role: "Mentorque User",
+    rating: 4,
+  },
+  {
+    id: 3,
+    name: "Debmalya Das",
+    content:
+      "Few sessions with Agniva and Raajit saved me months of trial and error. Would highly recommend for getting calls faster!",
+    avatar: "/3.jpeg",
+    role: "Mentorque User",
+    rating: 5,
+  },
+  {
+    id: 4,
+    name: "Dev",
+    content:
+      "Steadfast support from Reshu plus the chrome extension made my job search much more faster and effective.",
+    avatar: "/dev.jpeg",
+    role: "Mentorque User",
+    rating: 5,
+  },
+  {
+    id: 5,
+    name: "Anshul Shetty",
+    content:
+      "The resume session helped me realise crucial ATS related mistakes and hear back from mutiple companies including Amazon.",
+    avatar: "/anshul.jpeg",
+    role: "Mentorque User",
+    rating: 4,
+  },
+  {
+    id: 6,
+    name: "Rigved Harmalker",
+    content:
+      "The mock interviews with Raajit and Agniva were crucial in securing my internship offer.",
+    avatar: "/rigved.jpeg",
+    role: "Mentorque User",
+    rating: 5,
   },
   {
     id: 13,
-    image: "/screen/14.png",
-    rotation: -2,
-    desktop: { top: "57%", left: "45%" },
-    mobile: { top: "158%", left: "2%" },
-    width: "262px",
-    mobileWidth: "46%",
-    delay: 0.72,
+    name: "Pramod",
+    content:
+      "Mentorque revamped my profile and added industry-relevant projects that showcased my skills. Soon after, I received interview calls from Landmark Group, Alaan Pay, and Intervue.io.",
+    avatar: "/Testimonials-People/pramod-testimonial.png",
+    role: "Tech Professional",
+    rating: 5,
   },
-  {
-    id: 14,
-    image: "/more%20whatsapp%20testimonial/IMG_5823.png",
-    rotation: 1.8,
-    desktop: { top: "55%", left: "66%" },
-    mobile: { top: "158%", left: "52%" },
-    width: "263px",
-    mobileWidth: "46%",
-    delay: 0.78,
-  },
-  {
-    id: 15,
-    image: "/more%20whatsapp%20testimonial/IMG_5824.png",
-    rotation: -2.2,
-    desktop: { top: "58%", left: "86%" },
-    mobile: { top: "184%", left: "2%" },
-    width: "261px",
-    mobileWidth: "46%",
-    delay: 0.84,
-  },
-  {
-    id: 16,
-    image: "/more%20whatsapp%20testimonial/IMG_5825.png",
-    rotation: 1.9,
-    desktop: { top: "82%", left: "2%" },
-    mobile: { top: "184%", left: "52%" },
-    width: "264px",
-    mobileWidth: "46%",
-    delay: 0.9,
-  },
-  {
-    id: 17,
-    image: "/more%20whatsapp%20testimonial/IMG_5826.png",
-    rotation: -1.7,
-    desktop: { top: "80%", left: "22%" },
-    mobile: { top: "210%", left: "2%" },
-    width: "266px",
-    mobileWidth: "46%",
-    delay: 0.96,
-  },
-  {
-    id: 18,
-    image: "/screen/8.jpg",
-    rotation: 2.3,
-    desktop: { top: "83%", left: "43%" },
-    mobile: { top: "210%", left: "52%" },
-    width: "259px",
-    mobileWidth: "46%",
-    delay: 1.02,
-  },
-  {
-    id: 19,
-    image: "/screen/8.png",
-    rotation: -2.1,
-    desktop: { top: "81%", left: "64%" },
-    mobile: { top: "236%", left: "2%" },
-    width: "262px",
-    mobileWidth: "46%",
-    delay: 1.08,
-  },
-  {
-    id: 20,
-    image: "/screen/10.png",
-    rotation: 1.6,
-    desktop: { top: "84%", left: "84%" },
-    mobile: { top: "236%", left: "52%" },
-    width: "265px",
-    mobileWidth: "46%",
-    delay: 1.14,
-  },
-]
+];
 
+/** Shuffle array (Fisher–Yates) and return new array */
+export function shuffleTestimonials<T>(arr: T[]): T[] {
+  const out = [...arr];
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}

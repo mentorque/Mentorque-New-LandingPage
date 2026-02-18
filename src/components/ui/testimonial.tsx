@@ -3,6 +3,54 @@
 import { TimelineContent } from "@/components/ui/timeline-animation";
 import { useRef } from "react";
 
+const MENTORS_IMG_DIR = "/mentor's-bg-removed";
+
+// Mentors from mentor's-bg-removed — short, conversational; mention AI tools, job trackers, weeks program, mock interviews
+const MENTOR_QUOTES = [
+  {
+    quote:
+      "The AI resume tools and job trackers—my mentees actually use them. Two placed at Mango and a top firm.",
+    name: "Gayatri Poddar",
+    role: "Senior Data Scientist, Optum",
+    image: `${MENTORS_IMG_DIR}/Gayatri Poddar.png`,
+  },
+  {
+    quote:
+      "Mock interviews and the weeks program. That structure is what got my mentees calls from Amazon and Samsung.",
+    name: "Tripti Kumari",
+    role: "Senior Software Engineer, Sprinklr",
+    image: `${MENTORS_IMG_DIR}/Tripti Kumari.png`,
+  },
+  {
+    quote:
+      "Mock interviews are spot on. Plus the AI tools for ATS—two of my mentees placed at Microsoft and a product company.",
+    name: "Agniva Dutta",
+    role: "Senior Software Engineer, Microsoft",
+    image: `${MENTORS_IMG_DIR}/Agniva Dutta.png`,
+  },
+  {
+    quote:
+      "Job trackers and the way they frame experience. My mentees landed at AWS and Stripe.",
+    name: "Adori Medhi",
+    role: "Senior Business Analyst, AWS",
+    image: `${MENTORS_IMG_DIR}/Adori.png`,
+  },
+  {
+    quote:
+      "The weeks program and mock interviews—that’s what clicks. Mentees I work with have landed at Salesforce and HSE.",
+    name: "Pratibha Gowrishankar",
+    role: "HR Business Partner, HSE",
+    image: `${MENTORS_IMG_DIR}/Pratibha Gowrishankar.png`,
+  },
+  {
+    quote:
+      "AI tools and mock interviews. My mentees have been placed at Google and top startups—really recommend it.",
+    name: "Nirvan Kashyap",
+    role: "Sales and Marketing, Google",
+    image: `${MENTORS_IMG_DIR}/Nirvan Kashyap.png`,
+  },
+];
+
 function ClientFeedback() {
   const testimonialRef = useRef<HTMLDivElement>(null);
 
@@ -46,7 +94,7 @@ function ClientFeedback() {
             customVariants={revealVariants}
             timelineRef={testimonialRef}
           >
-            Let&apos;s hear how Mentorque clients feel about our service
+            Our mentors on the Mentorque program—and where their mentees have been placed
           </TimelineContent>
         </article>
         <div className="lg:grid lg:grid-cols-3 gap-2 flex flex-col w-full lg:py-10 pt-10 pb-4 lg:px-10 px-4">
@@ -60,19 +108,18 @@ function ClientFeedback() {
               <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,rgba(100,100,100,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(100,100,100,0.15)_1px,transparent_1px)] bg-[size:50px_56px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
               <article className="mt-auto relative z-10">
                 <p className="text-neutral-200">
-                  &quot;Mentorque has been a game-changer for us. Their service
-                  is top-notch and their team is incredibly responsive.&quot;
+                  &quot;{MENTOR_QUOTES[0].quote}&quot;
                 </p>
                 <div className="flex justify-between pt-5">
                   <div>
                     <h2 className="font-semibold lg:text-xl text-sm text-neutral-100">
-                      Sree Laxmi
+                      {MENTOR_QUOTES[0].name}
                     </h2>
-                    <p className="text-neutral-400">Order Analyst, Vodafone</p>
+                    <p className="text-neutral-400">{MENTOR_QUOTES[0].role}</p>
                   </div>
                   <img
-                    src="/Testimonials-People/sreelaxmi-testimonial.jpeg"
-                    alt="Sree Laxmi"
+                    src={MENTOR_QUOTES[0].image}
+                    alt={MENTOR_QUOTES[0].name}
                     width={64}
                     height={64}
                     className="w-16 h-16 rounded-xl object-cover ring-2 ring-neutral-700"
@@ -88,17 +135,16 @@ function ClientFeedback() {
             >
               <article className="mt-auto">
                 <p className="text-blue-100/90">
-                  &quot;We&apos;ve seen incredible results with Mentorque. Their
-                  expertise and dedication.&quot;
+                  &quot;{MENTOR_QUOTES[1].quote}&quot;
                 </p>
                 <div className="flex justify-between pt-5">
                   <div>
-                    <h2 className="font-semibold text-xl text-neutral-100">Sowmya</h2>
-                    <p className="text-blue-200/80">IT Consultant, TP Dublin</p>
+                    <h2 className="font-semibold text-xl text-neutral-100">{MENTOR_QUOTES[1].name}</h2>
+                    <p className="text-blue-200/80">{MENTOR_QUOTES[1].role}</p>
                   </div>
                   <img
-                    src="/Testimonials-People/sowmya-testimonial.jpeg"
-                    alt="Sowmya"
+                    src={MENTOR_QUOTES[1].image}
+                    alt={MENTOR_QUOTES[1].name}
                     width={64}
                     height={64}
                     className="w-16 h-16 rounded-xl object-cover ring-2 ring-neutral-500/40"
@@ -116,18 +162,16 @@ function ClientFeedback() {
             >
               <article className="mt-auto">
                 <p className="2xl:text-base text-sm text-neutral-200">
-                  &quot;Their team is highly professional, and their innovative
-                  solutions have truly transformed the way we approach job
-                  search.&quot;
+                  &quot;{MENTOR_QUOTES[2].quote}&quot;
                 </p>
                 <div className="flex justify-between items-end pt-5">
                   <div>
-                    <h2 className="font-semibold lg:text-xl text-lg text-neutral-100">Morgan</h2>
-                    <p className="lg:text-base text-sm text-neutral-400">Professional</p>
+                    <h2 className="font-semibold lg:text-xl text-lg text-neutral-100">{MENTOR_QUOTES[2].name}</h2>
+                    <p className="lg:text-base text-sm text-neutral-400">{MENTOR_QUOTES[2].role}</p>
                   </div>
                   <img
-                    src="/Testimonials-People/morgan-testimonial.jpeg"
-                    alt="Morgan"
+                    src={MENTOR_QUOTES[2].image}
+                    alt={MENTOR_QUOTES[2].name}
                     width={64}
                     height={64}
                     className="lg:w-16 lg:h-16 w-12 h-12 rounded-xl object-cover ring-2 ring-neutral-600"
@@ -143,21 +187,20 @@ function ClientFeedback() {
             >
               <article className="mt-auto">
                 <p className="2xl:text-base text-sm text-neutral-200">
-                  &quot;We&apos;re extremely satisfied with Mentorque. Their
-                  expertise and dedication have exceeded our expectations.&quot;
+                  &quot;{MENTOR_QUOTES[3].quote}&quot;
                 </p>
                 <div className="flex justify-between items-end pt-5">
                   <div>
                     <h2 className="font-semibold lg:text-xl text-lg text-neutral-100">
-                      Shubham
+                      {MENTOR_QUOTES[3].name}
                     </h2>
                     <p className="lg:text-base text-sm text-neutral-400">
-                      Software Professional
+                      {MENTOR_QUOTES[3].role}
                     </p>
                   </div>
                   <img
-                    src="/Testimonials-People/shubham-testimonial.png"
-                    alt="Shubham"
+                    src={MENTOR_QUOTES[3].image}
+                    alt={MENTOR_QUOTES[3].name}
                     width={64}
                     height={64}
                     className="lg:w-16 lg:h-16 w-12 h-12 rounded-xl object-cover ring-2 ring-neutral-600"
@@ -173,17 +216,16 @@ function ClientFeedback() {
             >
               <article className="mt-auto">
                 <p className="2xl:text-base text-sm text-neutral-200">
-                  &quot;Their customer support is absolutely exceptional. They
-                  are always available, incredibly helpful.&quot;
+                  &quot;{MENTOR_QUOTES[4].quote}&quot;
                 </p>
                 <div className="flex justify-between items-end pt-5">
                   <div>
-                    <h2 className="font-semibold lg:text-xl text-lg text-neutral-100">Pramod</h2>
-                    <p className="lg:text-base text-sm text-neutral-400">Tech Professional</p>
+                    <h2 className="font-semibold lg:text-xl text-lg text-neutral-100">{MENTOR_QUOTES[4].name}</h2>
+                    <p className="lg:text-base text-sm text-neutral-400">{MENTOR_QUOTES[4].role}</p>
                   </div>
                   <img
-                    src="/Testimonials-People/pramod-testimonial.png"
-                    alt="Pramod"
+                    src={MENTOR_QUOTES[4].image}
+                    alt={MENTOR_QUOTES[4].name}
                     width={64}
                     height={64}
                     className="lg:w-16 lg:h-16 w-12 h-12 rounded-xl object-cover ring-2 ring-neutral-600"
@@ -194,31 +236,6 @@ function ClientFeedback() {
           </div>
           <div className="h-full md:flex lg:flex-col lg:space-y-2 lg:gap-0 gap-2">
             <TimelineContent
-              animationNum={5}
-              customVariants={revealVariants}
-              timelineRef={testimonialRef}
-              className="lg:flex-[3] flex-[4] flex flex-col justify-between relative bg-blue-700/90 text-neutral-100 overflow-hidden rounded-lg border border-blue-600/50 shadow-lg shadow-blue-950/30 p-5"
-            >
-              <article className="mt-auto">
-                <p className="text-blue-100/90">
-                  &quot;Mentorque has been a key partner in our growth journey.&quot;
-                </p>
-                <div className="flex justify-between pt-5">
-                  <div>
-                    <h2 className="font-semibold text-xl text-neutral-100">Udith</h2>
-                    <p className="text-blue-200/80">Candidate</p>
-                  </div>
-                  <img
-                    src="/Testimonials-People/udith-testimonial.jpeg"
-                    alt="Udith"
-                    width={64}
-                    height={64}
-                    className="w-16 h-16 rounded-xl object-cover ring-2 ring-neutral-500/40"
-                  />
-                </div>
-              </article>
-            </TimelineContent>
-            <TimelineContent
               animationNum={6}
               customVariants={revealVariants}
               timelineRef={testimonialRef}
@@ -227,19 +244,16 @@ function ClientFeedback() {
               <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,rgba(100,100,100,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(100,100,100,0.15)_1px,transparent_1px)] bg-[size:50px_56px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
               <article className="mt-auto relative z-10">
                 <p className="text-neutral-200">
-                  &quot;Mentorque has been a true game-changer for us. Their
-                  exceptional service, combined with their deep expertise and
-                  commitment to excellence, has made a significant impact on our
-                  careers.&quot;
+                  &quot;{MENTOR_QUOTES[5].quote}&quot;
                 </p>
                 <div className="flex justify-between pt-5">
                   <div>
-                    <h2 className="font-semibold text-xl text-neutral-100">Sree Laxmi</h2>
-                    <p className="text-neutral-400">Order Analyst</p>
+                    <h2 className="font-semibold text-xl text-neutral-100">{MENTOR_QUOTES[5].name}</h2>
+                    <p className="text-neutral-400">{MENTOR_QUOTES[5].role}</p>
                   </div>
                   <img
-                    src="/Testimonials-People/sreelaxmi-testimonial.jpeg"
-                    alt="Sree Laxmi"
+                    src={MENTOR_QUOTES[5].image}
+                    alt={MENTOR_QUOTES[5].name}
                     width={64}
                     height={64}
                     className="w-16 h-16 rounded-xl object-cover ring-2 ring-neutral-700"

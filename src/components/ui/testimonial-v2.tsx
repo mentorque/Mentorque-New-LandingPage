@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { TESTIMONIALS, shuffleTestimonials } from "@/data/testimonials";
 
 // --- Types ---
 export interface Testimonial {
@@ -9,67 +10,30 @@ export interface Testimonial {
   role: string;
 }
 
-// --- Data: 6 from public/Testimonials-People, 3 from Unsplash ---
-const testimonials: Testimonial[] = [
-  {
-    text: "After six months with no interview calls, I heard back from Optum, Amazon, and eBay within two weeks of joining Mentorque and landed a Vodafone Order Analyst role.",
-    image: "/Testimonials-People/sreelaxmi-testimonial.jpeg",
-    name: "Sree Laxmi",
-    role: "Order Analyst",
-  },
-  {
-    text: "Mentorque sharpened my application strategy within weeks I received calls from Amazon and Bounce.io and secured an IT consultant role at TP Dublin.",
-    image: "/Testimonials-People/sowmya-testimonial.jpeg",
-    name: "Sowmya",
-    role: "IT Consultant",
-  },
-  {
-    text: "Working with the team helped me land multiple interview calls in a week using their strategies and automation tools to find and connect with HRs. Highly recommended.",
-    image: "/Testimonials-People/morgan-testimonial.jpeg",
-    name: "Morgan",
-    role: "Professional",
-  },
-  {
-    text: "The personalised guidance made all the difference. I received interview calls from DE Shaw, Q2, Saviynt, and AQR Capital. I'd recommend Mentorque to anyone trying to land calls from top firms.",
-    image: "/Testimonials-People/shubham-testimonial.png",
-    name: "Shubham",
-    role: "Software Professional",
-  },
-  {
-    text: "Mentorque revamped my profile and added industry-relevant projects that showcased my skills. Soon after, I received interview calls from Landmark Group, Alaan Pay, and Intervue.io.",
-    image: "/Testimonials-People/pramod-testimonial.png",
-    name: "Pramod",
-    role: "Tech Professional",
-  },
-  {
-    text: "Four calls with the team helped me get multiple callbacks from Amazon, TestGorilla, and more.",
-    image: "/Testimonials-People/udith-testimonial.jpeg",
-    name: "Udith",
-    role: "Candidate",
-  },
-  {
-    text: "The support team is exceptional, guiding us through setup and providing ongoing assistance, ensuring our satisfaction.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "Saman Malik",
-    role: "Customer Support Lead",
-  },
-  {
-    text: "This platform's seamless integration enhanced our business operations and efficiency. Highly recommend for its intuitive interface.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "Omar Raza",
-    role: "CEO",
-  },
-  {
-    text: "Its robust features and quick support have transformed our workflow, making us significantly more efficient.",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "Zainab Hussain",
-    role: "Project Manager",
-  },
-];
+// Map shared data to column format and shuffle (only local avatars; no Unsplash)
+function getTestimonialColumns(): { first: Testimonial[]; second: Testimonial[]; third: Testimonial[] } {
+  const mapped: Testimonial[] = TESTIMONIALS.map((t) => ({
+    text: t.content,
+    image: t.avatar,
+    name: t.name,
+    role: t.role,
+  }));
+  const shuffled = shuffleTestimonials(mapped);
+  const len = shuffled.length;
+  const thirdSize = Math.floor(len / 3);
+  const firstSize = thirdSize;
+  const secondSize = len - firstSize - thirdSize;
+  return {
+    first: shuffled.slice(0, firstSize),
+    second: shuffled.slice(firstSize, firstSize + secondSize),
+    third: shuffled.slice(firstSize + secondSize),
+  };
+}
 
-const firstColumn = testimonials.slice(0, 3);
-const secondColumn = testimonials.slice(3, 6);
-const thirdColumn = testimonials.slice(6, 9);
+const testimonialColumns = getTestimonialColumns();
+const firstColumn = testimonialColumns.first;
+const secondColumn = testimonialColumns.second;
+const thirdColumn = testimonialColumns.third;
 
 // --- Sub-Components ---
 const TestimonialsColumn = (props: {

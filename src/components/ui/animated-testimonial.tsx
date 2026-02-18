@@ -1,84 +1,33 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { MENTORS } from "@/data/mentors";
 
-// --- Types ---
-type Testimonial = {
-  quote: string;
+// Shape used by the carousel (profile image as src, intro instead of quote)
+export type MentorCard = {
   name: string;
   designation: string;
   company: string;
   src: string;
   companyLogo?: { src: string; name: string };
+  intro: string;
 };
 
-// Company logos from public/logo — shown per mentor: they work at these companies (don't mentor for them)
-const COMPANY_LOGOS: { src: string; name: string }[] = [
-  { src: "/logo/microsoft.png", name: "Microsoft" },
-  { src: "/logo/amazon.png", name: "Amazon" },
-  { src: "/logo/apple.png", name: "Apple" },
-  { src: "/logo/goldman_sachs.png", name: "Goldman Sachs" },
-  { src: "/logo/deloitte.svg", name: "Deloitte" },
-  { src: "/logo/walmart.png", name: "Walmart" },
-  { src: "/logo/samsung.png", name: "Samsung" },
-  { src: "/logo/servicenow.png", name: "ServiceNow" },
-  { src: "/logo/myntra.png", name: "Myntra" },
-  { src: "/logo/zomato.png", name: "Zomato" },
-  { src: "/logo/hashedin.jpg", name: "HashedIn" },
-];
-
-function getRandomCompany(): (typeof COMPANY_LOGOS)[number] {
-  return COMPANY_LOGOS[Math.floor(Math.random() * COMPANY_LOGOS.length)];
-}
-
-const microsoftLogo = { src: "/logo/microsoft.png", name: "Microsoft" };
-
-// 4 mentors: photos from public/hello-mentors (1.png, 2.png, 3.png + 1.png for 4th). They work at those companies.
-const mentors: Testimonial[] = [
-  {
-    quote:
-      "Mentorque's approach to resume and interview prep is what we needed. I've seen professionals land roles at Amazon, Vodafone, and top firms within weeks.",
-    name: "Reshu",
-    designation: "Career Coach",
-    company: "Mentorque",
-    src: "/hello-mentors/1.png",
-    companyLogo: microsoftLogo,
-  },
-  {
-    quote:
-      "We focus on ATS-friendly resumes and real interview practice. Our mentees have cracked DE Shaw, Q2, Saviynt, and landed roles at TP Dublin, Optum, and more.",
-    name: "Agniva",
-    designation: "Lead Mentor",
-    company: "Mentorque",
-    src: "/hello-mentors/2.png",
-    companyLogo: getRandomCompany(),
-  },
-  {
-    quote:
-      "From zero callbacks to multiple offers—we've guided hundreds through the grind. The goal is simple: get you interview-ready and confident.",
-    name: "Sree Laxmi",
-    designation: "Success Coach",
-    company: "Mentorque",
-    src: "/hello-mentors/3.png",
-    companyLogo: getRandomCompany(),
-  },
-  {
-    quote:
-      "Mock interviews, portfolio reviews, and strategy sessions. We mentor professionals across tech and operations to land roles at top companies.",
-    name: "Sowmya",
-    designation: "Career Strategist",
-    company: "Mentorque",
-    src: "/hello-mentors/1.png",
-    companyLogo: getRandomCompany(),
-  },
-];
+const mentors: MentorCard[] = MENTORS.map((m) => ({
+  name: m.name,
+  designation: m.designation,
+  company: m.company,
+  src: m.profileImagePath,
+  companyLogo: m.companyLogo,
+  intro: m.intro,
+}));
 
 // --- Main Animated Testimonials Component ---
 const AnimatedTestimonials = ({
   testimonials,
   autoplay = true,
 }: {
-  testimonials: Testimonial[];
+  testimonials: MentorCard[];
   autoplay?: boolean;
 }) => {
   const [active, setActive] = useState(0);
@@ -174,19 +123,19 @@ const AnimatedTestimonials = ({
                   )}
                 </p>
                 {testimonials[active].companyLogo && (
-                  <div className="mt-3 flex items-center gap-2">
+                  <div className="mt-3 flex items-center gap-3">
                     <img
                       src={testimonials[active].companyLogo.src}
                       alt={testimonials[active].companyLogo.name}
-                      className="h-8 w-auto max-w-[100px] object-contain object-left"
+                      className="h-12 w-auto max-w-[140px] rounded-lg object-contain object-left"
                     />
                     <span className="text-xs text-neutral-500">
                       Works at {testimonials[active].companyLogo.name}
                     </span>
                   </div>
                 )}
-                <motion.p className="mt-8 text-lg text-neutral-300 leading-relaxed">
-                  &quot;{testimonials[active].quote}&quot;
+                <motion.p className="mt-6 text-lg text-neutral-300 leading-relaxed">
+                  {testimonials[active].intro}
                 </motion.p>
               </div>
             </motion.div>

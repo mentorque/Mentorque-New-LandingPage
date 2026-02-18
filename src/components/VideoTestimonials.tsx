@@ -7,19 +7,16 @@ import { Play, Pause, Calendar, ArrowUpRight } from "lucide-react"
 const videoTestimonials = [
   {
     src: "/testinomial1.mp4",
-
-    thumb: "/thumbnails/clip1.jpg",
+    thumb: "/thumbnails/clip1-thumbnail.png",
   },
   {
     src: "/testinomial2.mp4",
-
-    thumb: "/thumbnails/clip2.jpg",
+    thumb: "/thumbnails/clip2-thumbnail.png",
   },
   {
     src: "/testinomial4.mp4",
-
-    thumb: "/thumbnails/clip3.jpg",
-  }
+    thumb: "/thumbnails/clip3-thumbnail.png",
+  },
 ]
 
 const VideoCard = ({ video, className = "" }) => {
