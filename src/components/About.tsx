@@ -136,7 +136,7 @@ const About = () => {
         </div>
 
         {/* CTA - Reduced bottom padding */}
-        <div className="text-center px-4 sm:px-6 pb-0">
+        <div className="text-center px-4 sm:px-6 pb-8 sm:pb-10 md:pb-12">
           <div
             className={`flex flex-col items-center justify-center gap-3 sm:gap-4 mt-1 sm:mt-2 md:mt-3 transition-all duration-700 transform ${
               visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"

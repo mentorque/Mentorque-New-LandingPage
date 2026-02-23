@@ -11,6 +11,7 @@ import TestimonialGallery from "@/components/whatsApp";
 import ScrollTextReveal from "@/components/ui/scrollTextReveal";
 import Resume from "@/components/resume";
 import FloatingChat from "@/components/FloatingChat";
+import InterviewSuccessFeatures from "@/components/InterviewSuccessFeatures";
 
 const Index = () => {
   // Scroll animations
@@ -84,6 +85,10 @@ const Index = () => {
 
     <section id="About">
           <About />
+        </section>
+
+        <section id="success-rate">
+          <InterviewSuccessFeatures />
         </section>
 
             <section id="services">

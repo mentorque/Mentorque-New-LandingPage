@@ -16,12 +16,14 @@ interface TeamMember {
   linkedinUrl?: string;
 }
 
+const TEAM_PIC_BASE = "/Team's Pic Website";
+
 const teamMembers: TeamMember[] = [
   {
     id: "raajit",
     name: "Raajit",
     role: "Founder",
-    photo: "/Team Pics/raajit.png",
+    photo: `${TEAM_PIC_BASE}/Raajit Website.png`,
     collegeImage: "/Team Colleges/UCC (Raajit).png",
     companyImage: "/Team Companies/Vico Advirsory (Raajit).png",
     collegeName: "UCC",
@@ -31,7 +33,7 @@ const teamMembers: TeamMember[] = [
     id: "shresth",
     name: "Shresth",
     role: "Head of Ops",
-    photo: "/Team Pics/shresth.png",
+    photo: `${TEAM_PIC_BASE}/Shresth Website.png`,
     collegeImage: "/Team Colleges/IIT-Kharagpur (Shresth).png",
     companyImage: "/Team Companies/OLA (Shresth).png",
     collegeName: "IIT Kharagpur",
@@ -41,7 +43,7 @@ const teamMembers: TeamMember[] = [
     id: "gokul",
     name: "Gokul",
     role: "Lead Engineer",
-    photo: "/Team Pics/gokul.png",
+    photo: `${TEAM_PIC_BASE}/Gokul Website.png`,
     collegeImage: "/Team Colleges/Dayananda sagar (Gokul).png",
     companyImage: "/Team Companies/Mentorque (Gokul).png",
     collegeName: "Dayananda Sagar",
@@ -51,7 +53,7 @@ const teamMembers: TeamMember[] = [
     id: "afeef",
     name: "Afeef",
     role: "Growth & Rev Ops",
-    photo: "/Team Pics/Afeef.png",
+    photo: `${TEAM_PIC_BASE}/Afeef Website.png`,
     collegeImage: "/Team Colleges/UCC (Raajit).png",
     companyImage: "/Team Companies/Mentorque (Gokul).png",
     collegeName: "UCC",
@@ -61,7 +63,7 @@ const teamMembers: TeamMember[] = [
     id: "shikhar",
     name: "Shikhar",
     role: "Growth Head",
-    photo: "/Team Pics/shikhar.png",
+    photo: `${TEAM_PIC_BASE}/Shikhar Website.png`,
     collegeImage: "/Team Colleges/IIT Banaras (Shikhar).png",
     companyImage: "/Team Companies/Aramya (Shikhar).png",
     collegeName: "IIT Banaras",
@@ -71,27 +73,27 @@ const teamMembers: TeamMember[] = [
     id: "anchita",
     name: "Anchita",
     role: "Marketing Lead",
-    photo: "/Team Pics/anchita.png",
+    photo: `${TEAM_PIC_BASE}/Anchita Website.png`,
     collegeImage: "/Team Colleges/UCD (Anchita).png",
     companyImage: "/Team Companies/TISS (Anchita).png",
     collegeName: "UCD",
     companyName: "TISS",
   },
   {
-    id: "umang",
-    name: "Umang",
-    role: "Creative Designer",
-    photo: "/Team Pics/umang.png",
+    id: "palak",
+    name: "Palak",
+    role: "Software Developer",
+    photo: `${TEAM_PIC_BASE}/Palak Website.png`,
     collegeImage: "/Team Colleges/Alison Learnings (Umang).png",
-    companyImage: "/Team Companies/Autheo (Umang).png",
+    companyImage: "/Team Companies/Mentorque (Gokul).png",
     collegeName: "Alison Learnings",
-    companyName: "Autheo",
+    companyName: "Mentorque",
   },
   {
     id: "nyai",
     name: "Nyai",
     role: "Leads UI/UX and Marketing",
-    photo: "/Team Pics/nyai.png",
+    photo: `${TEAM_PIC_BASE}/Nyai Website.png`,
     collegeImage: "/Team Colleges/Pearl Academy (Nyai).jpg",
     companyImage: "/Team Companies/Myntra (Nyai).png",
     collegeName: "Pearl Academy",
@@ -139,42 +141,40 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => (
     variants={itemVariants}
     className="relative flex flex-col overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 transition-all duration-300 group"
   >
-    {/* Photo */}
-    <div className="relative w-full aspect-[3/4] overflow-hidden">
+    {/* Photo — square aspect for website headshot dimensions */}
+    <div className="relative w-full aspect-square overflow-hidden">
       <img
         src={member.photo}
         alt={member.name}
         className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+        loading="lazy"
         onError={(e) => {
           (e.target as HTMLImageElement).src = "/placeholder.svg";
         }}
       />
-      {/* Bottom gradient fade */}
-      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
     </div>
 
-    {/* Info */}
-    <div className="p-4 flex flex-col gap-2">
-      <p className="text-lg font-semibold text-white">{member.name}</p>
-      <p className="text-base font-medium text-white/90">{member.role}</p>
+    {/* Info — compact for card balance */}
+    <div className="p-3 sm:p-4 flex flex-col gap-1">
+      <p className="text-base sm:text-lg font-semibold text-white truncate">{member.name}</p>
+      <p className="text-sm font-medium text-white/90 truncate">{member.role}</p>
 
-      {/* College & company — text only, no logos; no company for Raajit */}
       {member.collegeName && (
-        <span className="text-sm font-medium text-white/80">
+        <span className="text-xs sm:text-sm font-medium text-white/80 line-clamp-1">
           {collegeFullNames[member.collegeName] || member.collegeName}
         </span>
       )}
       {member.companyName && member.id !== "raajit" && (
-        <span className="text-sm font-medium text-white/80">{member.companyName}</span>
+        <span className="text-xs sm:text-sm font-medium text-white/80 line-clamp-1">{member.companyName}</span>
       )}
 
-      {/* LinkedIn */}
       {member.linkedinUrl && (
         <a
           href={member.linkedinUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-2 self-start text-white/40 hover:text-blue-400 transition-colors"
+          className="mt-1.5 self-start text-white/40 hover:text-blue-400 transition-colors"
           aria-label={`${member.name} LinkedIn`}
         >
           <Linkedin size={16} />
@@ -266,12 +266,12 @@ const Team = () => {
         <main className="flex-1 flex flex-col">
 
           {/* ── Hero ── */}
-          <section className="py-24 sm:py-28 px-6 sm:px-8 text-center max-w-4xl mx-auto w-full">
+          <section className="py-24 sm:py-28 px-6 sm:px-8 text-center max-w-4xl mx-auto w-full font-emilio font-light">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-4xl md:text-6xl font-bold tracking-tight mb-6"
+              className="text-4xl md:text-6xl tracking-tight mb-6"
             >
               Team of Dreamers, Doers,
               <br />

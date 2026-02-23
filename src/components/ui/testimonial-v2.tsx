@@ -137,11 +137,11 @@ const TestimonialsSection = () => {
 
           <h2
             id="testimonials-heading"
-            className="text-4xl md:text-5xl font-extrabold tracking-tight mt-6 text-center text-neutral-900 dark:text-white transition-colors"
+            className="font-sans text-4xl md:text-5xl font-extrabold tracking-tight mt-6 text-center text-neutral-900 dark:text-white transition-colors"
           >
             What our users say
           </h2>
-          <p className="text-center mt-5 text-neutral-500 dark:text-neutral-400 text-lg leading-relaxed max-w-sm transition-colors">
+          <p className="font-sans text-center mt-5 text-neutral-500 dark:text-neutral-400 text-lg leading-relaxed max-w-sm transition-colors">
             Discover how thousands of teams streamline their operations with our
             platform.
           </p>

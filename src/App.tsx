@@ -16,6 +16,7 @@ import Structure from './pages/Structure';
 import SuccessStories from './pages/SuccessStories';
 import Testimonials from './pages/Testimonials';
 import Team from './pages/Team';
+import Plans from './pages/Plans';
 
 const queryClient = new QueryClient();
 
@@ -68,6 +69,7 @@ const App = () => (
           <Route path="/mock-interviews" element={<MockInterview />} />
           <Route path="/structure" element={<Structure />} />
           <Route path="/team" element={<Team />} />
+          <Route path="/plans" element={<Plans />} />
           <Route path="/success-stories" element={<SuccessStories />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/testimonial" element={<Testimonials />} />

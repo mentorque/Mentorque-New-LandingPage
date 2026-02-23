@@ -34,6 +34,7 @@ const Navbar = () => {
     { name: "Home", href: "/#Home" },
     { name: "About", href: "/#About" },
     { name: "Structure", href: "/structure" },
+    { name: "Plans", href: "/plans" },
     { name: "Our Team", href: "/team" },
     { name: "Testimonials", href: "/testimonials" },
     { name: "FAQ's", href: "/#FAQ" },
@@ -53,6 +54,15 @@ const Navbar = () => {
             navText: "text-gray-700 hover:text-gray-900",
             iconColor: "text-gray-900",
           };
+    }
+
+    if (location.pathname === "/plans") {
+      // Plans page → white background, dark nav
+      return {
+        logoText: "text-gray-900",
+        navText: "text-gray-700 hover:text-gray-900",
+        iconColor: "text-gray-900",
+      };
     }
 
     if (location.pathname === "*") {
@@ -75,7 +85,7 @@ const Navbar = () => {
   const colors = getTextColors();
 
   return (
-    <nav className="fixed top-2 sm:top-4 left-0 right-0 z-[1000] flex justify-center items-start pointer-events-none">
+    <nav className="font-sans fixed top-2 sm:top-4 left-0 right-0 z-[1000] flex justify-center items-start pointer-events-none">
       <div className="max-w-6xl md:w-full px-2 sm:px-[7px] w-full">
         {/* Desktop Navbar */}
         <div

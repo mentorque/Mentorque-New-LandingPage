@@ -3,6 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Emilio Light — place Emilio-Light.woff2 / .woff in public/fonts/ */
+@font-face {
+  font-family: 'Emilio';
+  src: url('/fonts/Emilio-Light.woff2') format('woff2'),
+       url('/fonts/Emilio-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
 
 @layer base {
   :root {
@@ -93,6 +102,10 @@
   /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased;
   }
 
   /* Custom scrollbar - black and white theme */
