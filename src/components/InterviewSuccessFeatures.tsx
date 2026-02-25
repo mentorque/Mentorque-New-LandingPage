@@ -1,64 +1,40 @@
 import { useRef, useState, useEffect } from "react";
-import {
-  FileEdit,
-  Sparkles,
-  Video,
-  Users,
-  Briefcase,
-  type LucideIcon,
-} from "lucide-react";
 
 const TARGET_PERCENT = 90;
-const DURATION_MS = 1800;
+const DURATION_MS = 2200;
 
-const features: {
-  number: number;
-  icon: LucideIcon;
-  title: string;
-  description: string;
-}[] = [
+const features = [
   {
-    number: 1,
-    icon: FileEdit,
+    number: "01",
     title: "Mentor-Guided Resume Transformation",
     description:
       "Every bullet point, every project, every number—refined by someone who's been in the rooms you're walking into.",
   },
   {
-    number: 2,
-    icon: Sparkles,
+    number: "02",
     title: "AI-Powered Resume Tailoring",
     description:
       "Your master resume adapts to every job in minutes. No more manual tweaking.",
   },
   {
-    number: 3,
-    icon: Video,
+    number: "03",
     title: "Mock Interviews Until You're Ready",
     description:
       "4–5 rounds of live mocks with structured feedback—from mentors who've already cracked the path you're on.",
   },
   {
-    number: 4,
-    icon: Users,
+    number: "04",
     title: "1:1 Mentorship from Industry Insiders",
     description:
       "Learn from engineers, data scientists, and HR leaders at top global tech companies.",
   },
-  {
-    number: 5,
-    icon: Briefcase,
-    title: "Portfolio + Real-World Projects Built With You",
-    description:
-      "Hyper-personalised sessions to build a role-specific portfolio and industry-relevant projects.",
-  },
 ];
 
 const InterviewSuccessFeatures = () => {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef(null);
   const [displayPercent, setDisplayPercent] = useState(0);
-  const hasAnimatedRef = useRef(false);
-  const rafIdRef = useRef<number | null>(null);
+  const [visible, setVisible] = useState(false);
+  const rafIdRef = useRef(null);
 
   useEffect(() => {
     const node = sectionRef.current;
@@ -67,27 +43,29 @@ const InterviewSuccessFeatures = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
-        if (!entry?.isIntersecting || hasAnimatedRef.current) return;
-        hasAnimatedRef.current = true;
-
-        const startTime = performance.now();
-
-        const tick = (now: number) => {
-          const elapsed = now - startTime;
-          const t = Math.min(elapsed / DURATION_MS, 1);
-          const eased = 1 - Math.pow(1 - t, 2);
-          const value = Math.round(eased * TARGET_PERCENT);
-          setDisplayPercent(value);
-          if (t < 1) {
-            rafIdRef.current = requestAnimationFrame(tick);
-          } else {
-            rafIdRef.current = null;
-          }
-        };
-
-        rafIdRef.current = requestAnimationFrame(tick);
+        if (entry?.isIntersecting) {
+          setVisible(true);
+          setDisplayPercent(0);
+          const startTime = performance.now();
+          const tick = (now) => {
+            const elapsed = now - startTime;
+            const t = Math.min(elapsed / DURATION_MS, 1);
+            const eased = 1 - Math.pow(1 - t, 3);
+            setDisplayPercent(Math.round(eased * TARGET_PERCENT));
+            if (t < 1) {
+              rafIdRef.current = requestAnimationFrame(tick);
+            } else {
+              rafIdRef.current = null;
+            }
+          };
+          if (rafIdRef.current != null) cancelAnimationFrame(rafIdRef.current);
+          rafIdRef.current = requestAnimationFrame(tick);
+        } else {
+          setVisible(false);
+          setDisplayPercent(0);
+        }
       },
-      { threshold: 0.15, rootMargin: "0px 0px 0px 0px" }
+      { threshold: 0.1 }
     );
 
     observer.observe(node);
@@ -98,80 +76,489 @@ const InterviewSuccessFeatures = () => {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative grid grid-cols-1 lg:grid-cols-2 min-h-[80vh] lg:min-h-[600px]"
-    >
-      {/* Left: Success rate counter */}
-      <div className="relative flex flex-col items-center justify-center bg-[#0a1628] px-6 py-16 lg:py-24 overflow-hidden">
-        {/* Grid + glow */}
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(59, 130, 246, 0.15) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(59, 130, 246, 0.15) 1px, transparent 1px)
-            `,
-            backgroundSize: "32px 32px",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628] via-transparent/50 to-[#0a1628]" />
-        {/* Glowing dots at grid intersections - simplified */}
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{
-            backgroundImage: `radial-gradient(circle at center, rgba(96, 165, 250, 0.4) 1px, transparent 1px)`,
-            backgroundSize: "32px 32px",
-          }}
-        />
+    <>
+      <style>{`
+        .ifs-root {
+          font-family: var(--font-sans, 'Inter', sans-serif);
+          background: #04080f;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 48px 24px 56px;
+          position: relative;
+          overflow: hidden;
+        }
 
-        <div className="relative z-10 text-center">
-          <p className="text-white/90 text-xs sm:text-sm font-medium tracking-[0.2em] uppercase mb-2">
-            Interview success rate
-          </p>
-          <p className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white tabular-nums tracking-tight">
-            {displayPercent}%
-          </p>
-          <p className="text-white/90 text-xs sm:text-sm font-medium tracking-[0.2em] uppercase mt-2">
-            with Mentorque
-          </p>
-        </div>
-      </div>
+        .ifs-bg-grid {
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+          background-size: 64px 64px;
+          pointer-events: none;
+        }
 
-      {/* Right: Features list */}
-      <div className="relative flex flex-col justify-center bg-gradient-to-b from-[#050a12] to-[#0a1628] px-6 pt-8 pb-12 sm:px-10 sm:pt-10 sm:pb-14 lg:px-14 lg:pt-12 lg:pb-16">
-        <div className="max-w-xl">
-          <div className="flex items-center gap-4 mb-4">
-            <span className="h-px flex-1 bg-white/20" />
-            <span className="text-white/60 text-xs font-medium tracking-[0.2em] uppercase">
-              Features
-            </span>
-            <span className="h-px flex-1 bg-white/20" />
-          </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-10 leading-tight">
-            Mentorque learning experience
-          </h2>
+        .ifs-bg-glow-1 {
+          position: absolute;
+          width: 600px;
+          height: 600px;
+          background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%);
+          top: -100px;
+          right: -100px;
+          pointer-events: none;
+        }
 
-          <ul className="space-y-8">
-            {features.map(({ number, icon: Icon, title, description }) => (
-              <li key={number} className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white">
-                  <Icon className="w-5 h-5" />
+        .ifs-bg-glow-2 {
+          position: absolute;
+          width: 400px;
+          height: 400px;
+          background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%);
+          bottom: -80px;
+          left: -80px;
+          pointer-events: none;
+        }
+
+        .ifs-wrapper {
+          max-width: 1200px;
+          width: 100%;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 80px;
+          align-items: center;
+          position: relative;
+          z-index: 1;
+        }
+
+        @media (max-width: 900px) {
+          .ifs-wrapper {
+            grid-template-columns: 1fr;
+            gap: 60px;
+          }
+        }
+
+        /* LEFT */
+        .ifs-left {
+          opacity: 0;
+          transform: translateX(-24px);
+          transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+        }
+        .ifs-left.visible {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        .ifs-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: rgba(59,130,246,0.08);
+          border: 1px solid rgba(59,130,246,0.2);
+          border-radius: 100px;
+          padding: 6px 16px 6px 8px;
+          margin-bottom: 32px;
+        }
+
+        .ifs-eyebrow-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #3b82f6;
+          box-shadow: 0 0 8px #3b82f6;
+          animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.6; transform: scale(0.85); }
+        }
+
+        .ifs-eyebrow-text {
+          font-size: 12px;
+          font-weight: 500;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #60a5fa;
+        }
+
+        .ifs-heading {
+          font-family: 'Playfair Display', serif;
+          font-size: clamp(28px, 4vw, 42px);
+          font-weight: 700;
+          color: #f0f6ff;
+          line-height: 1.2;
+          margin: 0 0 48px;
+        }
+
+        .ifs-heading span {
+          font-style: italic;
+          background: linear-gradient(135deg, #60a5fa 0%, #818cf8 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        /* Feature items */
+        .ifs-feature {
+          display: flex;
+          gap: 20px;
+          padding: 20px 16px;
+          margin: 0 -16px;
+          border-bottom: 1px solid rgba(255,255,255,0.05);
+          border-radius: 12px;
+          opacity: 0;
+          transform: translateY(28px) scale(0.92);
+          transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s, background 0.3s, box-shadow 0.3s;
+          cursor: default;
+        }
+
+        .ifs-feature:first-of-type {
+          border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .ifs-feature.visible {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+
+        .ifs-feature:hover {
+          border-bottom-color: rgba(59,130,246,0.35);
+          background: rgba(59,130,246,0.06);
+          box-shadow: 0 8px 32px rgba(0,0,0,0.2), 0 0 0 1px rgba(59,130,246,0.1);
+          transform: translateY(0) scale(1.03);
+        }
+
+        .ifs-feature:hover .ifs-feature-num {
+          color: #60a5fa;
+          text-shadow: 0 0 20px rgba(96,165,250,0.4);
+        }
+
+        .ifs-feature:hover .ifs-feature-dot {
+          background: #3b82f6;
+          box-shadow: 0 0 8px #3b82f6;
+        }
+
+        .ifs-feature-num {
+          font-family: var(--font-sans, 'Inter', sans-serif);
+          font-size: 16px;
+          font-weight: 700;
+          color: rgba(96,165,250,0.5);
+          min-width: 36px;
+          line-height: 1.6;
+          transition: color 0.3s, text-shadow 0.3s;
+          letter-spacing: 0.05em;
+          padding-top: 2px;
+        }
+
+        .ifs-feature-body {
+          flex: 1;
+        }
+
+        .ifs-feature-title-row {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 8px;
+        }
+
+        .ifs-feature-dot {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background: rgba(96,165,250,0.3);
+          flex-shrink: 0;
+          transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        .ifs-feature-title {
+          font-family: var(--font-sans, 'Inter', sans-serif);
+          font-size: 18px;
+          font-weight: 600;
+          color: #e8eeff;
+          letter-spacing: 0.01em;
+          line-height: 1.35;
+        }
+
+        .ifs-feature-desc {
+          font-family: var(--font-sans, 'Inter', sans-serif);
+          font-size: 15px;
+          font-weight: 400;
+          color: rgba(200, 218, 255, 0.9);
+          line-height: 1.7;
+          padding-left: 15px;
+        }
+
+        /* RIGHT */
+        .ifs-right {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transform: translateX(24px);
+          transition: opacity 0.8s 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.8s 0.2s cubic-bezier(0.16,1,0.3,1);
+        }
+
+        .ifs-right.visible {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        .ifs-stat-card {
+          position: relative;
+          width: 340px;
+          height: 340px;
+        }
+
+        /* Spinning ring */
+        .ifs-ring-svg {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          animation: spin-slow 12s linear infinite;
+          z-index: 0;
+        }
+
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        .ifs-ring-track {
+          fill: none;
+          stroke: rgba(59,130,246,0.08);
+          stroke-width: 1.5;
+        }
+
+        .ifs-ring-dashes {
+          fill: none;
+          stroke: rgba(59,130,246,0.25);
+          stroke-width: 1;
+          stroke-dasharray: 4 12;
+        }
+
+        /* Inner glow card */
+        .ifs-inner-card {
+          position: absolute;
+          inset: 30px;
+          z-index: 1;
+          border-radius: 50%;
+          background: linear-gradient(145deg, #0d1b35 0%, #070e1f 100%);
+          border: 1px solid rgba(59,130,246,0.18);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 24px;
+          box-shadow:
+            0 0 0 1px rgba(59,130,246,0.05),
+            0 40px 80px rgba(0,0,0,0.6),
+            inset 0 1px 0 rgba(255,255,255,0.06);
+        }
+
+        .ifs-inner-card::before {
+          content: '';
+          position: absolute;
+          inset: -1px;
+          border-radius: 50%;
+          background: conic-gradient(
+            from 220deg,
+            rgba(59,130,246,0.6) 0deg,
+            rgba(99,102,241,0.4) 60deg,
+            transparent 120deg,
+            transparent 360deg
+          );
+          animation: rotate-conic 4s linear infinite;
+          z-index: -1;
+        }
+
+        @keyframes rotate-conic {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        .ifs-inner-card::after {
+          content: '';
+          position: absolute;
+          inset: 1px;
+          border-radius: 50%;
+          background: linear-gradient(145deg, #0d1b35 0%, #070e1f 100%);
+          z-index: -1;
+        }
+
+        .ifs-stat-label-top {
+          font-size: 11px;
+          font-weight: 500;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: rgba(96,165,250,0.5);
+          margin-bottom: 12px;
+        }
+
+        .ifs-stat-number {
+          font-family: 'Playfair Display', serif;
+          font-size: 88px;
+          font-weight: 900;
+          line-height: 1;
+          letter-spacing: -0.04em;
+          background: linear-gradient(135deg, #ffffff 0%, #93c5fd 50%, #818cf8 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          filter: drop-shadow(0 0 30px rgba(96,165,250,0.3));
+        }
+
+        .ifs-stat-label-bottom {
+          font-size: 12px;
+          font-weight: 400;
+          color: rgba(180,210,255,0.45);
+          margin-top: 10px;
+          letter-spacing: 0.06em;
+        }
+
+        .ifs-stat-brand {
+          font-size: 11px;
+          font-weight: 500;
+          color: #60a5fa;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          margin-top: 4px;
+        }
+
+        /* Corner tags - above the circle */
+        .ifs-corner-tag {
+          position: absolute;
+          z-index: 10;
+          background: rgba(59,130,246,0.1);
+          border: 1px solid rgba(59,130,246,0.2);
+          border-radius: 8px;
+          padding: 6px 12px;
+          font-size: 11px;
+          font-weight: 500;
+          color: #93c5fd;
+          letter-spacing: 0.08em;
+          white-space: nowrap;
+          backdrop-filter: blur(8px);
+        }
+
+        .ifs-corner-tag.top-right {
+          top: 0;
+          right: -20px;
+          animation: float1 4s ease-in-out infinite;
+        }
+
+        .ifs-corner-tag.bottom-left {
+          bottom: 10px;
+          left: -30px;
+          animation: float2 5s ease-in-out infinite;
+        }
+
+        .ifs-corner-tag.top-left {
+          top: 20px;
+          left: -24px;
+          animation: float1 4.5s ease-in-out infinite;
+        }
+
+        .ifs-corner-tag.bottom-right {
+          bottom: 24px;
+          right: -20px;
+          animation: float2 5.5s ease-in-out infinite;
+        }
+
+        .ifs-corner-tag.middle-right {
+          top: 50%;
+          right: -40px;
+          animation: floatMiddle 4s ease-in-out infinite;
+        }
+
+        .ifs-corner-tag.middle-left {
+          top: 50%;
+          left: -40px;
+          animation: floatMiddleLeft 4.2s ease-in-out infinite;
+        }
+
+        @keyframes float1 {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-6px); }
+        }
+        @keyframes float2 {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(6px); }
+        }
+        @keyframes floatMiddle {
+          0%, 100% { transform: translateY(-50%) translateY(0); }
+          50% { transform: translateY(calc(-50% - 6px)); }
+        }
+        @keyframes floatMiddleLeft {
+          0%, 100% { transform: translateY(-50%) translateY(0); }
+          50% { transform: translateY(calc(-50% - 6px)); }
+        }
+      `}</style>
+
+      <section className="ifs-root font-sans" ref={sectionRef}>
+        <div className="ifs-bg-grid" />
+        <div className="ifs-bg-glow-1" />
+        <div className="ifs-bg-glow-2" />
+
+        <div className="ifs-wrapper">
+          {/* LEFT */}
+          <div className={`ifs-left ${visible ? "visible" : ""}`}>
+            <div className="ifs-eyebrow">
+            
+            </div>
+
+            <h2 className="ifs-heading">
+              Everything you need to<br />
+              <span>land the role</span> you deserve
+            </h2>
+
+            {features.map(({ number, title, description }, i) => (
+              <div
+                key={number}
+                className={`ifs-feature ${visible ? "visible" : ""}`}
+                style={{ transitionDelay: visible ? `${0.15 + i * 0.12}s` : "0s" }}
+              >
+                <div className="ifs-feature-num">{number}</div>
+                <div className="ifs-feature-body">
+                  <div className="ifs-feature-title-row">
+                    <div className="ifs-feature-dot" />
+                    <div className="ifs-feature-title">{title}</div>
+                  </div>
+                  <div className="ifs-feature-desc">{description}</div>
                 </div>
-                <div>
-                  <h3 className="text-white font-semibold text-base sm:text-lg mb-1.5">
-                    {number} {title}
-                  </h3>
-                  <p className="text-white/70 text-sm sm:text-base leading-relaxed">
-                    {description}
-                  </p>
-                </div>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
+
+          {/* RIGHT */}
+          <div className={`ifs-right ${visible ? "visible" : ""}`}>
+            <div className="ifs-stat-card">
+              {/* Spinning outer ring */}
+              <svg className="ifs-ring-svg" viewBox="0 0 340 340">
+                <circle className="ifs-ring-track" cx="170" cy="170" r="165" />
+                <circle className="ifs-ring-dashes" cx="170" cy="170" r="155" />
+              </svg>
+
+              {/* Floating tags */}
+              <div className="ifs-corner-tag top-right">✦ Industry Mentors</div>
+              <div className="ifs-corner-tag bottom-left">✦ Proven Track Record</div>
+              <div className="ifs-corner-tag top-left">✦ Structured Curriculum</div>
+              <div className="ifs-corner-tag bottom-right">✦ Cutting Edge AI Tools</div>
+              <div className="ifs-corner-tag middle-right">✦ 1:1 Support</div>
+
+              {/* Inner circle card */}
+              <div className="ifs-inner-card">
+
+                <div className="ifs-stat-number">{displayPercent}%</div>
+                <div className="ifs-stat-label-bottom">of candidates succeed</div>
+                <div className="ifs-stat-brand">with Mentorque</div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

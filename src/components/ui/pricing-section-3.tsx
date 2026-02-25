@@ -5,7 +5,7 @@ import { TimelineContent } from "@/components/ui/timeline-animation";
 import { VerticalCutReveal } from "@/components/ui/vertical-cut-reveal";
 import { cn } from "@/lib/utils";
 import NumberFlow from "@number-flow/react";
-import { CheckCheck } from "lucide-react";
+import { Check } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
@@ -231,7 +231,7 @@ export default function PricingSection3() {
         animationNum={2}
         timelineRef={pricingRef}
         customVariants={revealVariants}
-        className="mx-auto grid gap-3 rounded-lg bg-gradient-to-b from-neutral-100 to-neutral-200 p-2 sm:gap-4 sm:p-3 md:grid-cols-3 md:items-stretch"
+        className="mx-auto grid gap-6 rounded-2xl p-2 sm:gap-8 sm:p-4 md:grid-cols-3 md:items-stretch"
       >
         {plans.map((plan, index) => (
           <TimelineContent
@@ -244,98 +244,59 @@ export default function PricingSection3() {
           >
             <Card
               className={cn(
-                "relative flex h-full flex-col justify-between",
-                plan.popular
-                  ? "md:scale-110 ring-2 ring-neutral-900 bg-gradient-to-t from-black to-neutral-900 text-white"
-                  : "border-none bg-transparent pt-3 text-gray-900 shadow-none sm:pt-4",
+                "relative flex h-full flex-col justify-between border border-gray-200/80 bg-white rounded-[20px] overflow-hidden",
+                "shadow-[0_4px_20px_rgba(0,0,0,0.06),0_2px_8px_rgba(0,0,0,0.04),0_20px_50px_rgba(0,0,0,0.12),0_0_0_1px_rgba(255,255,255,0.8)_inset]",
+                plan.popular &&
+                  "md:scale-[1.02] shadow-[0_8px_30px_rgba(0,0,0,0.1),0_4px_16px_rgba(0,0,0,0.06),0_24px_60px_rgba(0,0,0,0.14),0_0_40px_rgba(99,102,241,0.1),0_0_0_1px_rgba(255,255,255,0.9)_inset] ring-2 ring-indigo-200/50",
               )}
             >
-              <CardContent className="flex-1 min-h-0 pt-0 px-4 pb-4 sm:px-6 sm:pb-6">
-                <div className="space-y-1.5 pb-2 sm:space-y-2 sm:pb-3">
-                  {plan.popular && (
-                    <div className="pt-2 sm:pt-4">
-                      <span className="rounded-full bg-neutral-600 px-2.5 py-0.5 text-xs font-medium text-white sm:px-3 sm:py-1">
-                        Popular
-                      </span>
-                    </div>
-                  )}
+              <CardContent className="flex-1 min-h-0 pt-6 pb-5 px-5 sm:pt-8 sm:px-6 sm:pb-6">
+                {/* Plan name - top left, medium bold dark gray */}
+                <h3 className="mb-4 text-lg font-semibold text-gray-800 sm:text-xl">
+                  {plan.name}
+                </h3>
 
-                  <div className="flex items-baseline gap-0.5">
-                    <span className="text-3xl font-semibold sm:text-4xl">
-                      <NumberFlow
-                        value={plan.duration}
-                        className="text-3xl font-semibold sm:text-4xl"
-                      />
-                    </span>
-                    <span
-                      className={
-                        plan.popular
-                          ? "text-lg font-bold tracking-tight text-neutral-200 sm:text-xl"
-                          : "text-lg font-bold tracking-tight text-gray-600 sm:text-xl"
-                      }
-                    >
-                      days
-                    </span>
-                  </div>
-                  <p
-                    className={
-                      plan.popular
-                        ? "text-sm text-neutral-300"
-                        : "text-sm text-gray-500"
-                    }
-                  >
-                    Mentorship: {plan.mentorship}
-                  </p>
+                {/* Value: duration + days - large bold */}
+                <div className="flex items-baseline gap-0.5 mb-1 font-sans">
+                  <span className="text-3xl font-bold text-gray-900 sm:text-4xl">
+                    <NumberFlow
+                      value={plan.duration}
+                      className="text-3xl font-bold text-gray-900 sm:text-4xl"
+                    />
+                  </span>
+                  <span className="text-lg font-bold tracking-tight text-gray-500 sm:text-xl">
+                    days
+                  </span>
                 </div>
+                <p className="text-sm text-gray-500 mb-4">
+                  Mentorship: {plan.mentorship}
+                </p>
 
-                <div className="flex justify-between">
-                  <h3 className="mb-1.5 text-xl font-semibold sm:mb-2 sm:text-2xl md:text-3xl">{plan.name}</h3>
-                </div>
-                <p
-                  className={
-                    plan.popular
-                      ? "mb-3 text-xs text-neutral-200 sm:mb-4 sm:text-sm"
-                      : "mb-3 text-xs text-gray-600 sm:mb-4 sm:text-sm"
-                  }
-                >
+                {/* CTA placeholder spacing - button is in footer */}
+
+                {/* Short description */}
+                <p className="text-sm text-gray-500 mb-5">
                   {plan.description}
                 </p>
-                <p
-                  className={
-                    plan.popular
-                      ? "mb-2 text-xs font-medium text-neutral-400 sm:mb-3"
-                      : "mb-2 text-xs font-medium text-gray-500 sm:mb-3"
-                  }
-                >
+                <p className="text-xs font-medium text-gray-500 mb-4">
                   Best for: {plan.bestFor}
                 </p>
 
-                <div className="space-y-2 border-t border-neutral-200 pt-3 sm:space-y-3 sm:pt-4">
-                  <h4 className="mb-2 text-sm font-medium sm:mb-3 sm:text-base">
+                {/* Feature heading + list */}
+                <div className="space-y-3 border-t border-gray-100 pt-4">
+                  <h4 className="text-sm font-semibold text-gray-800">
                     {plan.includes[0]}
                   </h4>
-                  <ul className="space-y-1.5 font-semibold sm:space-y-2">
+                  <ul className="space-y-2.5">
                     {plan.includes.slice(1).map((feature, featureIndex) => (
                       <li
                         key={`${feature}-${featureIndex}`}
-                        className="flex items-center gap-2"
+                        className="flex items-center gap-3"
                       >
-                        <span
-                          className={
-                            plan.popular
-                              ? "mr-2 mt-0.5 grid h-5 w-5 flex-shrink-0 place-content-center rounded-full border border-neutral-500 bg-neutral-600 text-white sm:mr-3 sm:h-6 sm:w-6"
-                              : "mr-2 mt-0.5 grid h-5 w-5 flex-shrink-0 place-content-center rounded-full border border-black bg-white text-black sm:mr-3 sm:h-6 sm:w-6"
-                          }
-                        >
-                          <CheckCheck className="h-3 w-3 sm:h-4 sm:w-4" />
+                        <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-indigo-100 text-indigo-600 sm:h-6 sm:w-6">
+                          <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5" strokeWidth={2.5} />
                         </span>
-                        <span
-                          className={
-                            plan.popular
-                              ? "text-xs text-neutral-100 sm:text-sm"
-                              : "text-xs text-gray-600 sm:text-sm"
-                          }
-                        >
+                        <span className="text-sm text-gray-600">
                           {feature}
                         </span>
                       </li>
@@ -343,16 +304,14 @@ export default function PricingSection3() {
                   </ul>
                 </div>
               </CardContent>
-              <CardFooter className="mt-auto shrink-0 px-4 pb-4 pt-0 sm:px-6 sm:pb-6">
+              <CardFooter className="shrink-0 px-5 pb-6 pt-0 sm:px-6 sm:pb-6">
                 <Link
                   to="/book-call"
                   className={cn(
-                    "flex w-full items-center justify-center rounded-xl p-3 text-base font-semibold sm:mb-6 sm:p-4 sm:text-xl",
+                    "flex w-full items-center justify-center rounded-xl p-3 text-base font-semibold sm:p-4 sm:text-lg transition-all duration-200",
                     plan.popular
-                      ? "border border-neutral-400 bg-gradient-to-t from-neutral-100 to-neutral-300 font-semibold text-black shadow-lg shadow-neutral-500"
-                      : plan.buttonVariant === "outline"
-                        ? "border border-neutral-700 bg-gradient-to-t from-neutral-900 to-neutral-600 font-semibold text-white shadow-lg shadow-neutral-900"
-                        : "bg-primary text-primary-foreground font-semibold",
+                      ? "border border-neutral-400 bg-gradient-to-t from-neutral-100 to-neutral-300 text-black shadow-lg shadow-neutral-500/50 hover:shadow-xl hover:shadow-neutral-500/40"
+                      : "border border-neutral-700 bg-gradient-to-t from-neutral-900 to-neutral-600 text-white shadow-lg shadow-neutral-900/40 hover:shadow-xl hover:shadow-neutral-900/50",
                   )}
                 >
                   {plan.buttonText}

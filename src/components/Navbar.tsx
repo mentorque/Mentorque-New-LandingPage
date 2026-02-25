@@ -57,7 +57,7 @@ const Navbar = () => {
     }
 
     if (location.pathname === "/plans") {
-      // Plans page → white background, dark nav
+      // Plans page → light background, dark nav
       return {
         logoText: "text-gray-900",
         navText: "text-gray-700 hover:text-gray-900",
