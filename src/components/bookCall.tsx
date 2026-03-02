@@ -186,7 +186,7 @@ function BookCall() {
         {/* Left 60% — Heading + DisplayCards */}
         <div className="hidden w-full flex-col justify-center lg:flex lg:w-[60%]">
           <div className="flex flex-col gap-20 items-start -mt-40 xl:-mt-48">
-            <h1 className="text-5xl font-bold leading-tight text-neutral-100 xl:text-6xl">
+            <h1 className="text-5xl  leading-tight text-neutral-100 xl:text-6xl">
               We help you land the role you{" "}
               <span className="text-blue-400 font-extrabold">deserve.</span>
             </h1>

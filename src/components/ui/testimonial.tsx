@@ -131,23 +131,23 @@ function ClientFeedback() {
               animationNum={1}
               customVariants={revealVariants}
               timelineRef={testimonialRef}
-              className="lg:flex-[3] flex-[4] lg:h-fit lg:shrink-0 flex flex-col justify-between relative bg-blue-700/90 text-neutral-100 overflow-hidden rounded-lg border border-blue-600/50 shadow-lg shadow-blue-950/30 p-5"
+              className="lg:flex-[3] flex-[4] lg:h-fit lg:shrink-0 flex flex-col justify-between relative bg-neutral-900 text-neutral-100 overflow-hidden rounded-lg border border-neutral-700/80 shadow-lg shadow-black/30 p-5"
             >
               <article className="mt-auto">
-                <p className="text-blue-100/90">
+                <p className="text-neutral-200">
                   &quot;{MENTOR_QUOTES[1].quote}&quot;
                 </p>
                 <div className="flex justify-between pt-5">
                   <div>
                     <h2 className="font-semibold text-xl text-neutral-100">{MENTOR_QUOTES[1].name}</h2>
-                    <p className="text-blue-200/80">{MENTOR_QUOTES[1].role}</p>
+                    <p className="text-neutral-400">{MENTOR_QUOTES[1].role}</p>
                   </div>
                   <img
                     src={MENTOR_QUOTES[1].image}
                     alt={MENTOR_QUOTES[1].name}
                     width={64}
                     height={64}
-                    className="w-16 h-16 rounded-xl object-cover ring-2 ring-neutral-500/40"
+                    className="w-16 h-16 rounded-xl object-cover ring-2 ring-neutral-600"
                   />
                 </div>
               </article>

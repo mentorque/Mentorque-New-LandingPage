@@ -33,7 +33,7 @@ const Navbar = () => {
   const navItems = [
     { name: "Home", href: "/#Home" },
     { name: "About", href: "/#About" },
-    { name: "Structure", href: "/structure" },
+    // { name: "Structure", href: "/structure" },
     { name: "Plans", href: "/plans" },
     { name: "Our Team", href: "/team" },
     { name: "Testimonials", href: "/testimonials" },
@@ -57,11 +57,11 @@ const Navbar = () => {
     }
 
     if (location.pathname === "/plans") {
-      // Plans page → light background, dark nav
+      // Plans page → dark background, light nav
       return {
-        logoText: "text-gray-900",
-        navText: "text-gray-700 hover:text-gray-900",
-        iconColor: "text-gray-900",
+        logoText: "text-white",
+        navText: "text-white/80 hover:text-white",
+        iconColor: "text-white",
       };
     }
 
@@ -83,6 +83,8 @@ const Navbar = () => {
   };
 
   const colors = getTextColors();
+  const isPlansPage = location.pathname === "/plans";
+  const useDarkBar = isPlansPage || (location.pathname === "/" && isScrolled);
 
   return (
     <nav className="font-sans fixed top-2 sm:top-4 left-0 right-0 z-[1000] flex justify-center items-start pointer-events-none">
@@ -91,7 +93,7 @@ const Navbar = () => {
         <div
           className={cn(
             "hidden md:flex items-center justify-between px-[7px] py-[7px] rounded-2xl transition-all duration-500 ease-out pointer-events-auto",
-            isScrolled
+            useDarkBar
               ? "backdrop-blur-2xl bg-black/20 border-white/20 shadow-2xl shadow-black/20"
               : "backdrop-blur-xl bg-white/5 border-white/10 shadow-none"
           )}
@@ -127,7 +129,7 @@ const Navbar = () => {
             to="/book-call"
             className={cn(
               "flex items-center space-x-2 px-4 py-2 rounded-xl transition-all duration-300 font-medium group transform hover:scale-[1.02] shadow-lg hover:shadow-xl",
-              isScrolled
+              useDarkBar
                 ? "bg-white text-gray-900 hover:bg-gray-100"
                 : "bg-gray-900 text-white hover:bg-black"
             )}
@@ -144,8 +146,8 @@ const Navbar = () => {
         <div
           className={cn(
             "md:hidden flex items-center justify-between w-[60%] px-3 sm:px-4 py-2.5 rounded-xl transition-all duration-500 ease-out pointer-events-auto mx-auto",
-            "backdrop-blur-2xl bg-black/10 border border-white/10 shadow-2xl shadow-black/20",
-            isScrolled ? "bg-black/20 border-white/20" : ""
+            "backdrop-blur-2xl border shadow-2xl shadow-black/20",
+            useDarkBar ? "bg-black/20 border-white/20" : "bg-black/10 border-white/10"
           )}
         >
           {/* Mobile Logo */}
@@ -160,12 +162,12 @@ const Navbar = () => {
 
 
           {/* Mobile Menu Button */}
-          <button
+            <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={cn(
               "p-1.5 sm:p-2 rounded-lg transition-colors duration-500 flex-shrink-0",
               colors.iconColor,
-              isScrolled ? "hover:bg-white/10" : "hover:bg-black/10"
+              useDarkBar ? "hover:bg-white/10" : "hover:bg-black/10"
             )}
           >
             {isMobileMenuOpen ? <X size={20} className="sm:w-6 sm:h-6" /> : <Menu size={20} className="sm:w-6 sm:h-6" />}
@@ -174,7 +176,10 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-2 p-3 sm:p-4 rounded-xl backdrop-blur-2xl bg-black/10 border border-white/10 shadow-2xl shadow-black/20 pointer-events-auto w-[60%] mx-auto">
+            <div className={cn(
+              "md:hidden mt-2 p-3 sm:p-4 rounded-xl backdrop-blur-2xl shadow-2xl shadow-black/20 pointer-events-auto w-[60%] mx-auto",
+              useDarkBar ? "bg-black/20 border border-white/20" : "bg-black/10 border border-white/10"
+            )}>
             <div className="flex flex-col space-y-2.5">
               {navItems.map((item) => (
                 <Link
@@ -183,7 +188,7 @@ const Navbar = () => {
                   className={cn(
                     "transition-colors duration-500 font-medium py-2.5 px-3 rounded-lg text-sm sm:text-base",
                     colors.navText,
-                    isScrolled ? "hover:bg-white/10" : "hover:bg-black/10"
+                    useDarkBar ? "hover:bg-white/10" : "hover:bg-black/10"
                   )}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -191,16 +196,16 @@ const Navbar = () => {
                 </Link>
               ))}
 
-              <Link
-                to="/book-call"
-                className={cn(
-                  "flex items-center justify-center space-x-2 px-4 py-3 rounded-xl transition-all duration-300 font-medium group transform hover:scale-[1.02] shadow-lg hover:shadow-xl text-sm sm:text-base mt-1",
-                  isScrolled
-                    ? "bg-white text-gray-900 hover:bg-gray-100"
-                    : "bg-gray-900 text-white hover:bg-black"
-                )}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
+                <Link
+                  to="/book-call"
+                  className={cn(
+                    "flex items-center justify-center space-x-2 px-4 py-3 rounded-xl transition-all duration-300 font-medium group transform hover:scale-[1.02] shadow-lg hover:shadow-xl text-sm sm:text-base mt-1",
+                    useDarkBar
+                      ? "bg-white text-gray-900 hover:bg-gray-100"
+                      : "bg-gray-900 text-white hover:bg-black"
+                  )}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
                 <Flag
                   size={16}
                   className="transition-transform group-hover:translate-x-0.5"

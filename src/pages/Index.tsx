@@ -5,13 +5,14 @@ import LogoCarousel from "@/components/LogoCarousel";
 import About from "@/components/About";
 import Footer from "@/components/Footer";
 import TestimonialCarousel from "@/components/Testimonials";
-import Weeks from "@/components/Weeks";
+// import Weeks from "@/components/Weeks";
 import MentorqueFAQ from "@/components/faq";
 import TestimonialGallery from "@/components/whatsApp";
 import ScrollTextReveal from "@/components/ui/scrollTextReveal";
 import Resume from "@/components/resume";
 import FloatingChat from "@/components/FloatingChat";
 import InterviewSuccessFeatures from "@/components/InterviewSuccessFeatures";
+import ChooseYourOutcome from "@/components/ui/ChooseYourOutcome";
 
 const Index = () => {
   // Scroll animations
@@ -91,9 +92,13 @@ const Index = () => {
           <InterviewSuccessFeatures />
         </section>
 
-            <section id="services">
+        <section id="choose-outcome">
+          <ChooseYourOutcome />
+        </section>
+
+            {/* <section id="services">
               <Weeks />
-            </section>
+            </section> */}
 
        <section id="Testimonials">
           <TestimonialCarousel />

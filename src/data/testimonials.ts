@@ -55,34 +55,25 @@ export const TESTIMONIALS: TestimonialEntry[] = [
     content:
       "Doing self prep, I couldn't even get any call backs from companies. The resume and portfolios built by Reshu and team were a gamechanger. 100% recommended.",
     avatar: "/nilesh.jpeg",
-    role: "Mentorque User",
+    role: "",
     rating: 5,
   },
   {
-    id: 2,
+    id: 14,
     name: "Jagruthi C",
     content:
       "Agniva's guidance, personal progress tracking and LLM powered resume tools simplified my job hunt process and saved me a lot of time.",
     avatar: "/jagruti.jpeg",
-    role: "Mentorque User",
+    role: "",
     rating: 4,
   },
   {
-    id: 3,
+    id: 15,
     name: "Debmalya Das",
     content:
       "Few sessions with Agniva and Raajit saved me months of trial and error. Would highly recommend for getting calls faster!",
     avatar: "/3.jpeg",
-    role: "Mentorque User",
-    rating: 5,
-  },
-  {
-    id: 4,
-    name: "Dev",
-    content:
-      "Steadfast support from Reshu plus the chrome extension made my job search much more faster and effective.",
-    avatar: "/dev.jpeg",
-    role: "Mentorque User",
+    role: "",
     rating: 5,
   },
   {
@@ -91,7 +82,7 @@ export const TESTIMONIALS: TestimonialEntry[] = [
     content:
       "The resume session helped me realise crucial ATS related mistakes and hear back from mutiple companies including Amazon.",
     avatar: "/anshul.jpeg",
-    role: "Mentorque User",
+    role: "",
     rating: 4,
   },
   {
@@ -100,7 +91,7 @@ export const TESTIMONIALS: TestimonialEntry[] = [
     content:
       "The mock interviews with Raajit and Agniva were crucial in securing my internship offer.",
     avatar: "/rigved.jpeg",
-    role: "Mentorque User",
+    role: "",
     rating: 5,
   },
   {
@@ -109,6 +100,24 @@ export const TESTIMONIALS: TestimonialEntry[] = [
     content:
       "Mentorque revamped my profile and added industry-relevant projects that showcased my skills. Soon after, I received interview calls from Landmark Group, Alaan Pay, and Intervue.io.",
     avatar: "/Testimonials-People/pramod-testimonial.png",
+    role: "Tech Professional",
+    rating: 5,
+  },
+  {
+    id: 2,
+    name: "Komal Joshi",
+    content:
+      "Biotechnology and Business Strategy professional with expertise in bridging technical innovation and business growth in the Biotechnology and Pharmaceutical industries. Skilled in business strategy, market analysis, and financial forecasting, with hands-on experience in development and strategic planning.",
+    avatar: "/Testimonials-People/koaml-joshi.png",
+    role: "Biotechnology and Business Strategy Professional",
+    rating: 5,
+  },
+  {
+    id: 3,
+    name: "Snehashish",
+    content:
+      "What was corrected: A complete rebuild of his profile with industry-relevant projects, clear application and interview strategy, and repeated mock coding interviews to reach technical readiness. Outcome: Progressed through multiple technical interview rounds for different companies, and secured a full-time role.",
+    avatar: "/Testimonials-People/snehashish.png",
     role: "Tech Professional",
     rating: 5,
   },

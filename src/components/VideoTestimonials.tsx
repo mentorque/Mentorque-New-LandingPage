@@ -7,15 +7,19 @@ import { Play, Pause, Calendar, ArrowUpRight } from "lucide-react"
 const videoTestimonials = [
   {
     src: "/testinomial1.mp4",
-    thumb: "/thumbnails/clip1-thumbnail.png",
+    thumb: "/thumbnails/Thumbnail Sreelaxmi.png",
   },
   {
     src: "/testinomial2.mp4",
-    thumb: "/thumbnails/clip2-thumbnail.png",
+    thumb: "/thumbnails/Thumbnail Morgan.png",
   },
   {
     src: "/testinomial4.mp4",
-    thumb: "/thumbnails/clip3-thumbnail.png",
+    thumb: "/thumbnails/Thumbnail Snehashish.png",
+  },
+  {
+    src: "/testinomial4.mp4",
+    thumb: "/thumbnails/Thumbnail Debmaliya.png",
   },
 ]
 
@@ -108,12 +112,12 @@ const VideoTestimonials = () => {
   return (
     <section className="relative overflow-hidden px-4 sm:px-6 lg:px-10 pt-16 sm:pt-20 pb-8 sm:pb-12 bg-gradient-to-br from-[#0b1120]/90 via-[#05070d]/95 to-[#020204]">
       <div className="absolute inset-x-0 bottom-0 h-32 sm:h-40 pointer-events-none bg-gradient-to-b from-transparent via-[#020204]/75 to-[#020204]" />
-      <div className="relative max-w-6xl mx-auto">
+      <div className="relative max-w-7xl mx-auto">
         <div className="flex flex-col items-center text-center gap-4">
         
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl text-white">
+          <h3 className="text-3xl sm:text-4xl lg:text-5xl text-white">
             Luck favors the prepared. We prepare you.
-          </h2>
+          </h3>
 
           <Link to="/book-call" className="mt-6 inline-flex">
             <button className="group inline-flex items-center gap-3 bg-gradient-to-b from-white to-gray-100 hover:from-gray-50 hover:to-white text-black font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-2xl transition-all duration-300 shadow-[0_8px_30px_rgba(255,255,255,0.15)] hover:shadow-[0_12px_40px_rgba(255,255,255,0.25)] hover:-translate-y-1 border border-white/20">
@@ -126,19 +130,13 @@ const VideoTestimonials = () => {
         </div>
 
         <div className="mt-12">
-          <div className="flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory md:hidden justify-around">
+          <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-4 snap-x snap-mandatory md:overflow-visible md:snap-none md:justify-evenly">
             {videoTestimonials.map((video) => (
               <VideoCard
-                key={`${video.src}-mobile`}
+                key={video.src}
                 video={video}
-                className="w-[224px] sm:w-[266px] flex-shrink-0 snap-center"
+                className="w-[180px] sm:w-[200px] md:w-[240px] lg:w-[260px] xl:w-[280px] flex-shrink-0 snap-center"
               />
-            ))}
-          </div>
-
-          <div className="hidden md:flex md:flex-wrap md:justify-around md:gap-6">
-            {videoTestimonials.map((video) => (
-              <VideoCard key={video.src} video={video} className="w-[336px]" />
             ))}
           </div>
         </div>

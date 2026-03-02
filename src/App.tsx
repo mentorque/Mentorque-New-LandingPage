@@ -12,7 +12,7 @@ import ResumeRebuild from './pages/ResumeRebuild';
 import CheatSheetPrep from './pages/CheatSheetPrep';
 import PortfolioTemplates from './pages/PortfolioTemplates';
 import MockInterview from '@/pages/MockInterview';
-import Structure from './pages/Structure';
+// import Structure from './pages/Structure';
 import SuccessStories from './pages/SuccessStories';
 import Testimonials from './pages/Testimonials';
 import Team from './pages/Team';
@@ -67,7 +67,7 @@ const App = () => (
           <Route path="/portfolio-templates" element={<PortfolioTemplates />} />
           <Route path="/cheat-sheet-prep" element={<CheatSheetPrep />} />
           <Route path="/mock-interviews" element={<MockInterview />} />
-          <Route path="/structure" element={<Structure />} />
+          {/* <Route path="/structure" element={<Structure />} /> */}
           <Route path="/team" element={<Team />} />
           <Route path="/plans" element={<Plans />} />
           <Route path="/success-stories" element={<SuccessStories />} />

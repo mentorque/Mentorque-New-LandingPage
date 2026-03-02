@@ -89,42 +89,17 @@ const InterviewSuccessFeatures = () => {
           overflow: hidden;
         }
 
-        .ifs-bg-grid {
-          position: absolute;
-          inset: 0;
-          background-image:
-            linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
-          background-size: 64px 64px;
-          pointer-events: none;
-        }
-
-        .ifs-bg-glow-1 {
-          position: absolute;
-          width: 600px;
-          height: 600px;
-          background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%);
-          top: -100px;
-          right: -100px;
-          pointer-events: none;
-        }
-
+        .ifs-bg-glow-1,
         .ifs-bg-glow-2 {
-          position: absolute;
-          width: 400px;
-          height: 400px;
-          background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%);
-          bottom: -80px;
-          left: -80px;
-          pointer-events: none;
+          display: none;
         }
 
         .ifs-wrapper {
           max-width: 1200px;
           width: 100%;
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 80px;
+          grid-template-columns: 1fr auto 1fr;
+          gap: 0;
           align-items: center;
           position: relative;
           z-index: 1;
@@ -135,13 +110,43 @@ const InterviewSuccessFeatures = () => {
             grid-template-columns: 1fr;
             gap: 60px;
           }
+          .ifs-divider {
+            display: none;
+          }
+          .ifs-left {
+            padding: 28px 24px 28px 20px;
+            margin-right: 0;
+            border: 1px solid rgba(148,163,184,0.12);
+            border-radius: 20px;
+          }
+          .ifs-right {
+            padding: 32px 24px;
+            margin-left: 0;
+            border: 1px solid rgba(148,163,184,0.12);
+            border-radius: 20px;
+          }
         }
 
-        /* LEFT */
+        .ifs-divider {
+          width: 1px;
+          align-self: stretch;
+          min-height: 280px;
+          background: linear-gradient(180deg, transparent 0%, rgba(148,163,184,0.15) 10%, rgba(148,163,184,0.4) 50%, rgba(148,163,184,0.15) 90%, transparent 100%);
+          flex-shrink: 0;
+        }
+
+        /* LEFT - boxed area */
         .ifs-left {
           opacity: 0;
           transform: translateX(-24px);
           transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+          padding: 32px 40px 32px 28px;
+          margin-right: -1px;
+          border: 1px solid rgba(148,163,184,0.12);
+          border-right: none;
+          border-radius: 20px 0 0 20px;
+          background: linear-gradient(135deg, rgba(15,23,42,0.4) 0%, rgba(15,23,42,0.15) 100%);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
         }
         .ifs-left.visible {
           opacity: 1;
@@ -182,20 +187,17 @@ const InterviewSuccessFeatures = () => {
         }
 
         .ifs-heading {
-          font-family: 'Playfair Display', serif;
+          font-family: var(--font-sans, 'Inter', sans-serif);
           font-size: clamp(28px, 4vw, 42px);
-          font-weight: 700;
+          font-weight: 400;
           color: #f0f6ff;
           line-height: 1.2;
           margin: 0 0 48px;
         }
 
         .ifs-heading span {
-          font-style: italic;
-          background: linear-gradient(135deg, #60a5fa 0%, #818cf8 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          color: #e0e7ff;
+          font-weight: 400;
         }
 
         /* Feature items */
@@ -240,10 +242,10 @@ const InterviewSuccessFeatures = () => {
 
         .ifs-feature-num {
           font-family: var(--font-sans, 'Inter', sans-serif);
-          font-size: 16px;
+          font-size: 20px;
           font-weight: 700;
           color: rgba(96,165,250,0.5);
-          min-width: 36px;
+          min-width: 42px;
           line-height: 1.6;
           transition: color 0.3s, text-shadow 0.3s;
           letter-spacing: 0.05em;
@@ -257,8 +259,8 @@ const InterviewSuccessFeatures = () => {
         .ifs-feature-title-row {
           display: flex;
           align-items: center;
-          gap: 12px;
-          margin-bottom: 8px;
+          gap: 14px;
+          margin-bottom: 10px;
         }
 
         .ifs-feature-dot {
@@ -272,7 +274,7 @@ const InterviewSuccessFeatures = () => {
 
         .ifs-feature-title {
           font-family: var(--font-sans, 'Inter', sans-serif);
-          font-size: 18px;
+          font-size: 22px;
           font-weight: 600;
           color: #e8eeff;
           letter-spacing: 0.01em;
@@ -281,18 +283,25 @@ const InterviewSuccessFeatures = () => {
 
         .ifs-feature-desc {
           font-family: var(--font-sans, 'Inter', sans-serif);
-          font-size: 15px;
+          font-size: 18px;
           font-weight: 400;
           color: rgba(200, 218, 255, 0.9);
           line-height: 1.7;
           padding-left: 15px;
         }
 
-        /* RIGHT */
+        /* RIGHT - boxed premium area */
         .ifs-right {
           display: flex;
           align-items: center;
           justify-content: center;
+          padding: 40px 32px 40px 40px;
+          margin-left: -1px;
+          border: 1px solid rgba(148,163,184,0.12);
+          border-left: none;
+          border-radius: 0 20px 20px 0;
+          background: linear-gradient(225deg, rgba(15,23,42,0.5) 0%, rgba(15,23,42,0.2) 100%);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 20px 60px rgba(0,0,0,0.25);
           opacity: 0;
           transform: translateX(24px);
           transition: opacity 0.8s 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.8s 0.2s cubic-bezier(0.16,1,0.3,1);
@@ -337,14 +346,14 @@ const InterviewSuccessFeatures = () => {
           stroke-dasharray: 4 12;
         }
 
-        /* Inner glow card */
+        /* Inner glow card - premium */
         .ifs-inner-card {
           position: absolute;
           inset: 30px;
           z-index: 1;
           border-radius: 50%;
-          background: linear-gradient(145deg, #0d1b35 0%, #070e1f 100%);
-          border: 1px solid rgba(59,130,246,0.18);
+          background: linear-gradient(160deg, #0f172a 0%, #0a0f1a 50%, #070e1a 100%);
+          border: 1px solid rgba(59,130,246,0.22);
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -352,9 +361,11 @@ const InterviewSuccessFeatures = () => {
           text-align: center;
           padding: 24px;
           box-shadow:
-            0 0 0 1px rgba(59,130,246,0.05),
-            0 40px 80px rgba(0,0,0,0.6),
-            inset 0 1px 0 rgba(255,255,255,0.06);
+            0 0 0 1px rgba(59,130,246,0.08),
+            0 0 40px rgba(59,130,246,0.06),
+            0 40px 80px rgba(0,0,0,0.55),
+            inset 0 1px 0 rgba(255,255,255,0.08),
+            inset 0 -1px 0 rgba(0,0,0,0.3);
         }
 
         .ifs-inner-card::before {
@@ -397,16 +408,12 @@ const InterviewSuccessFeatures = () => {
         }
 
         .ifs-stat-number {
-          font-family: 'Playfair Display', serif;
+          font-family: var(--font-sans, 'Inter', sans-serif);
           font-size: 88px;
           font-weight: 900;
           line-height: 1;
           letter-spacing: -0.04em;
-          background: linear-gradient(135deg, #ffffff 0%, #93c5fd 50%, #818cf8 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          filter: drop-shadow(0 0 30px rgba(96,165,250,0.3));
+          color: #f0f6ff;
         }
 
         .ifs-stat-label-bottom {
@@ -497,7 +504,6 @@ const InterviewSuccessFeatures = () => {
       `}</style>
 
       <section className="ifs-root font-sans" ref={sectionRef}>
-        <div className="ifs-bg-grid" />
         <div className="ifs-bg-glow-1" />
         <div className="ifs-bg-glow-2" />
 
@@ -531,6 +537,8 @@ const InterviewSuccessFeatures = () => {
             ))}
           </div>
 
+          <div className="ifs-divider" aria-hidden />
+
           {/* RIGHT */}
           <div className={`ifs-right ${visible ? "visible" : ""}`}>
             <div className="ifs-stat-card">
@@ -539,13 +547,6 @@ const InterviewSuccessFeatures = () => {
                 <circle className="ifs-ring-track" cx="170" cy="170" r="165" />
                 <circle className="ifs-ring-dashes" cx="170" cy="170" r="155" />
               </svg>
-
-              {/* Floating tags */}
-              <div className="ifs-corner-tag top-right">✦ Industry Mentors</div>
-              <div className="ifs-corner-tag bottom-left">✦ Proven Track Record</div>
-              <div className="ifs-corner-tag top-left">✦ Structured Curriculum</div>
-              <div className="ifs-corner-tag bottom-right">✦ Cutting Edge AI Tools</div>
-              <div className="ifs-corner-tag middle-right">✦ 1:1 Support</div>
 
               {/* Inner circle card */}
               <div className="ifs-inner-card">
