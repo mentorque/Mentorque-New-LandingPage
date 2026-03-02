@@ -89,7 +89,7 @@ export default function PricingSection3() {
                 delay: 0,
               }}
             >
-              Our Courses
+              Our Programs
             </VerticalCutReveal>
           </h2>
 
