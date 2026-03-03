@@ -83,7 +83,7 @@ export default function ChooseYourOutcome() {
           font-family: var(--font-sans, 'Inter', sans-serif);
           background: #0a0a0c;
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 0.92fr 1.35fr;
           align-items: stretch;
           position: relative;
           overflow: hidden;
@@ -91,7 +91,12 @@ export default function ChooseYourOutcome() {
 
         @media (max-width: 820px) {
           .cyo-root { grid-template-columns: 1fr; }
-          .cyo-right { display: none; }
+          .cyo-right {
+            min-height: 320px;
+            border-left: none;
+            border-top: 1px solid rgba(255,255,255,0.06);
+          }
+          .cyo-left { padding: 40px 20px 32px 24px; }
         }
 
         /* Subtle grain */
@@ -188,7 +193,7 @@ export default function ChooseYourOutcome() {
 
         .cyo-item-headline {
           font-family: var(--font-sans, 'Inter', sans-serif);
-          font-size: 19px;
+          font-size: clamp(20px, 2.2vw, 26px);
           font-weight: 400;
           color: rgba(255,255,255,0.45);
           line-height: 1.4;
@@ -238,7 +243,7 @@ export default function ChooseYourOutcome() {
         .cyo-item-subtext {
           font-size: 16px;
           font-weight: 300;
-          color: rgba(255,255,255,0.45);
+          color: rgba(255,255,255,0.78);
           line-height: 1.7;
           padding-bottom: 20px;
           padding-right: 36px;
@@ -255,13 +260,14 @@ export default function ChooseYourOutcome() {
           z-index: 2;
         }
 
-        /* ── RIGHT ── full-bleed images */
+        /* ── RIGHT ── images full width, no padding */
         .cyo-right {
           position: relative;
           overflow: hidden;
-          background: #0f0f12;
+          background: #0a0a0c;
           border-left: 1px solid rgba(255,255,255,0.06);
           padding: 0;
+          min-width: 0;
         }
 
         .cyo-slide {
@@ -284,30 +290,39 @@ export default function ChooseYourOutcome() {
 
         .cyo-slide-img-wrap {
           position: absolute;
-          inset: 12px;
-          width: calc(100% - 24px);
-          height: calc(100% - 24px);
+          inset: 0;
+          width: 100%;
+          height: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
         }
 
-        /* Panels are 1500px wide; size to container width, never exceed 1500px */
         .cyo-slide-img-wrap img {
-          max-width: min(100%, 1500px);
-          width: auto;
-          height: auto;
-          max-height: 100%;
           object-fit: contain;
           object-position: center;
-          display: block;
         }
 
-        .cyo-panel-desktop { display: block; }
-        .cyo-panel-mobile { display: none; }
+        /* Desktop: show desktop image only, fill right panel (much bigger) */
+        .cyo-slide-img-wrap .cyo-panel-desktop {
+          display: block;
+          width: 100%;
+          height: 100%;
+          max-width: none;
+          max-height: none;
+        }
+        .cyo-slide-img-wrap .cyo-panel-mobile {
+          display: none;
+        }
         @media (max-width: 820px) {
-          .cyo-panel-desktop { display: none; }
-          .cyo-panel-mobile { display: block; }
+          .cyo-slide-img-wrap .cyo-panel-desktop {
+            display: none;
+          }
+          .cyo-slide-img-wrap .cyo-panel-mobile {
+            display: block;
+          }
+          .cyo-slide-img-wrap { inset: 0; width: 100%; height: 100%; }
+          .cyo-slide-img-wrap img { max-width: 100%; max-height: 100%; }
         }
 
         .progress-dots {
@@ -395,8 +410,8 @@ export default function ChooseYourOutcome() {
           ].map((panel, idx) => (
             <div key={idx} className={`cyo-slide ${active === idx ? "active" : ""}`}>
               <div className="cyo-slide-img-wrap">
-                <img src={panel.desktop} alt="" className="cyo-panel-desktop" />
-                <img src={panel.mobile} alt="" className="cyo-panel-mobile" />
+                <img src={panel.desktop} alt="" className="cyo-panel-desktop" loading="lazy" decoding="async" />
+                <img src={panel.mobile} alt="" className="cyo-panel-mobile" loading="lazy" decoding="async" />
               </div>
             </div>
           ))}

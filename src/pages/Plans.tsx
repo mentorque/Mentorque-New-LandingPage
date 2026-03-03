@@ -9,6 +9,7 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { GradientBlinds } from "@/components/ui/gradient-blinds";
 
 const FEATURE_ROWS: { feature: string; one: string; pro: string }[] = [
   { feature: "Duration", one: "30 days", pro: "90 days" },
@@ -66,16 +67,28 @@ export default function PricingSection3() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-b from-[#0d1325] via-[#080d18] to-[#050810]">
-      <Navbar />
-      <main>
+    <div className="min-h-screen w-full relative overflow-hidden bg-black">
+      {/* Gradient Blinds Background - Edges Only (Subtle) */}
+      <div className="absolute inset-0 z-0 opacity-40">
+        <GradientBlinds
+          gradientColors={['#1e3a5f', '#2563eb', '#3b82f6', '#60a5fa']}
+          angle={45}
+          noise={0.13}
+          blindCount={20}
+          edgesOnly={true}
+          edgeWidth={4.2}
+        />
+      </div>
+      <div className="relative z-10">
+        <Navbar />
+        <main>
       <div
         className="font-sans relative mx-auto max-w-6xl px-3 pt-10 pb-8 sm:px-4 sm:pt-12 sm:pb-10 md:pt-16 md:pb-12"
         ref={pricingRef}
       >
       <article className="flex flex-col items-start justify-between sm:flex-row sm:items-center sm:pb-0 pb-3">
         <div className="mb-3 w-full text-left sm:mb-4">
-          <h2 className="mb-2 mt-6 text-2xl font-normal leading-tight text-white sm:mb-3 sm:text-3xl md:text-4xl sm:leading-[130%]">
+          <h2 className="font-display mb-2 mt-12 text-4xl  leading-tight text-white sm:mb-3 sm:text-3xl md:text-4xl sm:leading-[130%]">
             <VerticalCutReveal
               splitBy="words"
               staggerDuration={0.15}
@@ -148,7 +161,7 @@ export default function PricingSection3() {
                 >
                   <CardContent className="flex flex-col flex-1 p-5 sm:p-6">
                     {/* Plan name - large font (replacing days) */}
-                    <h3 className="font-sans text-3xl font-normal text-gray-900 sm:text-4xl md:text-4xl mb-4">
+                    <h3 className="font-display text-3xl font-semibold text-gray-900 sm:text-4xl md:text-4xl mb-4">
                       {plan.name}
                     </h3>
 
@@ -212,6 +225,7 @@ export default function PricingSection3() {
     </div>
     </main>
     <Footer />
+      </div>
     </div>
   );
 }

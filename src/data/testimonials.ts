@@ -68,15 +68,6 @@ export const TESTIMONIALS: TestimonialEntry[] = [
     rating: 4,
   },
   {
-    id: 15,
-    name: "Debmalya Das",
-    content:
-      "Few sessions with Agniva and Raajit saved me months of trial and error. Would highly recommend for getting calls faster!",
-    avatar: "/3.jpeg",
-    role: "",
-    rating: 5,
-  },
-  {
     id: 5,
     name: "Anshul Shetty",
     content:

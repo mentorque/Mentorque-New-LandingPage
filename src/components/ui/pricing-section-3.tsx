@@ -31,7 +31,7 @@ const FEATURE_ROWS: { feature: string; one: string; pro: string }[] = [
 
 const plans = [
   {
-    name: "Mentorque One",
+    name: "Mentorque ",
     popular: false,
     buttonText: "Explore course",
     buttonVariant: "outline" as const,
@@ -163,8 +163,7 @@ export default function PricingSection3() {
             customVariants={revealVariants}
             className="w-full text-sm text-gray-600 sm:text-base md:w-[80%] mb-6 sm:mb-8"
           >
-            Find the right program for your goals. From getting started to full
-            placement support—pick the path that fits you.
+  placement support—pick the path that fits you.
           </TimelineContent>
         </div>
 

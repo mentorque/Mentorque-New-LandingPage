@@ -14,7 +14,7 @@ const videoTestimonials = [
     thumb: "/thumbnails/Thumbnail Morgan.png",
   },
   {
-    src: "/testinomial4.mp4",
+    src: "/testimonial3.mp4",
     thumb: "/thumbnails/Thumbnail Snehashish.png",
   },
   {
