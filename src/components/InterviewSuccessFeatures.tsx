@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const TARGET_PERCENT = 90;
 const DURATION_MS = 2200;
@@ -35,6 +36,7 @@ const InterviewSuccessFeatures = () => {
   const [displayPercent, setDisplayPercent] = useState(0);
   const [visible, setVisible] = useState(false);
   const rafIdRef = useRef(null);
+  const isMobile = useIsMobile(768);
 
   useEffect(() => {
     const node = sectionRef.current;
@@ -84,7 +86,7 @@ const InterviewSuccessFeatures = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 48px 24px 56px;
+          padding: 10px 24px 20px;
           position: relative;
           overflow: hidden;
         }
@@ -98,7 +100,7 @@ const InterviewSuccessFeatures = () => {
           max-width: 1440px;
           width: 100%;
           display: grid;
-          grid-template-columns: 0.88fr auto 1.12fr;
+          grid-template-columns: 800px auto 1fr;
           gap: 0;
           align-items: center;
           position: relative;
@@ -108,18 +110,20 @@ const InterviewSuccessFeatures = () => {
         @media (max-width: 900px) {
           .ifs-wrapper {
             grid-template-columns: 1fr;
-            gap: 60px;
+            gap: 4px;
           }
           .ifs-divider {
             display: none;
           }
           .ifs-left {
-            padding: 28px 24px 28px 20px;
+            padding: 16px 20px 24px;
+            order: 2;
           }
           .ifs-right {
-            padding: 32px 24px;
+            padding: 16px 16px 24px;
             border-radius: 0;
             border: none;
+            order: 1;
           }
         }
 
@@ -182,12 +186,15 @@ const InterviewSuccessFeatures = () => {
 
         .ifs-heading {
           font-family: var(--font-sans, 'Inter', sans-serif);
-          font-size: clamp(28px, 4vw, 42px);
+          font-size: clamp(28px, 4vw, 48px);
           font-weight: 500;
           color: #fafafa;
           line-height: 1.22;
           margin: 0 0 40px;
           letter-spacing: -0.02em;
+        }
+        @media (min-width: 1024px) {
+          .ifs-heading { font-size: 48px; }
         }
 
         .ifs-heading span {
@@ -288,7 +295,7 @@ const InterviewSuccessFeatures = () => {
           padding-left: 12px;
         }
 
-        /* RIGHT - MacBook area */
+        /* RIGHT - MacBook area, takes remainder so laptop stays in view */
         .ifs-right {
           display: flex;
           align-items: center;
@@ -300,6 +307,7 @@ const InterviewSuccessFeatures = () => {
           transition: opacity 0.8s 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.8s 0.2s cubic-bezier(0.16,1,0.3,1);
           overflow: hidden;
           min-height: 0;
+          min-width: 0;
         }
 
         .ifs-right.visible {
@@ -310,7 +318,7 @@ const InterviewSuccessFeatures = () => {
         .ifs-macbook-wrap {
           position: relative;
           width: 100%;
-          max-width: min(100%, 1140px);
+          max-width: 100%;
           margin: 0 auto;
         }
 
@@ -321,7 +329,7 @@ const InterviewSuccessFeatures = () => {
           object-fit: contain;
         }
 
-        /* Screen overlay — transparent bg, content toward bottom of screen area */
+        /* Screen overlay — area for the stats group */
         .ifs-macbook-screen {
           position: absolute;
           top: 5.5%;
@@ -330,39 +338,11 @@ const InterviewSuccessFeatures = () => {
           bottom: 33%;
           background: transparent;
           display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: flex-end;
+          align-items: flex-end;
+          justify-content: center;
           text-align: center;
-          padding: 12px 12px 10px;
-          border-radius: 6px;
           isolation: isolate;
-        }
-
-        .ifs-stat-number {
-          font-family: var(--font-sans, 'Inter'), system-ui, sans-serif;
-          font-size: clamp(64px, 14vw, 128px);
-          font-weight: 500;
-          line-height: 1;
-          letter-spacing: -0.04em;
-          color: #f9fafb;
-        }
-
-        .ifs-stat-label-bottom {
-          font-size: clamp(18px, 1.95vw, 23px);
-          font-weight: 400;
-          color: #e5e7eb;
-          margin-top: 10px;
-          letter-spacing: 0.06em;
-        }
-
-        .ifs-stat-brand {
-          font-size: clamp(16px, 1.56vw, 20px);
-          font-weight: 500;
-          color: #93c5fd;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          margin-top: 8px;
+          pointer-events: none;
         }
 
         /* Corner tags */
@@ -471,14 +451,79 @@ const InterviewSuccessFeatures = () => {
           <div className={`ifs-right ${visible ? "visible" : ""}`}>
             <div className="ifs-macbook-wrap">
               <img
-                src="/macbook-bg-less.png"
+                src="/macbook-bg-less.svg"
                 alt=""
                 className="ifs-macbook-img"
               />
               <div className="ifs-macbook-screen">
-                <div className="ifs-stat-number">{displayPercent}%</div>
-                <div className="ifs-stat-label-bottom">of candidates succeed</div>
-                <div className="ifs-stat-brand">with Mentorque</div>
+                {/* Movable group: adjust left/right/top/bottom to position the whole block */}
+                <div
+                  style={{
+                    position: "absolute",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    bottom: isMobile ? "5%" : "6%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    textAlign: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: "var(--font-sans, 'Inter', sans-serif)",
+                      fontSize: isMobile ? 52 : 85,
+                      fontWeight: 300,
+                      lineHeight: 1,
+                      letterSpacing: "-0.04em",
+                      color: "#f9fafb",
+                    }}
+                  >
+                    {displayPercent}%
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: 8,
+                      marginTop: 12,
+                      flexWrap: "nowrap",
+                      width: "100%",
+                      maxWidth: "100%",
+                      paddingLeft: 8,
+                      paddingRight: 8,
+                      boxSizing: "border-box",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: "var(--font-sans, 'Inter', sans-serif)",
+                        fontSize: isMobile ? 15 : 21,
+                        fontWeight: 400,
+                        color: "#e5e7eb",
+                        letterSpacing: "0.02em",
+                        lineHeight: 1.3,
+                        whiteSpace: "nowrap",
+                        flexShrink: 0,
+                      }}
+                    >
+                      of candidates succeed with
+                    </span>
+                    <img
+                      src="/mentorque-logo.png"
+                      alt="Mentorque"
+                      style={{
+                        borderRadius: 4,
+                        height: isMobile ? 22 : 28,
+                        width: "auto",
+                        objectFit: "contain",
+                        display: "block",
+                        flexShrink: 0,
+                      }}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

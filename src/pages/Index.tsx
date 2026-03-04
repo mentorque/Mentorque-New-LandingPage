@@ -73,7 +73,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />
-      <main className="space-y-0">
+      <main className="space-y-16 md:space-y-24">
         <section id="Home">
           <Hero />
         </section>

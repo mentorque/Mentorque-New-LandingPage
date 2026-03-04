@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { TimelineContent } from "@/components/ui/timeline-animation";
 import { VerticalCutReveal } from "@/components/ui/vertical-cut-reveal";
 import { cn } from "@/lib/utils";
-import { Check, X } from "lucide-react";
+import { Check, X, ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -124,7 +124,7 @@ export default function PricingSection3() {
         animationNum={2}
         timelineRef={pricingRef}
         customVariants={revealVariants}
-        className="mx-auto grid gap-4 sm:gap-5 md:grid-cols-2 md:items-stretch"
+        className="mx-auto grid gap-3 sm:gap-4 md:grid-cols-2 md:items-start"
       >
         {plans.map((plan, index) => {
           const isPro = plan.name === "Mentorque Pro";
@@ -153,35 +153,31 @@ export default function PricingSection3() {
                 )}
                 <Card
                   className={cn(
-                    "relative flex h-full w-full flex-col border border-gray-200/80 bg-[#f3f4f9] rounded-[20px] overflow-hidden",
+                    "relative flex w-full flex-col border border-gray-200/80 bg-[#f3f4f9] rounded-[20px] overflow-hidden max-h-[85vh]",
                     "shadow-[0_4px_20px_rgba(0,0,0,0.06),0_2px_8px_rgba(0,0,0,0.04),0_20px_50px_rgba(0,0,0,0.12),0_0_0_1px_rgba(255,255,255,0.8)_inset]",
                     plan.popular &&
                       "md:scale-[1.02] shadow-[0_8px_30px_rgba(0,0,0,0.1),0_4px_16px_rgba(0,0,0,0.06),0_24px_60px_rgba(0,0,0,0.14),0_0_40px_rgba(99,102,241,0.1),0_0_0_1px_rgba(255,255,255,0.9)_inset] ring-0 absolute inset-[3px] z-10",
                   )}
                 >
-                  <CardContent className="flex flex-col flex-1 p-5 sm:p-6">
-                    {/* Plan name - large font (replacing days) */}
-                    <h3 className="font-display text-3xl font-semibold text-gray-900 sm:text-4xl md:text-4xl mb-4">
+                  <CardContent className="flex flex-col flex-1 p-4 sm:p-5 min-h-0">
+                    {/* Plan name */}
+                    <h3 className="font-display text-2xl font-semibold text-gray-900 sm:text-3xl mb-3">
                       {plan.name}
                     </h3>
 
-                    {/* CTA Button */}
+                    {/* CTA Button - Hero style, no calendar icon */}
                     <Link
                       to="/book-call"
-                      className={cn(
-                        "flex w-full items-center justify-center rounded-xl p-2.5 text-base font-medium sm:p-3 sm:text-lg transition-all duration-200 mb-4",
-                        plan.popular
-                          ? "border border-neutral-400 bg-gradient-to-t from-neutral-100 to-neutral-300 text-black shadow-lg shadow-neutral-500/50 hover:shadow-xl hover:shadow-neutral-500/40"
-                          : "border border-neutral-700 bg-gradient-to-t from-neutral-900 to-neutral-600 text-white shadow-lg shadow-neutral-900/40 hover:shadow-xl hover:shadow-neutral-900/50",
-                      )}
+                      className="flex w-full items-center justify-center group text-center bg-gray-900 text-white hover:bg-black font-semibold py-2.5 sm:py-3 px-5 sm:px-6 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-[1.02] text-sm sm:text-base mb-3"
                     >
                       {plan.buttonText}
+                      <ArrowUpRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1" />
                     </Link>
 
-                    <div className="border-t border-gray-100 mb-3" />
+                    <div className="border-t border-gray-100 mb-2" />
 
-                    {/* Feature matrix rows - compact */}
-                    <div className="space-y-0 flex-1">
+                    {/* Feature matrix rows - compact, scroll if needed */}
+                    <div className="space-y-0 flex-1 min-h-0 overflow-y-auto">
                       {FEATURE_ROWS.map((row) => {
                         const value = getValue(row);
                         const isCheck = value.includes("✅");
@@ -190,12 +186,12 @@ export default function PricingSection3() {
                         return (
                           <div
                             key={row.feature}
-                            className="flex items-center justify-between gap-3 py-1.5 border-b border-gray-100 last:border-b-0"
+                            className="flex items-center justify-between gap-2 py-1 border-b border-gray-100 last:border-b-0"
                           >
-                            <span className="text-xs sm:text-sm text-gray-700">
+                            <span className="text-xs text-gray-700">
                               {row.feature}
                             </span>
-                            <span className="flex flex-shrink-0 items-center gap-1.5 text-xs sm:text-sm font-normal text-gray-900">
+                            <span className="flex flex-shrink-0 items-center gap-1.5 text-xs font-normal text-gray-900">
                               {isCheck && (
                                 <>
                                   <span className="flex h-5 w-5 items-center justify-center rounded-full bg-indigo-100 text-indigo-600 sm:h-6 sm:w-6">

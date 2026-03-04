@@ -121,8 +121,8 @@ const TestimonialsGallery = () => {
         }}
       />
 
-      <div className="relative z-10 px-6 pt-14 pb-8 md:pt-20 md:pb-12 text-center">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mb-3 md:mb-5 leading-tight font-bold">
+      <div className="relative  z-10 px-6 pt-14 pb-8 md:pt-20 md:pb-12 text-center">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mb-3 md:mb-5 leading-tight">
           Peek inside their <span className="text-blue-400">chats & offers</span>
         </h1>
         <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto">

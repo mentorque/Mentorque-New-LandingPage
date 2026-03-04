@@ -87,7 +87,7 @@ const About = () => {
 
   return (
     <section className="bg-black relative" id="about" ref={sectionRef}>
-      <div className="pt-8 sm:pt-10 md:pt-12 pb-0 sm:pb-0 md:pb-0 px-4 sm:px-6 md:px-8 lg:px-12">
+      <div className="pt-8 mt-10 sm:pt-10 md:pt-12 pb-0 sm:pb-0 md:pb-0 px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <p className="text-sm sm:text-base md:text-lg lg:text-xl m-2 sm:m-3 text-gray-400 tracking-wider">WELCOME TO</p>
 
@@ -135,8 +135,8 @@ const About = () => {
           </div>
         </div>
 
-        {/* CTA - Reduced bottom padding */}
-        <div className="text-center px-4 sm:px-6 pb-8 sm:pb-10 md:pb-12">
+        {/* CTA - no padding on mobile, keep on larger screens */}
+        <div className="text-center px-0 sm:px-6 pb-0 sm:pb-10 md:pb-12">
           <div
             className={`flex flex-col items-center justify-center gap-3 sm:gap-4 mt-1 sm:mt-2 md:mt-3 transition-all duration-700 transform ${
               visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"

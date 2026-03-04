@@ -156,7 +156,7 @@ export default function TestimonialGallery({
   }, [showGallery, testimonialImages])
 
   return (
-    <div className="bg-black min-h-[60vh] sm:min-h-[80vh] lg:min-h-screen relative overflow-hidden pb-0">
+    <div className="bg-black relative overflow-hidden pb-0">
       {/* Refined background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-blue-950/8 via-black to-black"></div>
       
@@ -168,12 +168,12 @@ export default function TestimonialGallery({
       }}></div>
 
       {/* Header Section */}
-      <div className="text-center pt-8 sm:pt-16 md:pt-24 pb-4 sm:pb-6 md:pb-8 px-6 relative z-10">
-      <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl text-white mb-3 md:mb-8 leading-tight">
+      <div className="text-center pt-8 sm:pt-16 md:pt-8 pb-4 sm:pb-6 md:pb-8 px-6 relative z-10">
+      <h1 className="text-xl mt-4 sm:text-2xl md:text-4xl lg:text-5xl text-white mb-3 md:mb-4 leading-tight">
           People are Landing Interviews <span className="text-blue-400">Fast.</span>
           <br />
         </h1>
-        <p className="text-base sm:text-xl md:text-2xl lg:text-3xl text-white/60 mb-10 sm:mb-20 md:mb-24 font-light max-w-4xl mx-auto leading-relaxed">
+        <p className="text-base sm:text-xl md:text-2xl lg:text-2xl text-white/60 mb-10 sm:mb-20 md:mb-24 font-light max-w-4xl mx-auto leading-relaxed">
           {subtitle ?? "Your next raise starts with this click."}
         </p>
 

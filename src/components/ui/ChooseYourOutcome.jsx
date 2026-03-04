@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const features = [
   {
@@ -31,14 +32,13 @@ const AUTO_ADVANCE_MS = 3800;
 
 export default function ChooseYourOutcome() {
   const [active, setActive] = useState(0);
+  const isMobile = useIsMobile(720);
   const [progress, setProgress] = useState(0);
-  const timerRef = useRef(null);
   const progressRef = useRef(null);
   const startTimeRef = useRef(null);
   const pausedRef = useRef(false);
 
   const startTimer = (fromIndex) => {
-    clearTimeout(timerRef.current);
     cancelAnimationFrame(progressRef.current);
     setProgress(0);
     startTimeRef.current = performance.now();
@@ -63,9 +63,7 @@ export default function ChooseYourOutcome() {
 
   useEffect(() => {
     startTimer(active);
-    return () => {
-      cancelAnimationFrame(progressRef.current);
-    };
+    return () => cancelAnimationFrame(progressRef.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
 
@@ -77,36 +75,53 @@ export default function ChooseYourOutcome() {
   return (
     <>
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400&display=swap');
+
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         .cyo-root {
-          font-family: var(--font-sans, 'Inter', sans-serif);
-          background: #0a0a0c;
+          font-family: 'DM Sans', sans-serif;
+          background: #080809;
           display: grid;
-          grid-template-columns: 0.92fr 1.35fr;
+          grid-template-columns: 1fr 1.2fr;
           align-items: stretch;
+          min-height: 520px;
+          max-height: 620px;
           position: relative;
           overflow: hidden;
+          border-radius: 16px;
+          border: 1px solid rgba(255,255,255,0.06);
         }
 
-        @media (max-width: 820px) {
-          .cyo-root { grid-template-columns: 1fr; }
-          .cyo-right {
-            min-height: 320px;
-            border-left: none;
-            border-top: 1px solid rgba(255,255,255,0.06);
-          }
-          .cyo-left { padding: 40px 20px 32px 24px; }
-        }
-
-        /* Subtle grain */
-        .cyo-root::before {
+        /* Grain overlay */
+        .cyo-root::after {
           content: '';
-          position: fixed;
+          position: absolute;
           inset: 0;
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");
           pointer-events: none;
-          z-index: 100;
+          z-index: 50;
+        }
+
+        @media (max-width: 720px) {
+          .cyo-root {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr;
+            max-height: none;
+            border-radius: 12px;
+          }
+          .cyo-right {
+            border-left: none !important;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            min-height: 360px;
+            height: 360px;
+            order: 1;
+          }
+          .cyo-left { padding: 28px 20px 24px; order: 2; }
+          .cyo-slide-img-wrap {
+            align-items: center;
+            justify-content: center;
+          }
         }
 
         /* ── LEFT ── */
@@ -114,7 +129,7 @@ export default function ChooseYourOutcome() {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          padding: 72px 56px 72px 64px;
+          padding: 36px 40px 36px 44px;
           position: relative;
           z-index: 1;
         }
@@ -122,107 +137,93 @@ export default function ChooseYourOutcome() {
         .cyo-kicker {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          margin-bottom: 20px;
+          gap: 6px;
+          margin-bottom: 14px;
         }
 
         .cyo-kicker-dot {
-          width: 6px; height: 6px;
+          width: 5px; height: 5px;
           border-radius: 50%;
           background: #3b82f6;
+          box-shadow: 0 0 6px rgba(59,130,246,0.5);
         }
 
         .cyo-kicker-text {
-          font-size: 11px;
-          font-weight: 500;
-          letter-spacing: 0.18em;
+          font-family: 'DM Mono', monospace;
+          font-size: 10px;
+          letter-spacing: 0.16em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.35);
+          color: rgba(255,255,255,0.3);
         }
 
         .cyo-title {
           font-family: var(--font-sans, 'Inter', sans-serif);
-          font-size: clamp(36px, 3.6vw, 56px);
-          font-weight: 400;
-          line-height: 1.12;
-          color: #f2f0ec;
+          font-size: clamp(28px, 4vw, 48px);
+          font-weight: 500;
+          color: #fafafa;
+          line-height: 1.22;
+          margin: 0 0 6px;
           letter-spacing: -0.02em;
-          margin-bottom: 8px;
         }
-
-        .cyo-title .cyo-title-accent {
-          font-style: normal;
-          color: #60a5fa;
-        }
-
-        .cyo-subtitle {
-          font-size: 16px;
-          font-weight: 300;
-          color: rgba(255,255,255,0.38);
-          line-height: 1.6;
-          margin-bottom: 52px;
-          max-width: 380px;
+        @media (min-width: 1024px) {
+          .cyo-title { font-size: 48px; }
         }
 
         /* Feature list */
         .cyo-list {
           display: flex;
           flex-direction: column;
-          gap: 0;
         }
 
         .cyo-item {
-          border-top: 1px solid rgba(255,255,255,0.07);
-          padding: 0;
+          border-top: 1px solid rgba(255,255,255,0.06);
           cursor: pointer;
           position: relative;
-          transition: border-color 0.3s;
+          padding-top: 25px;
+          padding-bottom: 12px;
         }
 
         .cyo-item:last-child {
-          border-bottom: 1px solid rgba(255,255,255,0.07);
+          border-bottom: 1px solid rgba(255,255,255,0.06);
         }
 
         .cyo-item-header {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 22px 0;
-          gap: 16px;
+          padding: 14px 0;
+          gap: 12px;
         }
 
         .cyo-item-headline {
           font-family: var(--font-sans, 'Inter', sans-serif);
-          font-size: clamp(20px, 2.2vw, 26px);
+          font-size: 20px;
           font-weight: 400;
-          color: rgba(255,255,255,0.45);
+          color: rgba(255,255,255,0.35);
           line-height: 1.4;
           transition: color 0.3s;
           flex: 1;
         }
 
         .cyo-item.active .cyo-item-headline {
-          color: #f2f0ec;
+          color: #f0ede8;
           font-weight: 500;
         }
 
         .cyo-item-arrow {
-          width: 20px;
-          height: 20px;
+          width: 16px; height: 16px;
           flex-shrink: 0;
           display: flex;
           align-items: center;
           justify-content: center;
           opacity: 0;
-          transition: opacity 0.3s;
+          transform: translateX(-4px);
+          transition: opacity 0.3s, transform 0.3s;
         }
 
         .cyo-item.active .cyo-item-arrow {
           opacity: 1;
-        }
-
-        .cyo-item-arrow svg {
-          display: block;
+          transform: translateX(0);
         }
 
         /* Subtext expand */
@@ -236,38 +237,37 @@ export default function ChooseYourOutcome() {
           grid-template-rows: 1fr;
         }
 
-        .cyo-item-body-inner {
-          overflow: hidden;
-        }
+        .cyo-item-body-inner { overflow: hidden; }
 
         .cyo-item-subtext {
-          font-size: 16px;
-          font-weight: 300;
-          color: rgba(255,255,255,0.78);
-          line-height: 1.7;
-          padding-bottom: 20px;
-          padding-right: 36px;
+          font-family: var(--font-sans, 'Inter', sans-serif);
+          font-size: 15px;
+          font-weight: 400;
+          color: rgba(255,255,255,0.55);
+          line-height: 1.65;
+          padding-bottom: 14px;
+          padding-right: 28px;
         }
 
-        /* Progress bar at bottom of active item */
+        /* Progress bar */
         .cyo-progress-bar {
           position: absolute;
           bottom: -1px;
           left: 0;
           height: 1px;
-          background: #3b82f6;
-          transition: none;
+          background: linear-gradient(90deg, #3b82f6, #60a5fa);
           z-index: 2;
+          transition: none;
         }
 
-        /* ── RIGHT ── images full width, no padding */
+        /* ── RIGHT ── full bleed, no padding on any screen */
         .cyo-right {
           position: relative;
           overflow: hidden;
-          background: #0a0a0c;
+          background: #0c0c0f;
           border-left: 1px solid rgba(255,255,255,0.06);
           padding: 0;
-          min-width: 0;
+          min-height: 0;
         }
 
         .cyo-slide {
@@ -277,15 +277,27 @@ export default function ChooseYourOutcome() {
           align-items: stretch;
           justify-content: stretch;
           opacity: 0;
-          transform: translateY(12px);
-          transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1);
+          visibility: hidden;
+          transform: translateY(14px) scale(0.97);
+          transition:
+            opacity 0.5s cubic-bezier(0.16,1,0.3,1),
+            transform 0.5s cubic-bezier(0.16,1,0.3,1),
+            visibility 0s linear 0.5s;
           pointer-events: none;
+          padding: 0;
+          z-index: 1;
         }
 
         .cyo-slide.active {
           opacity: 1;
-          transform: translateY(0);
+          visibility: visible;
+          transform: translateY(0) scale(1);
           pointer-events: auto;
+          transition:
+            opacity 0.5s cubic-bezier(0.16,1,0.3,1),
+            transform 0.5s cubic-bezier(0.16,1,0.3,1),
+            visibility 0s linear 0s;
+          z-index: 2;
         }
 
         .cyo-slide-img-wrap {
@@ -294,76 +306,64 @@ export default function ChooseYourOutcome() {
           width: 100%;
           height: 100%;
           display: flex;
-          align-items: center;
-          justify-content: center;
+          align-items: stretch;
+          justify-content: stretch;
         }
 
         .cyo-slide-img-wrap img {
-          object-fit: contain;
-          object-position: center;
-        }
-
-        /* Desktop: show desktop image only, fill right panel (much bigger) */
-        .cyo-slide-img-wrap .cyo-panel-desktop {
-          display: block;
           width: 100%;
           height: 100%;
-          max-width: none;
-          max-height: none;
-        }
-        .cyo-slide-img-wrap .cyo-panel-mobile {
-          display: none;
-        }
-        @media (max-width: 820px) {
-          .cyo-slide-img-wrap .cyo-panel-desktop {
-            display: none;
-          }
-          .cyo-slide-img-wrap .cyo-panel-mobile {
-            display: block;
-          }
-          .cyo-slide-img-wrap { inset: 0; width: 100%; height: 100%; }
-          .cyo-slide-img-wrap img { max-width: 100%; max-height: 100%; }
+          object-fit: contain;
+          object-position: center;
+          display: block;
         }
 
+        @media (max-width: 720px) {
+          .cyo-slide-img-wrap img {
+            height: 92%;
+            width: auto;
+            border-radius: 16px;
+            margin: 0 auto;
+          }
+        }
+
+        /* Dots */
         .progress-dots {
           position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
+          bottom: 12px;
+          left: 0; right: 0;
           display: flex;
-          gap: 6px;
+          gap: 5px;
           justify-content: center;
-          padding: 16px 0;
           z-index: 5;
         }
 
         .progress-dot {
-          width: 5px; height: 5px;
+          width: 4px; height: 4px;
           border-radius: 50%;
-          background: rgba(255,255,255,0.12);
-          transition: background 0.3s;
+          background: rgba(255,255,255,0.15);
+          cursor: pointer;
+          transition: background 0.3s, transform 0.3s;
         }
 
-        .progress-dot.active { background: #3b82f6; }
+        .progress-dot.active {
+          background: #3b82f6;
+          transform: scale(1.3);
+        }
       `}</style>
 
-      <div className="cyo-root font-sans">
+      <div className="cyo-root">
         {/* ── LEFT ── */}
-        <div className="cyo-left">
-          <div className="cyo-kicker">
-            <div className="cyo-kicker-dot" />
-            <span className="cyo-kicker-text">What you get</span>
-          </div>
+        <div className="cyo-left">         
 
           <h2 className="cyo-title">
-            Choose your<br />
-            <span className="cyo-title-accent">outcome</span>
+            Choose your <span className="text-blue-400 drop-shadow-lg"> outcome </span><br />
           </h2>
-          <p className="cyo-subtitle">
-            On top of mentorship — AI-powered tools that work while you don't.
+          <p className="text-[13px] font-light text-white/30 leading-snug mb-2 max-w-[300px]">
+            AI-powered tools that work while you don't.
           </p>
 
-          <div className="cyo-list">
+          <div className="cyo-list mt-3">
             {features.map((f) => {
               const isActive = active === f.id;
               return (
@@ -372,7 +372,6 @@ export default function ChooseYourOutcome() {
                   className={`cyo-item ${isActive ? "active" : ""}`}
                   onClick={() => handleSelect(f.id)}
                 >
-                  {/* Progress bar */}
                   {isActive && (
                     <div
                       className="cyo-progress-bar"
@@ -383,8 +382,8 @@ export default function ChooseYourOutcome() {
                   <div className="cyo-item-header">
                     <div className="cyo-item-headline">{f.headline}</div>
                     <div className="cyo-item-arrow">
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M2 7h10M7 2l5 5-5 5" stroke="#3b82f6" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                      <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                        <path d="M2 7h10M7 2l5 5-5 5" stroke="#60a5fa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
                   </div>
@@ -403,27 +402,29 @@ export default function ChooseYourOutcome() {
         {/* ── RIGHT ── */}
         <div className="cyo-right">
           {[
-            { desktop: "/Website Panels 2/Panel 1 Desktop.png", mobile: "/Website Panels 2/Panel 1 Mobile.png" },
-            { desktop: "/Website Panels 2/Panel 2 Desktop.png", mobile: "/Website Panels 2/Panel 2 Mobile.png" },
-            { desktop: "/Website Panels 2/Panel 3 Desktop.png", mobile: "/Website Panels 2/Panel 3 Mobile.png" },
-            { desktop: "/Website Panels 2/Panel 4 Desktop.png", mobile: "/Website Panels 2/Panel 4 Mobile.png" },
+            { desktop: "/Website Panels 2/webiste-desktop/Panel 1 Desktop.png", mobile: "/Website Panels 2/Websit-mobile/Panel 1 Mobile.png" },
+            { desktop: "/Website Panels 2/webiste-desktop/Panel 2 Desktop.png", mobile: "/Website Panels 2/Websit-mobile/Panel 2 Mobile.png" },
+            { desktop: "/Website Panels 2/webiste-desktop/Panel 3 Desktop.png", mobile: "/Website Panels 2/Websit-mobile/Panel 3 Mobile.png" },
+            { desktop: "/Website Panels 2/webiste-desktop/Panel 4 Desktop.png", mobile: "/Website Panels 2/Websit-mobile/Panel 4 Mobile.png" },
           ].map((panel, idx) => (
             <div key={idx} className={`cyo-slide ${active === idx ? "active" : ""}`}>
               <div className="cyo-slide-img-wrap">
-                <img src={panel.desktop} alt="" className="cyo-panel-desktop" loading="lazy" decoding="async" />
-                <img src={panel.mobile} alt="" className="cyo-panel-mobile" loading="lazy" decoding="async" />
+                <img
+                  src={isMobile ? panel.mobile : panel.desktop}
+                  alt=""
+                  loading={isMobile && idx === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                />
               </div>
             </div>
           ))}
 
-          {/* Dots */}
           <div className="progress-dots">
             {features.map((f) => (
               <div
                 key={f.id}
                 className={`progress-dot ${active === f.id ? "active" : ""}`}
                 onClick={() => handleSelect(f.id)}
-                style={{ cursor: "pointer" }}
               />
             ))}
           </div>

@@ -37,7 +37,6 @@ const teamMembers: TeamMember[] = [
     collegeImage: "/Team Colleges/IIT-Kharagpur (Shresth).png",
     companyImage: "/Team Companies/OLA (Shresth).png",
     collegeName: "IIT Kharagpur",
-    companyName: "OLA",
   },
   {
     id: "gokul",
@@ -47,7 +46,7 @@ const teamMembers: TeamMember[] = [
     collegeImage: "/Team Colleges/Dayananda sagar (Gokul).png",
     companyImage: "/Team Companies/Mentorque (Gokul).png",
     collegeName: "Dayananda Sagar",
-    companyName: "Mentorque",
+
   },
   {
     id: "afeef",
@@ -56,8 +55,8 @@ const teamMembers: TeamMember[] = [
     photo: `${TEAM_PIC_BASE}/Afeef Website.png`,
     collegeImage: "/Team Colleges/UCC (Raajit).png",
     companyImage: "/Team Companies/Mentorque (Gokul).png",
-    collegeName: "UCC",
-    companyName: "Mentorque",
+    collegeName: "RNS Institute of Technology",
+
   },
   {
     id: "shikhar",
@@ -102,9 +101,9 @@ const teamMembers: TeamMember[] = [
 ];
 
 const quotes = [
-  "We're not just building a product; we're building futures.",
-  "Unlocking possibilities one day at a time.",
-  "Empowering the next generation of professionals.",
+  "Interviews are stressful. They don't have to be chaotic.",
+  "We like systems more than luck.",
+  "Your next opportunity won't find itself.",
 ];
 
 const collegeFullNames: Record<string, string> = {
@@ -165,9 +164,7 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => (
           {collegeFullNames[member.collegeName] || member.collegeName}
         </span>
       )}
-      {member.companyName && member.id !== "raajit" && (
-        <span className="text-xs sm:text-sm font-medium text-white/80 line-clamp-1">{member.companyName}</span>
-      )}
+   
 
       {member.linkedinUrl && (
         <a
@@ -273,9 +270,7 @@ const Team = () => {
               transition={{ duration: 0.8 }}
               className="text-4xl md:text-6xl tracking-tight mb-6"
             >
-              Team of Dreamers, Doers,
-              <br />
-              and Everything in Between
+              The Minds Behind Mentorque
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -283,9 +278,8 @@ const Team = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto"
             >
-              Meet the brilliant minds behind Mentorque. From prestigious
-              colleges to leading companies, we bring diverse expertise to
-              transform your career journey.
+              The builders, operators, and strategists working behind the scenes — so you can focus on
+              showing up and performing.
             </motion.p>
           </section>
 
