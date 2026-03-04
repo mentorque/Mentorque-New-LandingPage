@@ -192,11 +192,11 @@ const TimelineCard: React.FC<{
 <div className="relative flex justify-center w-full">
   <div className="flex w-full max-w-5xl">
     {/* Left side content */}
-    <div className={`w-1/2 flex ${isLeft ? 'justify-center pr-8 md:pr-12' : 'justify-start pl-8 md:pl-16'}`}>
+    <div className={`w-1/2 flex ${isLeft ? 'justify-center pr-6 md:pr-10' : 'justify-start pl-6 md:pl-12'}`}>
       {isLeft && (
         <div
           className={`
-            p-4 md:p-6 max-w-xs md:max-w-sm
+            p-3 md:p-4 max-w-xs md:max-w-sm
             transition-all duration-500 ease-out
             ${inView 
               ? 'opacity-100 translate-x-0 translate-y-0' 
@@ -210,7 +210,7 @@ const TimelineCard: React.FC<{
         >
 
           {index !== timelineData.length - 1 && (
-            <div className="flex items-center gap-1 sm:gap-2 md:gap-4 mb-1 sm:mb-2 md:mb-4 justify-end mr-1 sm:mr-0">
+            <div className="flex items-center gap-1 sm:gap-1.5 md:gap-2 mb-0.5 sm:mb-1 md:mb-2 justify-end mr-1 sm:mr-0">
               <span className="text-[10px] sm:text-xs md:text-xl font-semibold uppercase tracking-wider text-white">Week</span>
               <div className="text-sm sm:text-base md:text-3xl font-bold text-blue-400">{item.icon}</div>
             </div>
@@ -218,7 +218,7 @@ const TimelineCard: React.FC<{
 
           {/* Title */}
           <Link to={item.path}>
-  <h3 className="text-sm sm:text-base md:text-2xl font-bold text-blue-400 mb-1 sm:mb-2 md:mb-4 text-right whitespace-nowrap flex items-center gap-1 sm:gap-1.5 md:gap-2 justify-end mr-1 sm:mr-0">
+  <h3 className="text-sm sm:text-base md:text-xl font-bold text-blue-400 mb-0.5 sm:mb-1 md:mb-2 text-right flex items-center gap-1 sm:gap-1.5 md:gap-2 justify-end mr-1 sm:mr-0">
     {item.title}
     <motion.span
       initial={{ scale: 1.6, opacity: 0.7 }}
@@ -239,7 +239,7 @@ const TimelineCard: React.FC<{
 
 
           {/* Description (hidden on mobile) */}
-          <p className="hidden md:block text-gray-200 leading-relaxed text-xs md:text-xl text-right">
+          <p className="hidden md:block text-gray-200 leading-snug text-xs md:text-base text-right">
             {item.description}
           </p>
         </div>
@@ -247,11 +247,11 @@ const TimelineCard: React.FC<{
     </div>
 
     {/* Right side content */}
-    <div className={`w-1/2 flex ${!isLeft ? 'justify-start pl-8 md:pl-14' : 'justify-end pr-8 md:pr-14'}`}>
+    <div className={`w-1/2 flex ${!isLeft ? 'justify-start pl-6 md:pl-12' : 'justify-end pr-6 md:pr-12'}`}>
       {!isLeft && (
         <div
           className={`
-            p-4 md:p-6 max-w-xs md:max-w-sm
+            p-3 md:p-4 max-w-xs md:max-w-sm
             transition-all duration-500 ease-out
             ${inView 
               ? 'opacity-100 translate-x-0 translate-y-0' 
@@ -264,13 +264,13 @@ const TimelineCard: React.FC<{
           }}
         >
           {/* Week indicator - aligned with title */}
-          <div className="flex items-center gap-1 sm:gap-2 md:gap-4 mb-1 sm:mb-2 md:mb-4 justify-start ml-1 sm:ml-0">
+          <div className="flex items-center gap-1 sm:gap-1.5 md:gap-2 mb-0.5 sm:mb-1 md:mb-2 justify-start ml-1 sm:ml-0">
             <span className="text-[10px] sm:text-xs md:text-xl font-semibold uppercase tracking-wider text-white">Week</span>
             <div className="text-sm sm:text-base md:text-3xl font-bold text-blue-400">{item.icon}</div>
           </div>
 
           <Link to={item.path}>
-  <h3 className="text-sm sm:text-base md:text-2xl font-bold text-blue-400 mb-1 sm:mb-2 md:mb-4 text-left whitespace-nowrap flex items-center gap-1 sm:gap-1.5 md:gap-2 justify-start ml-1 sm:ml-0">
+  <h3 className="text-sm sm:text-base md:text-xl font-bold text-blue-400 mb-0.5 sm:mb-1 md:mb-2 text-left flex items-center gap-1 sm:gap-1.5 md:gap-2 justify-start ml-1 sm:ml-0">
     <motion.span
       initial={{ scale: 1.6, opacity: 0.7 }}
       animate={{ scale: [1.6, 1.15, 1.6], opacity: [0.7, 1, 0.7] }}
@@ -291,7 +291,7 @@ const TimelineCard: React.FC<{
 
 
           {/* Description (hidden on mobile) */}
-          <p className="hidden md:block text-gray-200 leading-[2] text-xs md:text-xl text-left">
+          <p className="hidden md:block text-gray-200 leading-snug text-xs md:text-base text-left">
             {item.description}
           </p>
         </div>
@@ -414,7 +414,7 @@ const ProgressiveTimeline: React.FC = () => {
                     className="timeline-item absolute w-full" 
                     style={{ 
                       top: `${topOffset}px`,
-                      minHeight: '200px'
+                      minHeight: '160px'
                     }}
                   >
                     {/* Timeline Milestone - Centered */}

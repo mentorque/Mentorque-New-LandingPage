@@ -13,22 +13,22 @@ import { GradientBlinds } from "@/components/ui/gradient-blinds";
 
 const FEATURE_ROWS: { feature: string; one: string; pro: string }[] = [
   { feature: "Duration", one: "30 days", pro: "90 days" },
-  { feature: "Mentorship Sessions", one: "1 session", pro: "Ongoing" },
-  { feature: "Resume Building Tool", one: "✅", pro: "✅" },
-  { feature: "Resume Tailoring Tool", one: "✅", pro: "✅" },
+  { feature: "Mentorship Sessions", one: "Focused Strategy Session", pro: "Priority Mentorship Access" },
+  { feature: "Resume Architecture System", one: "✅", pro: "✅" },
+  { feature: "Mentorque AI", one: "✅", pro: "✅" },
   { feature: "Job Dashboard", one: "✅", pro: "✅" },
-  { feature: "HR Database", one: "✅", pro: "✅" },
-  { feature: "Outreach Templates", one: "✅", pro: "✅" },
+  { feature: "Verified Hiring Manager Network", one: "✅", pro: "✅" },
+  { feature: "Strategic Outreach Frameworks", one: "❌", pro: "✅" },
   { feature: "WhatsApp Community", one: "✅", pro: "✅" },
   { feature: "Customer Success Manager", one: "❌", pro: "✅" },
-  { feature: "Placement Team", one: "❌", pro: "✅" },
+  { feature: "Placement Acceleration Team", one: "❌", pro: "✅" },
+  { feature: "Direct Recruiter Introductions", one: "❌", pro: "✅" },
   { feature: "Portfolio Building", one: "❌", pro: "✅" },
-  { feature: "Interview Prep Plan", one: "❌", pro: "✅" },
+  { feature: "Structured Interview Roadmap", one: "❌", pro: "✅" },
   { feature: "Question Bank", one: "❌", pro: "✅" },
-  { feature: "Mock Interviews", one: "❌", pro: "✅" },
+  { feature: "Live Mock Interview Simulations", one: "❌", pro: "✅" },
   { feature: "Recruiter Referrals", one: "❌", pro: "✅" },
   { feature: "Offer Negotiation", one: "❌", pro: "✅" },
-  { feature: "Best For", one: "Foundation first", pro: "The sweet spot" },
 ];
 
 const plans = [
@@ -176,8 +176,8 @@ export default function PricingSection3() {
 
                     <div className="border-t border-gray-100 mb-2" />
 
-                    {/* Feature matrix rows - compact, scroll if needed */}
-                    <div className="space-y-0 flex-1 min-h-0 overflow-y-auto">
+                    {/* Feature matrix rows - compact, no inner scroll */}
+                    <div className="space-y-0 flex-1 min-h-0">
                       {FEATURE_ROWS.map((row) => {
                         const value = getValue(row);
                         const isCheck = value.includes("✅");
@@ -194,14 +194,14 @@ export default function PricingSection3() {
                             <span className="flex flex-shrink-0 items-center gap-1.5 text-xs font-normal text-gray-900">
                               {isCheck && (
                                 <>
-                                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-indigo-100 text-indigo-600 sm:h-6 sm:w-6">
+                                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-500/15 text-blue-600 border border-blue-400/30 sm:h-6 sm:w-6">
                                     <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5" strokeWidth={2.5} />
                                   </span>
                                   {checkSuffix && <span>{checkSuffix}</span>}
                                 </>
                               )}
                               {isCross && (
-                                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-100 text-red-500 sm:h-6 sm:w-6">
+                                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-gray-500 border border-gray-200 sm:h-6 sm:w-6">
                                   <X className="h-3 w-3 sm:h-3.5 sm:w-3.5" strokeWidth={2.5} />
                                 </span>
                               )}
