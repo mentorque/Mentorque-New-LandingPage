@@ -7,7 +7,7 @@ const LogoCarousel = () => {
     { name: "Netflix", logo: "/logo/microsoft.png" },
     { name: "Uber", logo: "/logo/samsung.png" },
 
-    { name: "Spotify", logo: "/logo/pngwing.com.png" },
+
     { name: "Microsoft", logo: "/logo/goldman_sachs.png" },
   ]
 
