@@ -14,6 +14,24 @@ export type TestimonialEntry = {
 
 export const TESTIMONIALS: TestimonialEntry[] = [
   {
+    id: 3,
+    name: "Snehashish",
+    content:
+      "Mentorque helped rebuild my profile with clear, industry‑relevant projects and a focused application strategy. That single change helped me clear multiple technical rounds and finally land a full‑time role.",
+    avatar: "/Testimonials-People/snehashish.png",
+    role: "Tech Professional",
+    rating: 5,
+  },
+  {
+    id: 2,
+    name: "Komal Joshi",
+    content:
+      "As a biotechnology and business strategy professional, I struggled to show my value on paper until Mentorque rewrote my resume and positioning. Their help turned my experience into a clear, outcome‑driven story that started opening doors to the right roles.",
+    avatar: "/Testimonials-People/koaml-joshi.png",
+    role: "Biotechnology and Business Strategy Professional",
+    rating: 5,
+  },
+  {
     id: 9,
     name: "Sree Laxmi",
     content:
@@ -91,24 +109,6 @@ export const TESTIMONIALS: TestimonialEntry[] = [
     content:
       "Mentorque revamped my profile and added industry-relevant projects that showcased my skills. Soon after, I received interview calls from Landmark Group, Alaan Pay, and Intervue.io.",
     avatar: "/Testimonials-People/pramod-testimonial.png",
-    role: "Tech Professional",
-    rating: 5,
-  },
-  {
-    id: 2,
-    name: "Komal Joshi",
-    content:
-      "Biotechnology and Business Strategy professional with expertise in bridging technical innovation and business growth in the Biotechnology and Pharmaceutical industries. Skilled in business strategy, market analysis, and financial forecasting, with hands-on experience in development and strategic planning.",
-    avatar: "/Testimonials-People/koaml-joshi.png",
-    role: "Biotechnology and Business Strategy Professional",
-    rating: 5,
-  },
-  {
-    id: 3,
-    name: "Snehashish",
-    content:
-      "What was corrected: A complete rebuild of his profile with industry-relevant projects, clear application and interview strategy, and repeated mock coding interviews to reach technical readiness. Outcome: Progressed through multiple technical interview rounds for different companies, and secured a full-time role.",
-    avatar: "/Testimonials-People/snehashish.png",
     role: "Tech Professional",
     rating: 5,
   },
