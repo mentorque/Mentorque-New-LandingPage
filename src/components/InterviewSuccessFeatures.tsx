@@ -202,7 +202,7 @@ const InterviewSuccessFeatures = () => {
           font-weight: 500;
         }
         .ifs-heading .ifs-heading-blue {
-          color: #93c5fd;
+          color: #60A5FA;
         }
 
         /* Feature items */
