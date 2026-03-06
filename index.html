@@ -3,11 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mentorque</title>
-    <meta name="description" content="" />
+    <title>Mentorque – Land Interviews Faster</title>
+    <meta name="description" content="Build your resume in minutes and land interviews faster with Mentorque's AI-powered resume builder." />
     <meta name="author" content="Mentorque" />
 
+    <!-- Open Graph -->
+    <meta property="og:title" content="Mentorque – Land Interviews Faster" />
+    <meta property="og:description" content="Build your resume in minutes and land interviews faster with Mentorque's AI-powered resume builder." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.mentorquedu.com" />
+    <meta property="og:image" content="https://www.mentorquedu.com/og-image.png" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mentorque – Land Interviews Faster" />
+    <meta name="twitter:description" content="Build your resume in minutes and land interviews faster with Mentorque's AI-powered resume builder." />
+
     <link rel="icon" type="image/png" href="/favicon.ico" />
+
+    <!-- Structured data for crawlers (visible without JS) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://www.mentorquedu.com/#website",
+          "url": "https://www.mentorquedu.com",
+          "name": "Mentorque",
+          "description": "Build your resume in minutes and land interviews faster with Mentorque's AI-powered resume builder and mentorship.",
+          "publisher": { "@id": "https://www.mentorquedu.com/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": { "@type": "EntryPoint", "urlTemplate": "https://www.mentorquedu.com/?q={search_term_string}" },
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://www.mentorquedu.com/#organization",
+          "name": "Mentorque",
+          "url": "https://www.mentorquedu.com",
+          "description": "AI-powered resume builder and interview preparation. Land roles at top companies with structured mentorship and tools."
+        }
+      ]
+    }
+    </script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GPNHGQXM20"></script>
@@ -22,6 +62,13 @@
 
   <body>
     <div id="root"></div>
+    <noscript>
+      <div style="max-width: 600px; margin: 2rem auto; padding: 1.5rem; font-family: system-ui, sans-serif;">
+        <h1 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Mentorque – Land Interviews Faster</h1>
+        <p style="color: #444; line-height: 1.6;">Build your resume in minutes and land interviews faster with Mentorque's AI-powered resume builder and mentorship. Join 70+ professionals who've secured roles at EY, Amazon, Microsoft, Vodafone, and 50+ top organizations.</p>
+        <p style="margin-top: 1rem;"><a href="https://www.mentorquedu.com/">Go to Mentorque</a></p>
+      </div>
+    </noscript>
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
