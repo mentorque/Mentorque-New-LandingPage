@@ -3,6 +3,7 @@ import Footer from "@/components/Footer"
 import CareersHero from "@/components/CareersHero"
 import TestimonialsGallery from "@/components/TestimonialsGallery"
 import VideoTestimonials from "@/components/VideoTestimonials"
+import TrustedByLearners from "@/components/TrustedByLearners"
 import TestimonialV2 from "@/components/ui/testimonial-v2"
 import ClientFeedback from "@/components/ui/testimonial"
 import MeetOurMentors from "@/components/ui/animated-testimonial"
@@ -18,6 +19,7 @@ const Testimonials = () => {
           <TestimonialV2 />
         </div>
         <VideoTestimonials />
+        <TrustedByLearners />
         <ClientFeedback />
         <TestimonialsGallery />
       </main>
