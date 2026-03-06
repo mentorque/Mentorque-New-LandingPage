@@ -139,12 +139,4 @@ export const MENTORS: Mentor[] = [
     companyLogo: COMPANY_LOGOS.Microsoft,
     intro: "SWE at Microsoft, Bengaluru. Coding, design, and behavioural rounds for product companies.",
   },
-  {
-    name: "Shayak Das",
-    designation: "Senior Software Engineer",
-    company: "AWS · Dublin, Ireland",
-    profileImagePath: `${MENTORS_IMG_DIR}/Shayak Das.png`,
-    companyLogo: COMPANY_LOGOS.AWS,
-    intro: "Senior Software Engineer at AWS, Dublin. Distributed systems and cloud-focused interviews.",
-  },
 ];
