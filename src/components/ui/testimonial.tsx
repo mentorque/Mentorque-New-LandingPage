@@ -9,7 +9,7 @@ const MENTORS_IMG_DIR = "/mentor's-bg-removed";
 const MENTOR_QUOTES = [
   {
     quote:
-      "The AI resume tools and job trackers—my mentees actually use them. Two placed at Mango and a top firm.",
+      "The AI resume tools and job trackers I recommend aren't just theoretical—my mentees actively use them as part of their preparation strategy. In fact, two of them recently secured roles at Paypal and Vodafone.",
     name: "Gayatri Poddar",
     role: "Senior Data Scientist, Optum",
     image: `${MENTORS_IMG_DIR}/Gayatri Poddar.png`,
@@ -23,28 +23,28 @@ const MENTOR_QUOTES = [
   },
   {
     quote:
-      "Mock interviews are spot on. Plus the AI tools for ATS—two of my mentees placed at Microsoft and a product company.",
+      "The mock interviews are where I see the biggest shift. It's not just about getting the right answer—it's about learning to think on your feet. My mentees go into real interviews knowing they've already handled tougher questions in practice.",
     name: "Agniva Dutta",
     role: "Senior Software Engineer, Microsoft",
     image: `${MENTORS_IMG_DIR}/Agniva Dutta.png`,
   },
   {
     quote:
-      "Job trackers and the way they frame experience. My mentees landed at AWS and Stripe.",
+      "The transformation in how my mentees communicate—that's what I notice most. They start off unsure, hesitant. By the end, they're articulating their experience with clarity and owning their story. It's not just interview prep; it's professional confidence.",
     name: "Adori Medhi",
     role: "Senior Business Analyst, AWS",
     image: `${MENTORS_IMG_DIR}/Adori.png`,
   },
   {
     quote:
-      "The weeks program and mock interviews—that’s what clicks. Mentees I work with have landed at Salesforce and HSE.",
+      "From an HR lens, the biggest gap is always storytelling. Candidates have the skills but can't frame them. My mentees walk in knowing exactly how to connect their experience to what the room needs to hear.",
     name: "Pratibha Gowrishankar",
     role: "HR Business Partner, HSE",
     image: `${MENTORS_IMG_DIR}/Pratibha Gowrishankar.png`,
   },
   {
     quote:
-      "AI tools and mock interviews. My mentees have been placed at Google and top startups—really recommend it.",
+      "The weekly structure creates momentum. When someone knows we're meeting every Wednesday, they show up with progress. It's small wins compounding—and that builds real belief.",
     name: "Nirvan Kashyap",
     role: "Sales and Marketing, Google",
     image: `${MENTORS_IMG_DIR}/Nirvan Kashyap.png`,

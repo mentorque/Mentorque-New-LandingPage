@@ -55,7 +55,7 @@ const teamMembers: TeamMember[] = [
     photo: `${TEAM_PIC_BASE}/Afeef Website.png`,
     collegeImage: "/Team Colleges/UCC (Raajit).png",
     companyImage: "/Team Companies/Mentorque (Gokul).png",
-    collegeName: "RNS Institute of Technology",
+    collegeName: "RNSIT",
 
   },
   {
@@ -113,7 +113,7 @@ const collegeFullNames: Record<string, string> = {
   "Pearl Academy": "Pearl Academy",
   "Alison Learnings": "Alison Learnings",
   UCD: "University College Dublin",
-  "Dayananda Sagar": "Dayananda Sagar Clg of Engineering",
+  "Dayananda Sagar": "DSATM",
 };
 
 const containerVariants = {

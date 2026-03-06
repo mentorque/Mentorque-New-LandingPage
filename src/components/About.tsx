@@ -89,7 +89,7 @@ const About = () => {
     <section className="bg-black relative" id="about" ref={sectionRef}>
       <div className="pt-8 mt-10 sm:pt-10 md:pt-12 pb-0 sm:pb-0 md:pb-0 px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl m-2 sm:m-3 text-gray-400 tracking-wider">WELCOME TO</p>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl m-2 sm:m-3 text-gray-400 tracking-wider">WELCOME TO THE</p>
 
           <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl text-white mb-3 md:mb-8 leading-tight">
           Turning Point of Your <span className="text-blue-400 drop-shadow-lg">Job Hunt</span>

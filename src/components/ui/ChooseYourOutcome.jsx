@@ -402,9 +402,9 @@ export default function ChooseYourOutcome() {
         {/* ── RIGHT ── */}
         <div className="cyo-right">
           {[
-            { desktop: "/Website Panels 2/webiste-desktop/Panel 1 Desktop.png", mobile: "/Website Panels 2/Websit-mobile/Panel 1 Mobile.png" },
-            { desktop: "/Website Panels 2/webiste-desktop/Panel 2 Desktop.png", mobile: "/Website Panels 2/Websit-mobile/Panel 2 Mobile.png" },
             { desktop: "/Website Panels 2/webiste-desktop/Panel 4 Desktop.png", mobile: "/Website Panels 2/Websit-mobile/Panel 4 Mobile.png" },
+            { desktop: "/Website Panels 2/webiste-desktop/Panel 2 Desktop.png", mobile: "/Website Panels 2/Websit-mobile/Panel 2 Mobile.png" },
+            { desktop: "/Website Panels 2/webiste-desktop/Panel 1 Desktop.png", mobile: "/Website Panels 2/Websit-mobile/Panel 1 Mobile.png" },
             { desktop: "/Website Panels 2/webiste-desktop/Panel 3 Desktop.png", mobile: "/Website Panels 2/Websit-mobile/Panel 3 Mobile.png" },
           ].map((panel, idx) => (
             <div key={idx} className={`cyo-slide ${active === idx ? "active" : ""}`}>

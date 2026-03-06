@@ -179,8 +179,10 @@ export function MeetOurMentors() {
           Meet our mentors
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-neutral-400">
-          They&apos;ve guided hundreds of professionals to land roles at top
-          companies—from Amazon and Vodafone to DE Shaw and TP Dublin.
+          They&apos;ve mentored 70+ working professionals to crack competitive
+          interviews and secure roles at leading companies like EY, Amazon,
+          Microsoft, Vodafone, and 50+ top organizations across the UK and
+          India.
         </p>
       </div>
       <AnimatedTestimonials testimonials={mentors} autoplay />
