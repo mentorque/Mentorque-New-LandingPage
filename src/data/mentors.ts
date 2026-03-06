@@ -35,7 +35,7 @@ export const MENTORS: Mentor[] = [
     company: "Optum · Dublin, Ireland",
     profileImagePath: `${MENTORS_IMG_DIR}/Gayatri Poddar.png`,
     companyLogo: COMPANY_LOGOS.Optum,
-    intro: "Senior Data Scientist at Optum, Dublin. Focuses on data and analytics to drive decisions.",
+    intro: "Senior Data Scientist at Optum, Dublin. Data and analytics for decision-making.",
   },
   {
     name: "Tripti Kumari",
@@ -43,7 +43,7 @@ export const MENTORS: Mentor[] = [
     company: "Sprinklr · Gurugram, India",
     profileImagePath: `${MENTORS_IMG_DIR}/Tripti Kumari.png`,
     companyLogo: COMPANY_LOGOS.Amazon,
-    intro: "Senior Software Engineer at Sprinklr, Gurugram. Builds scalable systems and mentors on coding interviews.",
+    intro: "Senior Software Engineer at Sprinklr, Gurugram. Scalable systems and coding interviews.",
   },
   {
     name: "Akash Anand",
@@ -51,7 +51,7 @@ export const MENTORS: Mentor[] = [
     company: "Samsung · Bengaluru, India",
     profileImagePath: `${MENTORS_IMG_DIR}/Akash Anand.png`,
     companyLogo: COMPANY_LOGOS.Samsung,
-    intro: "Senior Software Engineer at Samsung, Bengaluru. Helps with system design and backend roles.",
+    intro: "Senior Software Engineer at Samsung, Bengaluru. System design and backend roles.",
   },
   {
     name: "Adori Medhi",
@@ -59,7 +59,7 @@ export const MENTORS: Mentor[] = [
     company: "AWS · Dublin, Ireland",
     profileImagePath: `${MENTORS_IMG_DIR}/Adori.png`,
     companyLogo: COMPANY_LOGOS.AWS,
-    intro: "Senior Business Analyst at AWS, Dublin. Guides on product and business case interviews.",
+    intro: "Senior Business Analyst at AWS, Dublin. Product and business case interviews.",
   },
   {
     name: "Ashwini Harle",
@@ -67,14 +67,14 @@ export const MENTORS: Mentor[] = [
     company: "Amazon · Pune, India",
     profileImagePath: `${MENTORS_IMG_DIR}/Aswini.png`,
     companyLogo: COMPANY_LOGOS.Amazon,
-    intro: "SDE at Amazon, Pune. Mentors on data structures, algorithms, and Amazon’s leadership principles.",
+    intro: "SDE at Amazon, Pune. DSA, algorithms, and leadership principles.",
   },
   {
     name: "Ayush Shankar",
     designation: "Recruitment Officer",
     company: "HSE · Dublin, Ireland",
     profileImagePath: `${MENTORS_IMG_DIR}/Ayush Shankar.png`,
-    intro: "Recruitment Officer at HSE, Dublin. Shares hiring and interview best practices from the other side of the table.",
+    intro: "Recruitment Officer at HSE, Dublin. Hiring and interview best practices.",
   },
   {
     name: "Agniva Dutta",
@@ -82,7 +82,7 @@ export const MENTORS: Mentor[] = [
     company: "Microsoft · Hyderabad, India",
     profileImagePath: `${MENTORS_IMG_DIR}/Agniva Dutta.png`,
     companyLogo: COMPANY_LOGOS.Microsoft,
-    intro: "Senior Software Engineer at Microsoft, Hyderabad. Helps with coding rounds and system design.",
+    intro: "Senior Software Engineer at Microsoft, Hyderabad. Coding rounds and system design.",
   },
   {
     name: "Aryan Chandna",
@@ -90,7 +90,7 @@ export const MENTORS: Mentor[] = [
     company: "Grappus · New Delhi, India",
     profileImagePath: `${MENTORS_IMG_DIR}/Aryan Chandna.png`,
     companyLogo: COMPANY_LOGOS.Grappus,
-    intro: "SDE 2 at Grappus, New Delhi. Focuses on full-stack and front-end interview prep.",
+    intro: "SDE 2 at Grappus, New Delhi. Full-stack and front-end interview prep.",
   },
   {
     name: "Abhik Mehta",
@@ -98,7 +98,7 @@ export const MENTORS: Mentor[] = [
     company: "Stripe · Bengaluru, India",
     profileImagePath: `${MENTORS_IMG_DIR}/Abhik Mehta.png`,
     companyLogo: COMPANY_LOGOS.Stripe,
-    intro: "Software Engineer at Stripe, Bengaluru. Mentors on APIs, payments, and high-bar tech interviews.",
+    intro: "Software Engineer at Stripe, Bengaluru. APIs, payments, and high-bar tech interviews.",
   },
   {
     name: "Pratibha Gowrishankar",
@@ -106,14 +106,14 @@ export const MENTORS: Mentor[] = [
     company: "HSE · Dublin, Ireland",
     profileImagePath: `${MENTORS_IMG_DIR}/Pratibha Gowrishankar.png`,
     companyLogo: COMPANY_LOGOS["Canada Life"],
-    intro: "HR Business Partner at HSE, Dublin. Supports with behavioural interviews and career transitions.",
+    intro: "HR Business Partner at HSE, Dublin. Behavioural interviews and career transitions.",
   },
   {
     name: "Harshal Desai",
     designation: "SDE",
     company: "Sapiens · Bengaluru, India",
     profileImagePath: `${MENTORS_IMG_DIR}/Harshal Desai.png`,
-    intro: "SDE at Sapiens, Bengaluru. Helps with DSA and real-world problem-solving for tech roles.",
+    intro: "SDE at Sapiens, Bengaluru. DSA and real-world problem-solving for tech roles.",
   },
   {
     name: "Sparsh Prasad",
@@ -121,7 +121,7 @@ export const MENTORS: Mentor[] = [
     company: "Salesforce · Bengaluru, India",
     profileImagePath: `${MENTORS_IMG_DIR}/Sparsh Prasad.png`,
     companyLogo: COMPANY_LOGOS.Salesforce,
-    intro: "Senior Software Engineer at Salesforce, Bengaluru. Guides on cloud and platform engineering interviews.",
+    intro: "Senior Software Engineer at Salesforce, Bengaluru. Cloud and platform engineering interviews.",
   },
   {
     name: "Nirvan Kashyap",
@@ -129,7 +129,7 @@ export const MENTORS: Mentor[] = [
     company: "Google · Dublin, Ireland",
     profileImagePath: `${MENTORS_IMG_DIR}/Nirvan Kashyap.png`,
     companyLogo: COMPANY_LOGOS.Google,
-    intro: "Sales and Marketing at Google, Dublin. Mentors on go-to-market and non-engineering interview paths.",
+    intro: "Sales and Marketing at Google, Dublin. Go-to-market and non-engineering interview paths.",
   },
   {
     name: "Shivanjali Verma",
@@ -137,7 +137,7 @@ export const MENTORS: Mentor[] = [
     company: "Microsoft · Bengaluru, India",
     profileImagePath: `${MENTORS_IMG_DIR}/Shivanjali Verma.png`,
     companyLogo: COMPANY_LOGOS.Microsoft,
-    intro: "SWE at Microsoft, Bengaluru. Focuses on coding, design, and behavioural rounds for product companies.",
+    intro: "SWE at Microsoft, Bengaluru. Coding, design, and behavioural rounds for product companies.",
   },
   {
     name: "Shayak Das",
@@ -145,6 +145,6 @@ export const MENTORS: Mentor[] = [
     company: "AWS · Dublin, Ireland",
     profileImagePath: `${MENTORS_IMG_DIR}/Shayak Das.png`,
     companyLogo: COMPANY_LOGOS.AWS,
-    intro: "Senior Software Engineer at AWS, Dublin. Helps with distributed systems and cloud-focused interviews.",
+    intro: "Senior Software Engineer at AWS, Dublin. Distributed systems and cloud-focused interviews.",
   },
 ];
