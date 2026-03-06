@@ -7,7 +7,6 @@ export interface Testimonial {
   text: string;
   image: string;
   name: string;
-  role: string;
 }
 
 // Map shared data to column format and shuffle (only local avatars; no Unsplash)
@@ -16,7 +15,6 @@ function getTestimonialColumns(): { first: Testimonial[]; second: Testimonial[];
     text: t.content,
     image: t.avatar,
     name: t.name,
-    role: t.role,
   }));
   const shuffled = shuffleTestimonials(mapped);
   const len = shuffled.length;
@@ -58,7 +56,7 @@ const TestimonialsColumn = (props: {
         {[
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
-              {props.testimonials.map(({ text, image, name, role }, i) => (
+              {props.testimonials.map(({ text, image, name }, i) => (
                 <motion.li
                   key={`${index}-${i}`}
                   aria-hidden={index === 1 ? "true" : "false"}
@@ -95,9 +93,6 @@ const TestimonialsColumn = (props: {
                         <cite className="font-semibold not-italic tracking-tight leading-5 text-neutral-900 dark:text-white transition-colors duration-300">
                           {name}
                         </cite>
-                        <span className="text-sm leading-5 tracking-tight text-neutral-500 dark:text-neutral-500 mt-0.5 transition-colors duration-300">
-                          {role}
-                        </span>
                       </div>
                     </footer>
                   </blockquote>

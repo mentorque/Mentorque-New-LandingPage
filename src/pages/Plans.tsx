@@ -83,7 +83,7 @@ export default function PricingSection3() {
         <Navbar />
         <main>
       <div
-        className="font-sans relative mx-auto max-w-6xl px-3 pt-6 pb-4 sm:px-4 sm:pt-24 sm:pb-4 md:pt-16 md:pb-4"
+        className="font-sans relative mx-auto max-w-6xl px-3 pt-20 pb-4 sm:px-4 sm:pt-24 sm:pb-4 md:pt-24 md:pb-4"
         ref={pricingRef}
       >
       <article className="flex flex-col items-start justify-between sm:flex-row sm:items-center sm:pb-0 pb-1">

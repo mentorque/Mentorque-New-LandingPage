@@ -17,7 +17,7 @@ export const TESTIMONIALS: TestimonialEntry[] = [
     id: 3,
     name: "Snehashish",
     content:
-      "I wasn't landing interviews. Mentorque refined my resume and profile—and helped me land a full-time role.",
+      "I wasn't landing interviews. Mentorque refined my resume and profile—and helped me land a full-time role. Thier AI tools just boosted my efficiency to apply to exact job that matches my profile",
     avatar: "/Testimonials-People/snehashish.png",
     role: "Tech Professional",
     rating: 5,
@@ -26,7 +26,7 @@ export const TESTIMONIALS: TestimonialEntry[] = [
     id: 2,
     name: "Komal Joshi",
     content:
-      "I wasn't getting callbacks. Mentorque rewrote my resume and positioning—and helped me land the right role.",
+      "I wasn't getting callbacks. Mentorque structured approach fixed my portoflio, help me get clear idea about industry requirement through mock interviews and I started getting calls.",
     avatar: "/Testimonials-People/koaml-joshi.png",
     role: "Professional",
     rating: 5,
