@@ -83,12 +83,12 @@ export default function PricingSection3() {
         <Navbar />
         <main>
       <div
-        className="font-sans relative mx-auto max-w-6xl px-3 pt-10 pb-8 sm:px-4 sm:pt-12 sm:pb-10 md:pt-16 md:pb-12"
+        className="font-sans relative mx-auto max-w-6xl px-3 pt-6 pb-4 sm:px-4 sm:pt-24 sm:pb-4 md:pt-16 md:pb-4"
         ref={pricingRef}
       >
-      <article className="flex flex-col items-start justify-between sm:flex-row sm:items-center sm:pb-0 pb-3">
-        <div className="mb-3 w-full text-left sm:mb-4">
-          <h2 className="font-display mb-2 mt-12 text-4xl  leading-tight text-white sm:mb-3 sm:text-3xl md:text-4xl sm:leading-[130%]">
+      <article className="flex flex-col items-start justify-between sm:flex-row sm:items-center sm:pb-0 pb-1">
+        <div className="mb-1 w-full text-left sm:mb-2">
+          <h2 className="font-display mb-1 mt-2 text-3xl leading-tight text-white sm:mb-2 sm:text-3xl md:text-4xl sm:leading-[130%]">
             <VerticalCutReveal
               splitBy="words"
               staggerDuration={0.15}
@@ -111,7 +111,7 @@ export default function PricingSection3() {
             animationNum={0}
             timelineRef={pricingRef}
             customVariants={revealVariants}
-            className="w-full text-sm text-gray-300 sm:text-base md:w-[80%] mb-4 sm:mb-6"
+            className="w-full text-sm text-gray-300 sm:text-base md:w-[80%] mb-2 sm:mb-3"
           >
             Find the right program for your goals. From getting started to full
             placement support—pick the path that fits you.
@@ -124,7 +124,7 @@ export default function PricingSection3() {
         animationNum={2}
         timelineRef={pricingRef}
         customVariants={revealVariants}
-        className="mx-auto grid gap-3 sm:gap-4 md:grid-cols-2 md:items-start"
+        className="mx-auto grid gap-2 sm:gap-3 md:grid-cols-2 md:items-start"
       >
         {plans.map((plan, index) => {
           const isPro = plan.name === "Mentorque Pro";

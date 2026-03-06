@@ -17,7 +17,7 @@ export const TESTIMONIALS: TestimonialEntry[] = [
     id: 3,
     name: "Snehashish",
     content:
-      "Mentorque helped rebuild my profile with clear, industry‑relevant projects and a focused application strategy. That single change helped me clear multiple technical rounds and finally land a full‑time role.",
+      "I wasn't landing interviews. Mentorque refined my resume and profile—and helped me land a full-time role.",
     avatar: "/Testimonials-People/snehashish.png",
     role: "Tech Professional",
     rating: 5,
@@ -26,9 +26,9 @@ export const TESTIMONIALS: TestimonialEntry[] = [
     id: 2,
     name: "Komal Joshi",
     content:
-      "As a biotechnology and business strategy professional, I struggled to show my value on paper until Mentorque rewrote my resume and positioning. Their help turned my experience into a clear, outcome‑driven story that started opening doors to the right roles.",
+      "I wasn't getting callbacks. Mentorque rewrote my resume and positioning—and helped me land the right role.",
     avatar: "/Testimonials-People/koaml-joshi.png",
-    role: "Biotechnology and Business Strategy Professional",
+    role: "Professional",
     rating: 5,
   },
   {
@@ -36,7 +36,7 @@ export const TESTIMONIALS: TestimonialEntry[] = [
     name: "Sree Laxmi",
     content:
       "After six months with no interview calls, I heard back from Optum, Amazon, and eBay within two weeks of joining Mentorque and landed a Vodafone Order Analyst role.",
-    avatar: "/Testimonials-People/sreelaxmi-testimonial.jpeg",
+    avatar: "/Testimonials-People/SreeLaxmi.png",
     role: "Order Analyst",
     rating: 5,
   },
