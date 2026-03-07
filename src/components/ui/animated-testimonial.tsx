@@ -127,11 +127,8 @@ const AnimatedTestimonials = ({
                     <img
                       src={testimonials[active].companyLogo.src}
                       alt={testimonials[active].companyLogo.name}
-                      className="h-12 w-auto max-w-[140px] rounded-lg object-contain object-left"
+                      className="h-16 w-auto max-w-[220px] rounded-lg object-contain object-left md:h-20 md:max-w-[280px]"
                     />
-                    <span className="text-xs text-neutral-500">
-                      Works at {testimonials[active].companyLogo.name}
-                    </span>
                   </div>
                 )}
                 <motion.p className="mt-6 text-lg text-neutral-300 leading-relaxed">

@@ -4,7 +4,8 @@
  */
 
 export const MENTORS_IMG_DIR = "/mentor's-bg-removed";
-export const MENTOR_COMPANY_DIR = "/mentor's-company";
+/** Use encoded apostrophe so img src URLs resolve: public/mentor's-company */
+export const MENTOR_COMPANY_DIR = "/mentor%27s-company";
 
 export const COMPANY_LOGOS: Record<string, { src: string; name: string }> = {
   Microsoft: { src: `${MENTOR_COMPANY_DIR}/microsoft.png`, name: "Microsoft" },
@@ -16,9 +17,9 @@ export const COMPANY_LOGOS: Record<string, { src: string; name: string }> = {
   Grappus: { src: `${MENTOR_COMPANY_DIR}/grappus.png`, name: "Grappus" },
   Optum: { src: `${MENTOR_COMPANY_DIR}/optum.png`, name: "Optum" },
   "Canada Life": { src: `${MENTOR_COMPANY_DIR}/canada-life.png`, name: "Canada Life" },
-  Google: { src: "/google.png", name: "Google" },
-  Sprinklr: { src: "/Sprinklr-logo.png", name: "Sprinklr" },
-  "MKO Ireland": { src: "/mkoireland_logo.jpeg", name: "MKO Ireland" },
+  Google: { src: `${MENTOR_COMPANY_DIR}/google.png`, name: "Google" },
+  Sprinklr: { src: `${MENTOR_COMPANY_DIR}/sprinklr.png`, name: "Sprinklr" },
+  "MKO Ireland": { src: `${MENTOR_COMPANY_DIR}/mkoireland.jpeg`, name: "MKO Ireland" },
 };
 
 export type Mentor = {
@@ -36,7 +37,7 @@ export const MENTORS: Mentor[] = [
     designation: "Senior Data Scientist",
     company: "Optum · Dublin, Ireland",
     profileImagePath: `${MENTORS_IMG_DIR}/Gayatri Poddar.png`,
-    companyLogo: COMPANY_LOGOS.Optum,
+    companyLogo: { src: `${MENTOR_COMPANY_DIR}/gayatri.png`, name: "Optum" },
     intro: "Senior Data Scientist at Optum, Dublin. Data and analytics for decision-making.",
   },
   {
@@ -44,7 +45,7 @@ export const MENTORS: Mentor[] = [
     designation: "Senior Software Engineer",
     company: "Sprinklr · Gurugram, India",
     profileImagePath: `${MENTORS_IMG_DIR}/Tripti Kumari.png`,
-    companyLogo: COMPANY_LOGOS.Sprinklr,
+    companyLogo: { src: `${MENTOR_COMPANY_DIR}/tripti.png`, name: "Sprinklr" },
     intro: "Senior Software Engineer at Sprinklr, Gurugram. Scalable systems and coding interviews.",
   },
   {
@@ -52,7 +53,7 @@ export const MENTORS: Mentor[] = [
     designation: "Planning Practitioner",
     company: "MKO Ireland · Dublin, Ireland",
     profileImagePath: "/Aditi - mentor.png",
-    companyLogo: COMPANY_LOGOS["MKO Ireland"],
+    companyLogo: { src: `${MENTOR_COMPANY_DIR}/aditi.png`, name: "MKO Ireland" },
     intro: "Chartered Urban Planner at MKO Ireland, Dublin. Strategy and engagement; KPMG & UCD Alumni.",
   },
   {
@@ -60,7 +61,7 @@ export const MENTORS: Mentor[] = [
     designation: "Senior Business Analyst",
     company: "AWS · Dublin, Ireland",
     profileImagePath: `${MENTORS_IMG_DIR}/Adori.png`,
-    companyLogo: COMPANY_LOGOS.AWS,
+    companyLogo: { src: `${MENTOR_COMPANY_DIR}/adori.png`, name: "AWS" },
     intro: "Senior Business Analyst at AWS, Dublin. Product and business case interviews.",
   },
   {
@@ -68,7 +69,7 @@ export const MENTORS: Mentor[] = [
     designation: "SDE",
     company: "Amazon · Pune, India",
     profileImagePath: `${MENTORS_IMG_DIR}/Aswini.png`,
-    companyLogo: COMPANY_LOGOS.Amazon,
+    companyLogo: { src: `${MENTOR_COMPANY_DIR}/ashwini.png`, name: "Amazon" },
     intro: "SDE at Amazon, Pune. DSA, algorithms, and leadership principles.",
   },
   {
@@ -76,6 +77,7 @@ export const MENTORS: Mentor[] = [
     designation: "Recruitment Officer",
     company: "HSE · Dublin, Ireland",
     profileImagePath: `${MENTORS_IMG_DIR}/Ayush Shankar.png`,
+    companyLogo: { src: `${MENTOR_COMPANY_DIR}/ayush.png`, name: "HSE" },
     intro: "Recruitment Officer at HSE, Dublin. Hiring and interview best practices.",
   },
   {
@@ -83,7 +85,7 @@ export const MENTORS: Mentor[] = [
     designation: "Senior Software Engineer",
     company: "Microsoft · Hyderabad, India",
     profileImagePath: `${MENTORS_IMG_DIR}/Agniva Dutta.png`,
-    companyLogo: COMPANY_LOGOS.Microsoft,
+    companyLogo: { src: `${MENTOR_COMPANY_DIR}/agniva.png`, name: "Microsoft" },
     intro: "Senior Software Engineer at Microsoft, Hyderabad. Coding rounds and system design.",
   },
   {
@@ -91,7 +93,7 @@ export const MENTORS: Mentor[] = [
     designation: "SDE 2",
     company: "Grappus · New Delhi, India",
     profileImagePath: `${MENTORS_IMG_DIR}/Aryan Chandna.png`,
-    companyLogo: COMPANY_LOGOS.Grappus,
+    companyLogo: { src: `${MENTOR_COMPANY_DIR}/aryan.png`, name: "Grappus" },
     intro: "SDE 2 at Grappus, New Delhi. Full-stack and front-end interview prep.",
   },
   {
@@ -99,7 +101,7 @@ export const MENTORS: Mentor[] = [
     designation: "Software Engineer",
     company: "Stripe · Bengaluru, India",
     profileImagePath: `${MENTORS_IMG_DIR}/Abhik Mehta.png`,
-    companyLogo: COMPANY_LOGOS.Stripe,
+    companyLogo: { src: `${MENTOR_COMPANY_DIR}/abhik.png`, name: "Stripe" },
     intro: "Software Engineer at Stripe, Bengaluru. APIs, payments, and high-bar tech interviews.",
   },
   {
@@ -107,7 +109,7 @@ export const MENTORS: Mentor[] = [
     designation: "HR Business Partner",
     company: "HSE · Dublin, Ireland",
     profileImagePath: `${MENTORS_IMG_DIR}/Pratibha Gowrishankar.png`,
-    companyLogo: COMPANY_LOGOS["Canada Life"],
+    companyLogo: { src: `${MENTOR_COMPANY_DIR}/prathibha.png`, name: "HSE" },
     intro: "HR Business Partner at HSE, Dublin. Behavioural interviews and career transitions.",
   },
   {
@@ -115,7 +117,7 @@ export const MENTORS: Mentor[] = [
     designation: "SDE",
     company: "Amazon Web Services (AWS) · Dublin, Ireland",
     profileImagePath: `${MENTORS_IMG_DIR}/Harshal Desai.png`,
-    companyLogo: COMPANY_LOGOS.AWS,
+    companyLogo: { src: `${MENTOR_COMPANY_DIR}/harshal.png`, name: "AWS" },
     intro: "SDE at AWS, Dublin. DSA and real-world problem-solving for tech roles.",
   },
   {
@@ -123,7 +125,7 @@ export const MENTORS: Mentor[] = [
     designation: "Senior Software Engineer",
     company: "Salesforce · Bengaluru, India",
     profileImagePath: `${MENTORS_IMG_DIR}/Sparsh Prasad.png`,
-    companyLogo: COMPANY_LOGOS.Salesforce,
+    companyLogo: { src: `${MENTOR_COMPANY_DIR}/sparsh.png`, name: "Salesforce" },
     intro: "Senior Software Engineer at Salesforce, Bengaluru. Cloud and platform engineering interviews.",
   },
   {
@@ -131,7 +133,7 @@ export const MENTORS: Mentor[] = [
     designation: "Sales and Marketing",
     company: "Google · Dublin, Ireland",
     profileImagePath: `${MENTORS_IMG_DIR}/Nirvan Kashyap.png`,
-    companyLogo: COMPANY_LOGOS.Google,
+    companyLogo: { src: `${MENTOR_COMPANY_DIR}/nirvan.png`, name: "Google" },
     intro: "Sales and Marketing at Google, Dublin. Go-to-market and non-engineering interview paths.",
   },
   {
@@ -139,7 +141,7 @@ export const MENTORS: Mentor[] = [
     designation: "SWE",
     company: "Microsoft · Bengaluru, India",
     profileImagePath: `${MENTORS_IMG_DIR}/Shivanjali Verma.png`,
-    companyLogo: COMPANY_LOGOS.Microsoft,
+    companyLogo: { src: `${MENTOR_COMPANY_DIR}/shivanjali.png`, name: "Microsoft" },
     intro: "SWE at Microsoft, Bengaluru. Coding, design, and behavioural rounds for product companies.",
   },
   {
@@ -147,7 +149,7 @@ export const MENTORS: Mentor[] = [
     designation: "Senior Software Engineer",
     company: "Samsung · Bengaluru, India",
     profileImagePath: `${MENTORS_IMG_DIR}/Akash Anand.png`,
-    companyLogo: COMPANY_LOGOS.Samsung,
+    companyLogo: { src: `${MENTOR_COMPANY_DIR}/aakash.png`, name: "Samsung" },
     intro: "Senior Software Engineer at Samsung, Bengaluru. System design and backend roles.",
   },
 ];
