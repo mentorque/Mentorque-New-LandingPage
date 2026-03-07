@@ -27,7 +27,7 @@ export const TESTIMONIALS: TestimonialEntry[] = [
     name: "Komal Joshi",
     content:
       "I wasn't getting callbacks. Mentorque structured approach fixed my portoflio, help me get clear idea about industry requirement through mock interviews and I started getting calls.",
-    avatar: "/Testimonials-People/koaml-joshi.png",
+    avatar: "/Testimonials-People/komal-joshi.png",
     role: "Professional",
     rating: 5,
   },

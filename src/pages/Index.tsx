@@ -1,11 +1,13 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { ArrowUpRight, Calendar } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import LogoCarousel from "@/components/LogoCarousel";
 import About from "@/components/About";
 import Footer from "@/components/Footer";
 import TestimonialCarousel from "@/components/Testimonials";
-// import Weeks from "@/components/Weeks";
+import Weeks from "@/components/Weeks";
 import MentorqueFAQ from "@/components/faq";
 import TrustedByLearners from "@/components/TrustedByLearners";
 import TestimonialGallery from "@/components/whatsApp";
@@ -97,13 +99,24 @@ const Index = () => {
           <ChooseYourOutcome />
         </section>
 
-            {/* <section id="services">
-              <Weeks />
-            </section> */}
+        <section id="services">
+          <Weeks />
+        </section>
 
        <section id="Testimonials">
           <TestimonialCarousel />
         </section>
+
+        <div className="flex justify-center pt-4 pb-2">
+          <Link
+            to="/testimonials"
+            className="flex items-center justify-center group w-full sm:w-auto text-center bg-white text-gray-900 hover:bg-gray-100 font-semibold py-3 sm:py-4 px-6 sm:px-8 lg:px-10 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-[1.02] text-base sm:text-lg"
+          >
+            <Calendar className="mr-2 sm:mr-3 w-5 h-5 sm:w-6 sm:h-6" />
+            View Testimonial
+            <ArrowUpRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
 
         <TrustedByLearners />
 

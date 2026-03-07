@@ -91,8 +91,8 @@ const About = () => {
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <p className="text-sm sm:text-base md:text-lg lg:text-xl m-2 sm:m-3 text-gray-400 tracking-wider">WELCOME TO THE</p>
 
-          <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl text-white mb-3 md:mb-8 leading-tight">
-          Turning Point of Your <span className="text-blue-400 drop-shadow-lg">Job Hunt</span>
+          <h1 className="text-lg sm:text-xl md:text-3xl lg:text-4xl text-white mb-3 md:mb-8 leading-tight">
+          The Minds Behind <span className="text-blue-400 drop-shadow-lg">Mentorque</span>
           </h1>
         </div>
 

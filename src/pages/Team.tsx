@@ -263,14 +263,14 @@ const Team = () => {
         <main className="flex-1 flex flex-col">
 
           {/* ── Hero ── */}
-          <section className="py-24 sm:py-28 px-6 sm:px-8 text-center max-w-4xl mx-auto w-full font-emilio font-light">
+          <section className="py-24 sm:py-28 px-6 sm:px-8 text-center max-w-4xl mx-auto w-full font-sans">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-4xl md:text-6xl tracking-tight mb-6"
+              className="text-3xl md:text-5xl tracking-tight mb-6"
             >
-              The Minds Behind Mentorque
+              The Minds Behind <span className="text-blue-400">Mentorque</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}

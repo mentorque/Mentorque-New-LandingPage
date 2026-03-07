@@ -321,7 +321,7 @@ const scrollSections = [
     title: "Mentorque AI",
     content: "Reads what you read. Sees what you see. Powered by Gemini 2.5-Flash that replaces all the tab switching and answers everything related to your job search.",
     video: "./video1-1.mp4",
-    thumbnail: "/thumbnails/Thumbnail Sreelaxmi.png",
+    thumbnail: "/thumbnail2.png",
   },
 
   {
@@ -330,7 +330,7 @@ const scrollSections = [
     title: "Track Your Progress",
     content: "With Mentorque dashboard, keep track of your progress, milestones, and growth effortlessly — all in one place.",
     video: "./video2-2.mp4",
-    thumbnail: "/thumbnails/Thumbnail Morgan.png",
+    thumbnail: "/thumbnail1.png",
   },
   {
     id: 2,
