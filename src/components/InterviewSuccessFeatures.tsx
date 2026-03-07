@@ -508,7 +508,7 @@ const InterviewSuccessFeatures = () => {
                         flexShrink: 0,
                       }}
                     >
-                      of candidates succeed with
+                      of Interview outcomes with
                     </span>
                     <img
                       src="/mentorque-logo.png"

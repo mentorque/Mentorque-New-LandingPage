@@ -16,7 +16,9 @@ export const COMPANY_LOGOS: Record<string, { src: string; name: string }> = {
   Grappus: { src: `${MENTOR_COMPANY_DIR}/grappus.png`, name: "Grappus" },
   Optum: { src: `${MENTOR_COMPANY_DIR}/optum.png`, name: "Optum" },
   "Canada Life": { src: `${MENTOR_COMPANY_DIR}/canada-life.png`, name: "Canada Life" },
-  Google: { src: `${MENTOR_COMPANY_DIR}/google.png`, name: "Google" },
+  Google: { src: "/google.png", name: "Google" },
+  Sprinklr: { src: "/Sprinklr-logo.png", name: "Sprinklr" },
+  "MKO Ireland": { src: "/mkoireland_logo.jpeg", name: "MKO Ireland" },
 };
 
 export type Mentor = {
@@ -42,16 +44,16 @@ export const MENTORS: Mentor[] = [
     designation: "Senior Software Engineer",
     company: "Sprinklr · Gurugram, India",
     profileImagePath: `${MENTORS_IMG_DIR}/Tripti Kumari.png`,
-    companyLogo: COMPANY_LOGOS.Amazon,
+    companyLogo: COMPANY_LOGOS.Sprinklr,
     intro: "Senior Software Engineer at Sprinklr, Gurugram. Scalable systems and coding interviews.",
   },
   {
-    name: "Akash Anand",
-    designation: "Senior Software Engineer",
-    company: "Samsung · Bengaluru, India",
-    profileImagePath: `${MENTORS_IMG_DIR}/Akash Anand.png`,
-    companyLogo: COMPANY_LOGOS.Samsung,
-    intro: "Senior Software Engineer at Samsung, Bengaluru. System design and backend roles.",
+    name: "Aditi Dey",
+    designation: "Planning Practitioner",
+    company: "MKO Ireland · Dublin, Ireland",
+    profileImagePath: "/Aditi - mentor.png",
+    companyLogo: COMPANY_LOGOS["MKO Ireland"],
+    intro: "Chartered Urban Planner at MKO Ireland, Dublin. Strategy and engagement; KPMG & UCD Alumni.",
   },
   {
     name: "Adori Medhi",
@@ -111,9 +113,10 @@ export const MENTORS: Mentor[] = [
   {
     name: "Harshal Desai",
     designation: "SDE",
-    company: "Sapiens · Bengaluru, India",
+    company: "Amazon Web Services (AWS) · Dublin, Ireland",
     profileImagePath: `${MENTORS_IMG_DIR}/Harshal Desai.png`,
-    intro: "SDE at Sapiens, Bengaluru. DSA and real-world problem-solving for tech roles.",
+    companyLogo: COMPANY_LOGOS.AWS,
+    intro: "SDE at AWS, Dublin. DSA and real-world problem-solving for tech roles.",
   },
   {
     name: "Sparsh Prasad",
@@ -138,5 +141,13 @@ export const MENTORS: Mentor[] = [
     profileImagePath: `${MENTORS_IMG_DIR}/Shivanjali Verma.png`,
     companyLogo: COMPANY_LOGOS.Microsoft,
     intro: "SWE at Microsoft, Bengaluru. Coding, design, and behavioural rounds for product companies.",
+  },
+  {
+    name: "Akash Anand",
+    designation: "Senior Software Engineer",
+    company: "Samsung · Bengaluru, India",
+    profileImagePath: `${MENTORS_IMG_DIR}/Akash Anand.png`,
+    companyLogo: COMPANY_LOGOS.Samsung,
+    intro: "Senior Software Engineer at Samsung, Bengaluru. System design and backend roles.",
   },
 ];
