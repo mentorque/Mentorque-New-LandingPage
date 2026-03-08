@@ -67,7 +67,7 @@ export default function PricingSection3() {
   };
 
   return (
-    <div className="min-h-screen w-full relative overflow-hidden bg-black">
+    <div className="min-h-screen w-full relative overflow-hidden bg-black" style={{ zoom: 0.9 }}>
       {/* Gradient Blinds Background - Edges Only (Subtle) */}
       <div className="absolute inset-0 z-0 opacity-40">
         <GradientBlinds
@@ -124,7 +124,7 @@ export default function PricingSection3() {
         animationNum={2}
         timelineRef={pricingRef}
         customVariants={revealVariants}
-        className="mx-auto grid gap-2 sm:gap-3 md:grid-cols-2 md:items-start"
+        className="mx-auto md:grid md:grid-cols-2 md:gap-3 md:items-start flex flex-col gap-3 pb-2 md:flex-row md:overflow-visible md:pb-0"
       >
         {plans.map((plan, index) => {
           const isPro = plan.name === "Mentorque Pro";
@@ -137,7 +137,7 @@ export default function PricingSection3() {
               animationNum={index + 3}
               timelineRef={pricingRef}
               customVariants={revealVariants}
-              className="flex h-full"
+              className="flex h-full w-full"
             >
               <div className="relative h-full w-full">
                 {plan.popular && (
@@ -156,7 +156,7 @@ export default function PricingSection3() {
                     "relative flex w-full flex-col border border-gray-200/80 bg-[#f3f4f9] rounded-[20px] overflow-hidden max-h-[85vh]",
                     "shadow-[0_4px_20px_rgba(0,0,0,0.06),0_2px_8px_rgba(0,0,0,0.04),0_20px_50px_rgba(0,0,0,0.12),0_0_0_1px_rgba(255,255,255,0.8)_inset]",
                     plan.popular &&
-                      "md:scale-[1.02] shadow-[0_8px_30px_rgba(0,0,0,0.1),0_4px_16px_rgba(0,0,0,0.06),0_24px_60px_rgba(0,0,0,0.14),0_0_40px_rgba(99,102,241,0.1),0_0_0_1px_rgba(255,255,255,0.9)_inset] ring-0 absolute inset-[3px] z-10",
+                      "md:scale-[1.02] shadow-[0_8px_30px_rgba(0,0,0,0.1),0_4px_16px_rgba(0,0,0,0.06),0_24px_60px_rgba(0,0,0,0.14),0_0_40px_rgba(99,102,241,0.1),0_0_0_1px_rgba(255,255,255,0.9)_inset] ring-0 md:absolute md:inset-[3px] z-10",
                   )}
                 >
                   <CardContent className="flex flex-col flex-1 p-4 sm:p-5 min-h-0">
