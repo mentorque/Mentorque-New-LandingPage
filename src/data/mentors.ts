@@ -32,14 +32,7 @@ export type Mentor = {
 };
 
 export const MENTORS: Mentor[] = [
-  {
-    name: "Gayatri Poddar",
-    designation: "Data Scientist",
-    company: "Optum · Dublin, Ireland",
-    profileImagePath: `${MENTORS_IMG_DIR}/Gayatri Poddar.png`,
-    companyLogo: { src: `${MENTOR_COMPANY_DIR}/gayatri.png`, name: "Optum" },
-    intro: "Data Scientist at Optum, Dublin. Data and analytics for decision-making.",
-  },
+ 
   {
     name: "Tripti Kumari",
     designation: "Senior Software Engineer",
@@ -143,6 +136,14 @@ export const MENTORS: Mentor[] = [
     profileImagePath: `${MENTORS_IMG_DIR}/Shivanjali Verma.png`,
     companyLogo: { src: `${MENTOR_COMPANY_DIR}/shivanjali.png`, name: "Microsoft" },
     intro: "SWE at Microsoft, Bengaluru. Coding, design, and behavioural rounds for product companies.",
+  },
+   {
+    name: "Gayatri Poddar",
+    designation: "Data Scientist",
+    company: "Optum · Dublin, Ireland",
+    profileImagePath: `${MENTORS_IMG_DIR}/Gayatri Poddar.png`,
+    companyLogo: { src: `${MENTOR_COMPANY_DIR}/gayatri.png`, name: "Optum" },
+    intro: "Data Scientist at Optum, Dublin. Data and analytics for decision-making.",
   },
   {
     name: "Akash Anand",
