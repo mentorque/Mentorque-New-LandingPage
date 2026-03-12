@@ -9,10 +9,10 @@ const MENTORS_IMG_DIR = "/mentor's-bg-removed";
 const MENTOR_QUOTES = [
   {
     quote:
-      "The AI resume tools and job trackers I recommend aren't just theoretical—my mentees actively use them as part of their preparation strategy. In fact, two of them recently secured roles at Paypal and Vodafone.",
+      "The AI resume tools and job trackers I recommend aren't just theoretical—my mentees actively use them as part of their preparation strategy. In fact, two of them recently secured calls at Paypal and Vodafone.",
     name: "Gayatri Poddar",
     role: "Senior Data Scientist, Optum",
-    image: `${MENTORS_IMG_DIR}/Gayatri Poddar.png`,
+    image: `${MENTORS_IMG_DIR}/Ashwini.png`,
   },
   {
     quote:
