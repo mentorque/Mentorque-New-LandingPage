@@ -17,7 +17,7 @@ export const TESTIMONIALS: TestimonialEntry[] = [
     id: 3,
     name: "Snehashish",
     content:
-      "I wasn't landing interviews. Mentorque refined my resume and profile—and helped me land a full-time role. Thier AI tools just boosted my efficiency to apply to exact job that matches my profile",
+      "Looking for a role in the US was a huge challenge, but the mentorship here made it possible. The mock interview preparation was instrumental—they really grilled me on high-level architecture until I could explain it perfectly. One of my major projects was actually inspired by my mentor, and it ended up being a huge talking point in my actual interviews. It’s a very professional program that prepares you for the standard of top-tier global firms.",
     avatar: "/Testimonials-People/snehashish.png",
     role: "Tech Professional",
     rating: 5,
@@ -26,7 +26,7 @@ export const TESTIMONIALS: TestimonialEntry[] = [
     id: 2,
     name: "Komal Joshi",
     content:
-      "I wasn't getting callbacks. Mentorque structured approach fixed my portoflio, help me get clear idea about industry requirement through mock interviews and I started getting calls.",
+      "Was struggling to even get a response, but the outreach strategy here actually works. Finally started getting multiple interview calls from the companies I wanted. We did about 5–6 mock interview rounds to make sure I was ready, which really helped with my confidence. By the final round, I wasn't even nervous because we’d already covered everything with the mentor. Very solid if you're getting ghosted by HRs.",
     avatar: "/Testimonials-People/komal-joshi.png",
     role: "Professional",
     rating: 5,
@@ -53,7 +53,7 @@ export const TESTIMONIALS: TestimonialEntry[] = [
     id: 12,
     name: "Morgan",
     content:
-      "Working with the team helped me land multiple interview calls in a week using their strategies and automation tools to find and connect with HRs. Highly recommended if you want a faster breakthrough in a tough job market.",
+      "The mentors and the team helped me really understand what it took to start getting consistent interview calls, instead of just sending applications and hoping for the best.",
     avatar: "/Testimonials-People/morgan-testimonial.jpeg",
     role: "Professional",
     rating: 5,
@@ -98,7 +98,7 @@ export const TESTIMONIALS: TestimonialEntry[] = [
     id: 6,
     name: "Rigved Harmalker",
     content:
-      "The mock interviews with Raajit and Agniva were crucial in securing my internship offer.",
+      "Landing my internship was a huge win, and the mock interviews with the team were definitely the turning point. The questions they helped me prep were pretty much the same as what was asked in the interviews. That specific practice made all the difference when I finally sat for the real interview. It’s a very practical and high-quality approach to prep.",
     avatar: "/rigved.jpeg",
     role: "",
     rating: 5,
@@ -107,7 +107,7 @@ export const TESTIMONIALS: TestimonialEntry[] = [
     id: 13,
     name: "Pramod",
     content:
-      "Mentorque revamped my profile and added industry-relevant projects that showcased my skills. Soon after, I received interview calls from Landmark Group, Alaan Pay, and Intervue.io.",
+      "Mentorque completely revamped my profile. They helped me add industry-relevant projects that actually showcase what I can do, rather than just listing skills. The impact was almost immediate; I got multiple interview calls from companies like Landmark Group, Nike, Amazon and many more. If you’re struggling to get noticed by recruiters, the way they help you build your portfolio is a game-changer.",
     avatar: "/Testimonials-People/pramod-testimonial.png",
     role: "Tech Professional",
     rating: 5,
