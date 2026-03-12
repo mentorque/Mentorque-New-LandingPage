@@ -12,7 +12,9 @@ const MENTOR_QUOTES = [
       "The AI resume tools and job trackers I recommend aren't just theoretical—my mentees actively use them as part of their preparation strategy. In fact, two of them recently secured calls at Paypal and Vodafone.",
     name: "Ashwini ",
     role: " SDE, Amazon",
-    image: `${MENTORS_IMG_DIR}/Ashwini.png`,
+    image: `${MENTORS_IMG_DIR}/Aswini.png`,
+
+
   },
   {
     quote:
