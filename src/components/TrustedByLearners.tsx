@@ -9,7 +9,7 @@ const TRUSTED_CARDS = [
     logoAlt: "Google",
     rating: "4.7/5",
     quote:
-      "Mentorque's structured learning and mock interviews helped me gain confidence and secure multiple offers.",
+      "Mentorque's AI tools, playbooks and mock interviews helped me finally start getting consistent interview calls and convert them into multiple offers.",
     name: "Ajay Mathur",
   },
   {
@@ -18,7 +18,7 @@ const TRUSTED_CARDS = [
     logoAlt: "Reddit",
     rating: "4.5/5",
     quote:
-      "Mentorque's teaching and mentor support boosted my confidence in interviews. Structured prep made the difference.",
+      "The mentors and the approach here helped me finally understand what it takes to consistently get interview calls and show up prepared.",
     name: "Vikas Sharma",
   },
 ];
