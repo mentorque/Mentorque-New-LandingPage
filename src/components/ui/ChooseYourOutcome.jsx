@@ -83,7 +83,7 @@ export default function ChooseYourOutcome() {
           font-family: 'DM Sans', sans-serif;
           background: #080809;
           display: grid;
-          grid-template-columns: 1fr 1.2fr;
+          grid-template-columns: 1fr 1.5fr;
           align-items: stretch;
           min-height: 520px;
           max-height: 620px;
@@ -158,7 +158,7 @@ export default function ChooseYourOutcome() {
 
         .cyo-title {
           font-family: var(--font-sans, 'Inter', sans-serif);
-          font-size: clamp(28px, 4vw, 48px);
+          font-size: clamp(40px, 4vw, 48px);
           font-weight: 500;
           color: #fafafa;
           line-height: 1.22;
@@ -197,7 +197,7 @@ export default function ChooseYourOutcome() {
 
         .cyo-item-headline {
           font-family: var(--font-sans, 'Inter', sans-serif);
-          font-size: 20px;
+          font-size: 22px;
           font-weight: 400;
           color: rgba(255,255,255,0.35);
           line-height: 1.4;
@@ -241,7 +241,7 @@ export default function ChooseYourOutcome() {
 
         .cyo-item-subtext {
           font-family: var(--font-sans, 'Inter', sans-serif);
-          font-size: 15px;
+          font-size: 17px;
           font-weight: 400;
           color: rgba(255,255,255,0.55);
           line-height: 1.65;
@@ -316,6 +316,8 @@ export default function ChooseYourOutcome() {
           object-fit: contain;
           object-position: center;
           display: block;
+          max-width: 100%;
+          min-width: 0;
         }
 
         @media (max-width: 720px) {

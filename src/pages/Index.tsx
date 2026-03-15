@@ -15,7 +15,7 @@ import ScrollTextReveal from "@/components/ui/scrollTextReveal";
 import Resume from "@/components/resume";
 import FloatingChat from "@/components/FloatingChat";
 import InterviewSuccessFeatures from "@/components/InterviewSuccessFeatures";
-import ChooseYourOutcome from "@/components/ui/ChooseYourOutcome";
+import NewLandscape from "@/components/ui/new-landscape";
 
 const Index = () => {
   // Scroll animations
@@ -96,7 +96,7 @@ const Index = () => {
         </section>
 
         <section id="choose-outcome">
-          <ChooseYourOutcome />
+          <NewLandscape />
         </section>
 
         <section id="services">
