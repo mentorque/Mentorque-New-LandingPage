@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./new-landscape.css";
 import MockupCard1Resume from "./mockup-cards/MockupCard1Resume";
 import MockupCard2Callback from "./mockup-cards/MockupCard2Callback";
@@ -19,10 +19,7 @@ const accordionItems = [
     title: "Find decision-makers inside companies",
     body: "Enter any company. The system identifies hiring managers and recruiters based on role and location — ready for structured outreach.",
   },
-  {
-    title: "Mock interviews until you're ready",
-    body: "4–5 rounds of live mocks with structured feedback from mentors who've already cracked the exact path you're on.",
-  },
+
   {
     title: "Your job search runs on automation",
     body: "AI tailors your resume to every job in minutes. Tracks applications, surfaces patterns, and keeps you moving without the manual grind.",
@@ -36,12 +33,21 @@ const accordionItems = [
 const MOCKUP_CARDS = [
   MockupCard1Resume,
   MockupCard2Callback,
-  MockupCard3MockInterview,
   MockupCard4Applications,
   MockupCard5Automation,
 ];
 
-function LeftPanel({ activeIndex, onSelect }: { activeIndex: number; onSelect: (i: number) => void }) {
+function LeftPanel({
+  activeIndex,
+  onSelect,
+  progress,
+  animateBar,
+}: {
+  activeIndex: number;
+  onSelect: (i: number) => void;
+  progress: number;
+  animateBar: boolean;
+}) {
   return (
     <div className="ls-left">
       <div className="ls-eyebrow">Mentorque</div>
@@ -65,6 +71,14 @@ function LeftPanel({ activeIndex, onSelect }: { activeIndex: number; onSelect: (
               <p>{item.body}</p>
               <div className="ls-item-bar" />
             </div>
+            {activeIndex === i && (
+              <div className="ls-auto-bar">
+                <div
+                  className={`ls-auto-fill${animateBar ? " ls-auto-fill-anim" : ""}`}
+                  style={{ width: `${progress * 100}%` }}
+                />
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -75,6 +89,45 @@ function LeftPanel({ activeIndex, onSelect }: { activeIndex: number; onSelect: (
 export default function NewLandscape() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [cardTransition, setCardTransition] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [animateBar, setAnimateBar] = useState(false);
+
+  const AUTO_MS = 6200; // 4 seconds per accordion state
+
+  // Auto-cycle accordion + mockup every few seconds with subtle progress bar
+  useEffect(() => {
+    // reset bar instantly, then start smooth fill
+    setAnimateBar(false);
+    setProgress(0);
+
+    let frameId: number;
+    const start = performance.now();
+
+    const tick = (now: number) => {
+      const elapsed = now - start;
+      const pct = Math.min(elapsed / AUTO_MS, 1);
+      setProgress(pct);
+
+      if (pct < 1) {
+        frameId = requestAnimationFrame(tick);
+      } else {
+        setCardTransition(true);
+        setTimeout(() => {
+          setActiveIndex((prev) => (prev + 1) % accordionItems.length);
+          setCardTransition(false);
+        }, 200);
+      }
+    };
+
+    frameId = requestAnimationFrame((now) => {
+      setAnimateBar(true);
+      tick(now);
+    });
+
+    return () => {
+      cancelAnimationFrame(frameId);
+    };
+  }, [activeIndex]);
 
   const handleSelect = (i: number) => {
     if (i === activeIndex) return;
@@ -90,7 +143,12 @@ export default function NewLandscape() {
   return (
     <div className="new-landscape">
       <div className="ls-wrap">
-        <LeftPanel activeIndex={activeIndex} onSelect={handleSelect} />
+        <LeftPanel
+          activeIndex={activeIndex}
+          onSelect={handleSelect}
+          progress={progress}
+          animateBar={animateBar}
+        />
         <div className="ls-right">
           <img className="ls-bg" src={LANDSCAPE_IMG} alt="" />
           <div className="ls-mockup">

@@ -55,6 +55,26 @@
   gap: 0;
   margin-top: 2px;
 }
+
+.ls-auto-bar {
+  margin-top: 18px;
+  height: 2px;
+  width: 240px; /* wider progress bar */
+  background: rgba(59,130,246,0.14);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.ls-auto-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  border-radius: 999px;
+}
+
+.ls-auto-fill-anim {
+  transition: width 0.18s ease-out;
+}
 .ls-item {
   border-top: 0.5px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
@@ -106,16 +126,10 @@
   max-width: 400px;
 }
 .ls-item-bar {
-  width: 160px;
-  height: 1.5px;
-  background: #3b82f6;
-  margin-bottom: 18px;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease 0.1s;
+  display: none; /* replaced by ls-auto-bar progress */
 }
 .ls-item.active .ls-item-bar {
-  transform: scaleX(1);
+  transform: none;
 }
 .ls-right {
   position: relative;

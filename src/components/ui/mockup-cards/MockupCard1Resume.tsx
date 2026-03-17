@@ -157,8 +157,6 @@ export default function MockupCard1Resume() {
               <span className="ls-badge">High</span>
             </div>
             <div className="mc-c1-footer-row">
-              <span className="mc-c1-footer-label">Mentor</span>
-              <span style={{ fontSize: 13, color: "rgba(255,255,255,0.4)" }}>Reshu S.</span>
             </div>
           </div>
         </div>
