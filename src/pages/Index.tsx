@@ -15,9 +15,13 @@ import ScrollTextReveal from "@/components/ui/scrollTextReveal";
 import Resume from "@/components/resume";
 import FloatingChat from "@/components/FloatingChat";
 import InterviewSuccessFeatures from "@/components/InterviewSuccessFeatures";
+import NewLandscape from "@/components/ui/new-landscape";
 import ChooseYourOutcome from "@/components/ui/ChooseYourOutcome";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const Index = () => {
+  const isMobile = useIsMobile(768);
+
   // Scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -96,7 +100,7 @@ const Index = () => {
         </section>
 
         <section id="choose-outcome">
-          <ChooseYourOutcome />
+          {isMobile ? <ChooseYourOutcome /> : <NewLandscape />}
         </section>
 
         <section id="services">
