@@ -15,8 +15,8 @@ import ScrollTextReveal from "@/components/ui/scrollTextReveal";
 import Resume from "@/components/resume";
 import FloatingChat from "@/components/FloatingChat";
 import InterviewSuccessFeatures from "@/components/InterviewSuccessFeatures";
-import NewLandscape from "@/components/ui/new-landscape";
-import ChooseYourOutcome from "@/components/ui/ChooseYourOutcome";
+import LandscapeDesktop from "@/components/ui/LandscapeDesktop";
+import LandscapeMobile from "@/components/ui/LandscapeMobile";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
 const Index = () => {
@@ -100,7 +100,7 @@ const Index = () => {
         </section>
 
         <section id="choose-outcome">
-          {isMobile ? <ChooseYourOutcome /> : <NewLandscape />}
+          {isMobile ? <LandscapeMobile /> : <LandscapeDesktop />}
         </section>
 
         <section id="services">

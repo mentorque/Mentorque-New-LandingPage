@@ -2,11 +2,10 @@
 
 import { useState, useEffect } from "react";
 import "./new-landscape.css";
-import MockupCard1Resume from "./mockup-cards/MockupCard1Resume";
-import MockupCard2Callback from "./mockup-cards/MockupCard2Callback";
-import MockupCard3MockInterview from "./mockup-cards/MockupCard3MockInterview";
-import MockupCard4Applications from "./mockup-cards/MockupCard4Applications";
-import MockupCard5Automation from "./mockup-cards/MockupCard5Applications";
+import MockupCard1Resume from "./Landscape-cards-desktop/MockupCard1Resume";
+import MockupCard2Callback from "./Landscape-cards-desktop/MockupCard2Callback";
+import MockupCard4Applications from "./Landscape-cards-desktop/MockupCard4Applications";
+import MockupCard5Automation from "./Landscape-cards-desktop/MockupCard5Applications";
 
 const LANDSCAPE_IMG = "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80";
 
@@ -86,7 +85,7 @@ function LeftPanel({
   );
 }
 
-export default function NewLandscape() {
+export default function LandscapeDesktop() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [cardTransition, setCardTransition] = useState(false);
   const [progress, setProgress] = useState(0);
