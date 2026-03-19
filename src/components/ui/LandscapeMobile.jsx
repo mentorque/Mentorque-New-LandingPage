@@ -1,38 +1,48 @@
 import { useState, useEffect, useRef } from "react";
-import { useIsMobile } from "@/hooks/useIsMobile";
+import MockupCard1Resume from "./Landscape-Cards-mobile/MockupCard1Resume";
+import MockupCard2Callback from "./Landscape-Cards-mobile/MockupCard2Callback";
+import MockupCard4Applications from "./Landscape-Cards-mobile/MockupCard4Applications";
+import MockupCard5Automation from "./Landscape-Cards-mobile/MockupCard5Applications";
 
+// Keep mobile text aligned with the desktop landscape accordion
 const features = [
   {
     id: 0,
-    headline: "4× Faster Without Losing Precision",
+    headline: "Mentor-guided resume transformation",
     subtext:
-      "Reads what you read. Sees what you see. Maps required skills to your experience to automatically add them to your resume.",
+      "Every bullet, every project, every number — refined by someone who's already hired for the roles you're targeting.",
   },
   {
     id: 1,
-    headline: "Find Decision-Makers Inside Companies",
+    headline: "Automate workflows with AI agents",
     subtext:
-      "Enter any company. The system identifies hiring managers, recruiters, or department heads based on role and location — ready for structured outreach.",
+      "Connect triggers, conditions, and actions. AI agents run your workflows so you focus on what matters.",
   },
   {
     id: 2,
-    headline: "Know Exactly Why You're Not Clearing Interviews",
+    headline: "Find decision-makers inside companies",
     subtext:
-      "Your mock interview is reviewed to highlight your strengths, pinpoint weak areas, and generate a personalized list of 30–40 questions you're most likely to face.",
+      "Enter any company. The system identifies hiring managers and recruiters based on role and location — ready for structured outreach.",
   },
   {
     id: 3,
-    headline: "Your Job Search Runs On Automation",
+    headline: "Your job search runs on automation",
     subtext:
-      "An AI agent monitors the market for you, understands your profile, and delivers only roles that genuinely fit — every single day.",
+      "AI tailors your resume to every job in minutes. Tracks applications, surfaces patterns, and keeps you moving without the manual grind.",
   },
+];
+
+const MOBILE_CARDS = [
+  MockupCard1Resume,
+  MockupCard5Automation,
+  MockupCard2Callback,
+  MockupCard4Applications,
 ];
 
 const AUTO_ADVANCE_MS = 3800;
 
-export default function ChooseYourOutcome() {
+export default function LandscapeMobile() {
   const [active, setActive] = useState(0);
-  const isMobile = useIsMobile(720);
   const [progress, setProgress] = useState(0);
   const progressRef = useRef(null);
   const startTimeRef = useRef(null);
@@ -108,14 +118,16 @@ export default function ChooseYourOutcome() {
             grid-template-columns: 1fr;
             grid-template-rows: auto 1fr;
             max-height: none;
+            min-height: 620px; /* give card panel more room */
             border-radius: 12px;
           }
           .cyo-right {
             border-left: none !important;
             border-top: 1px solid rgba(255,255,255,0.06);
-            min-height: 360px;
-            height: 360px;
+            min-height: 480px;
+            height: 480px;
             order: 1;
+            padding-bottom: 22px; /* keep dots from overlapping card */
           }
           .cyo-left { padding: 28px 20px 24px; order: 2; }
           .cyo-slide-img-wrap {
@@ -158,7 +170,7 @@ export default function ChooseYourOutcome() {
 
         .cyo-title {
           font-family: var(--font-sans, 'Inter', sans-serif);
-          font-size: clamp(40px, 4vw, 48px);
+          font-size: clamp(35px, 4vw, 48px);
           font-weight: 500;
           color: #fafafa;
           line-height: 1.22;
@@ -320,13 +332,19 @@ export default function ChooseYourOutcome() {
           min-width: 0;
         }
 
+        .cyo-slide-card-wrap {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 14px;
+        }
+
         @media (max-width: 720px) {
-          .cyo-slide-img-wrap img {
-            height: 92%;
-            width: auto;
-            border-radius: 16px;
-            margin: 0 auto;
-          }
+          .cyo-slide-card-wrap { padding: 10px; }
         }
 
         /* Dots */
@@ -403,20 +421,12 @@ export default function ChooseYourOutcome() {
 
         {/* ── RIGHT ── */}
         <div className="cyo-right">
-          {[
-            { desktop: "/Website Panels 2/webiste-desktop/Panel 4 Desktop.png", mobile: "/Website Panels 2/Websit-mobile/Panel 4 Mobile.png" },
-            { desktop: "/Website Panels 2/webiste-desktop/Panel 2 Desktop.png", mobile: "/Website Panels 2/Websit-mobile/Panel 2 Mobile.png" },
-            { desktop: "/Website Panels 2/webiste-desktop/Panel 1 Desktop.png", mobile: "/Website Panels 2/Websit-mobile/Panel 1 Mobile.png" },
-            { desktop: "/Website Panels 2/webiste-desktop/Panel 3 Desktop.png", mobile: "/Website Panels 2/Websit-mobile/Panel 3 Mobile.png" },
-          ].map((panel, idx) => (
+          {MOBILE_CARDS.map((Card, idx) => (
             <div key={idx} className={`cyo-slide ${active === idx ? "active" : ""}`}>
-              <div className="cyo-slide-img-wrap">
-                <img
-                  src={isMobile ? panel.mobile : panel.desktop}
-                  alt=""
-                  loading={isMobile && idx === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                />
+              <div className="cyo-slide-card-wrap">
+                <div style={{ width: "100%", height: "100%", borderRadius: 16, overflow: "hidden" }}>
+                  {active === idx ? <Card /> : null}
+                </div>
               </div>
             </div>
           ))}
