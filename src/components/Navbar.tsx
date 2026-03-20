@@ -6,6 +6,8 @@ import { Link, useLocation } from "react-router-dom";
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [hideOurTeam, setHideOurTeam] = useState(false);
+  const [ipCheckComplete, setIpCheckComplete] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -28,7 +30,32 @@ const Navbar = () => {
   }
 }, [location]);
 
+  useEffect(() => {
+    // Hide the Teams/Our Team link for a specific public IP.
+    // Since this is a client-side SPA, we compare public IP via an IP service.
+    const TARGET_IP = "13.203.123.41";
+    let cancelled = false;
 
+    async function checkIp() {
+      try {
+        const res = await fetch("https://api.ipify.org?format=json");
+        const data = (await res.json()) as { ip?: string };
+        if (!cancelled && data?.ip === TARGET_IP) {
+          setHideOurTeam(true);
+        }
+      } catch {
+        // If IP lookup fails, default to showing the link.
+      }
+      if (!cancelled) {
+        setIpCheckComplete(true);
+      }
+    }
+
+    checkIp();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const navItems = [
     { name: "Home", href: "/#Home" },
@@ -38,7 +65,10 @@ const Navbar = () => {
     { name: "Our Team", href: "/team" },
     { name: "Testimonials", href: "/testimonials" },
     { name: "FAQ's", href: "/#FAQ" },
-  ];
+  ].filter(
+    (item) =>
+      !(item.href === "/team" && (!ipCheckComplete || (ipCheckComplete && hideOurTeam)))
+  );
 
   const getTextColors = () => {
     if (location.pathname === "/") {
