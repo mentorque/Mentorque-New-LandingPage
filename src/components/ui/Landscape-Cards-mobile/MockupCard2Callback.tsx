@@ -41,9 +41,14 @@ function SegTrack({ segments }: { segments: SegmentDef[] }) {
   );
 }
 
-function Tag({ label, color }: { label: string; color: "blue" | "amber" }) {
-  const bg   = color === "blue"  ? "rgba(59,130,246,0.18)" : "rgba(251,191,36,0.15)";
-  const text = color === "blue"  ? "#60a5fa"               : "#fbbf24";
+function Tag({ label, color }: { label: string; color: "blue" | "amber" | "green" | "purple" }) {
+  const styles: Record<string, { bg: string; text: string }> = {
+    blue:   { bg: "rgba(59,130,246,0.18)",  text: "#60a5fa" },
+    amber:  { bg: "rgba(251,191,36,0.15)",  text: "#fbbf24" },
+    green:  { bg: "rgba(74,222,128,0.15)",  text: "#4ade80" },
+    purple: { bg: "rgba(167,139,250,0.15)", text: "#a78bfa" },
+  };
+  const { bg, text } = styles[color];
   return (
     <span style={{
       fontSize: 9,
@@ -64,7 +69,7 @@ function InsightRow({
   tag, tagColor, label, segments,
 }: {
   tag: string;
-  tagColor: "blue" | "amber";
+  tagColor: "blue" | "amber" | "green" | "purple";
   label: string;
   segments: SegmentDef[];
 }) {
@@ -215,6 +220,31 @@ export default function MockupCard2CallbackMobile() {
             { w: "20%", active: true  },
             { w: "15%", active: true  },
             { w: "26%", active: false },
+          ]}
+        />
+        <InsightRow
+          tag="Mock"
+          tagColor="green"
+          label="Interview confidence score lift"
+          segments={[
+            { w: "10%", active: false },
+            { w: "25%", active: true  },
+            { w: "8%",  active: false },
+            { w: "32%", active: true  },
+            { w: "25%", active: true  },
+          ]}
+        />
+        <InsightRow
+          tag="Network"
+          tagColor="purple"
+          label="Warm referral path identified"
+          segments={[
+            { w: "20%", active: true  },
+            { w: "12%", active: false },
+            { w: "18%", active: true  },
+            { w: "6%",  active: false },
+            { w: "28%", active: true  },
+            { w: "16%", active: false },
           ]}
         />
       </div>
