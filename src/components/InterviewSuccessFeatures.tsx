@@ -124,6 +124,44 @@ const InterviewSuccessFeatures = () => {
             border-radius: 0;
             border: none;
             order: 1;
+            /* Center the fixed-size macbook */
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+          }
+          /* Fix MacBook to a constant size regardless of screen width */
+          .ifs-macbook-wrap {
+            width: 320px !important;
+            max-width: 320px !important;
+            flex-shrink: 0;
+          }
+          /* Tighten heading */
+          .ifs-heading {
+            font-size: 22px !important;
+            margin-bottom: 20px !important;
+            letter-spacing: -0.01em !important;
+          }
+          .ifs-eyebrow {
+            margin-bottom: 18px !important;
+          }
+          /* Tighten feature cards */
+          .ifs-feature {
+            padding: 10px 8px !important;
+            margin: 0 -8px !important;
+          }
+          .ifs-feature-num {
+            font-size: 14px !important;
+            min-width: 30px !important;
+          }
+          .ifs-feature-title {
+            font-size: 15px !important;
+          }
+          .ifs-feature-desc {
+            font-size: 13px !important;
+            line-height: 1.55 !important;
+          }
+          .ifs-feature-title-row {
+            margin-bottom: 5px !important;
           }
         }
 
