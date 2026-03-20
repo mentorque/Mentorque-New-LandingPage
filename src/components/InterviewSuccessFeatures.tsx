@@ -116,14 +116,67 @@ const InterviewSuccessFeatures = () => {
             display: none;
           }
           .ifs-left {
-            padding: 16px 20px 24px;
+            padding: 12px 16px 20px !important;
             order: 2;
           }
           .ifs-right {
-            padding: 16px 16px 24px;
+            padding: 12px 16px 16px;
             border-radius: 0;
             border: none;
             order: 1;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+          }
+
+          /* MacBook fixed size */
+          .ifs-macbook-wrap {
+            width: 300px !important;
+            max-width: 300px !important;
+            flex-shrink: 0;
+          }
+
+          /* Heading: always 2 lines, compact */
+          .ifs-heading {
+            font-size: 20px !important;
+            margin-bottom: 14px !important;
+            letter-spacing: -0.01em !important;
+          }
+
+          /* Eyebrow hidden on mobile to save space */
+          .ifs-eyebrow {
+            display: none !important;
+          }
+
+          /* Feature cards — compact */
+          .ifs-feature {
+            padding: 8px 8px !important;
+            margin: 0 -8px !important;
+            gap: 10px !important;
+          }
+          .ifs-feature-num {
+            font-size: 11px !important;
+            min-width: 22px !important;
+            padding-top: 1px !important;
+            letter-spacing: 0.02em !important;
+          }
+          .ifs-feature-title-row {
+            margin-bottom: 3px !important;
+            gap: 6px !important;
+          }
+          .ifs-feature-dot {
+            width: 4px !important;
+            height: 4px !important;
+          }
+          .ifs-feature-title {
+            font-size: 13px !important;
+            line-height: 1.3 !important;
+          }
+          .ifs-feature-desc {
+            font-size: 11.5px !important;
+            line-height: 1.5 !important;
+            padding-left: 6px !important;
+            color: rgba(228,228,231,0.7) !important;
           }
         }
 
@@ -135,7 +188,7 @@ const InterviewSuccessFeatures = () => {
           flex-shrink: 0;
         }
 
-        /* LEFT - slightly smaller, accurate */
+        /* LEFT */
         .ifs-left {
           opacity: 0;
           transform: translateX(-24px);
@@ -295,7 +348,7 @@ const InterviewSuccessFeatures = () => {
           padding-left: 12px;
         }
 
-        /* RIGHT - MacBook area, takes remainder so laptop stays in view */
+        /* RIGHT */
         .ifs-right {
           display: flex;
           align-items: center;
@@ -329,7 +382,6 @@ const InterviewSuccessFeatures = () => {
           object-fit: contain;
         }
 
-        /* Screen overlay — area for the stats group */
         .ifs-macbook-screen {
           position: absolute;
           top: 5.5%;
@@ -345,7 +397,6 @@ const InterviewSuccessFeatures = () => {
           pointer-events: none;
         }
 
-        /* Corner tags */
         .ifs-corner-tag {
           position: absolute;
           z-index: 10;
@@ -361,41 +412,12 @@ const InterviewSuccessFeatures = () => {
           backdrop-filter: blur(8px);
         }
 
-        .ifs-corner-tag.top-right {
-          top: 0;
-          right: -20px;
-          animation: float1 4s ease-in-out infinite;
-        }
-
-        .ifs-corner-tag.bottom-left {
-          bottom: 10px;
-          left: -30px;
-          animation: float2 5s ease-in-out infinite;
-        }
-
-        .ifs-corner-tag.top-left {
-          top: 20px;
-          left: -24px;
-          animation: float1 4.5s ease-in-out infinite;
-        }
-
-        .ifs-corner-tag.bottom-right {
-          bottom: 24px;
-          right: -20px;
-          animation: float2 5.5s ease-in-out infinite;
-        }
-
-        .ifs-corner-tag.middle-right {
-          top: 50%;
-          right: -40px;
-          animation: floatMiddle 4s ease-in-out infinite;
-        }
-
-        .ifs-corner-tag.middle-left {
-          top: 50%;
-          left: -40px;
-          animation: floatMiddleLeft 4.2s ease-in-out infinite;
-        }
+        .ifs-corner-tag.top-right    { top: 0; right: -20px; animation: float1 4s ease-in-out infinite; }
+        .ifs-corner-tag.bottom-left  { bottom: 10px; left: -30px; animation: float2 5s ease-in-out infinite; }
+        .ifs-corner-tag.top-left     { top: 20px; left: -24px; animation: float1 4.5s ease-in-out infinite; }
+        .ifs-corner-tag.bottom-right { bottom: 24px; right: -20px; animation: float2 5.5s ease-in-out infinite; }
+        .ifs-corner-tag.middle-right { top: 50%; right: -40px; animation: floatMiddle 4s ease-in-out infinite; }
+        .ifs-corner-tag.middle-left  { top: 50%; left: -40px; animation: floatMiddleLeft 4.2s ease-in-out infinite; }
 
         @keyframes float1 {
           0%, 100% { transform: translateY(0); }
@@ -456,7 +478,6 @@ const InterviewSuccessFeatures = () => {
                 className="ifs-macbook-img"
               />
               <div className="ifs-macbook-screen">
-                {/* Movable group: adjust left/right/top/bottom to position the whole block */}
                 <div
                   style={{
                     position: "absolute",
@@ -469,10 +490,11 @@ const InterviewSuccessFeatures = () => {
                     textAlign: "center",
                   }}
                 >
+                  {/* Big percentage */}
                   <div
                     style={{
                       fontFamily: "var(--font-sans, 'Inter', sans-serif)",
-                      fontSize: isMobile ? 52 : 85,
+                      fontSize: isMobile ? 38 : 85,
                       fontWeight: 300,
                       lineHeight: 1,
                       letterSpacing: "-0.04em",
@@ -481,14 +503,16 @@ const InterviewSuccessFeatures = () => {
                   >
                     {displayPercent}%
                   </div>
+
+                  {/* Label row */}
                   <div
                     style={{
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      gap: 8,
-                      marginTop: 12,
-                      flexWrap: "nowrap",
+                      flexWrap: "wrap",
+                      gap: isMobile ? 3 : 8,
+                      marginTop: isMobile ? 5 : 12,
                       width: "100%",
                       maxWidth: "100%",
                       paddingLeft: 8,
@@ -499,13 +523,15 @@ const InterviewSuccessFeatures = () => {
                     <span
                       style={{
                         fontFamily: "var(--font-sans, 'Inter', sans-serif)",
-                        fontSize: isMobile ? 15 : 21,
+                        fontSize: isMobile ? 10 : 21,
                         fontWeight: 400,
                         color: "#e5e7eb",
                         letterSpacing: "0.02em",
                         lineHeight: 1.3,
-                        whiteSpace: "nowrap",
+                        whiteSpace: isMobile ? "normal" : "nowrap",
                         flexShrink: 0,
+                        maxWidth: isMobile ? 100 : "none",
+                        textAlign: "center",
                       }}
                     >
                       of Interview outcomes with
@@ -515,7 +541,7 @@ const InterviewSuccessFeatures = () => {
                       alt="Mentorque"
                       style={{
                         borderRadius: 4,
-                        height: isMobile ? 22 : 28,
+                        height: isMobile ? 14 : 28,
                         width: "auto",
                         objectFit: "contain",
                         display: "block",
