@@ -82,6 +82,14 @@ export default function LandscapeMobile() {
     setActive(id);
   };
 
+  const handlePrev = () => {
+    handleSelect((active - 1 + features.length) % features.length);
+  };
+
+  const handleNext = () => {
+    handleSelect((active + 1) % features.length);
+  };
+
   return (
     <>
       <style>{`
@@ -118,7 +126,7 @@ export default function LandscapeMobile() {
             grid-template-columns: 1fr;
             grid-template-rows: auto 1fr;
             max-height: none;
-            min-height: 620px; /* give card panel more room */
+            min-height: 620px;
             border-radius: 12px;
           }
           .cyo-right {
@@ -127,7 +135,7 @@ export default function LandscapeMobile() {
             min-height: 480px;
             height: 480px;
             order: 1;
-            padding-bottom: 22px; /* keep dots from overlapping card */
+            padding-bottom: 22px;
           }
           .cyo-left { padding: 28px 20px 24px; order: 2; }
           .cyo-slide-img-wrap {
@@ -170,7 +178,7 @@ export default function LandscapeMobile() {
 
         .cyo-title {
           font-family: var(--font-sans, 'Inter', sans-serif);
-          font-size: clamp(35px, 4vw, 48px);
+          font-size: clamp(30px, 4vw, 48px);
           font-weight: 500;
           color: #fafafa;
           line-height: 1.22;
@@ -178,7 +186,7 @@ export default function LandscapeMobile() {
           letter-spacing: -0.02em;
         }
         @media (min-width: 1024px) {
-          .cyo-title { font-size: 48px; }
+          .cyo-title { font-size: 40px; }
         }
 
         /* Feature list */
@@ -347,13 +355,14 @@ export default function LandscapeMobile() {
           .cyo-slide-card-wrap { padding: 10px; }
         }
 
-        /* Dots */
+        /* Dots + chevrons row */
         .progress-dots {
           position: absolute;
           bottom: 12px;
           left: 0; right: 0;
           display: flex;
           gap: 5px;
+          align-items: center;
           justify-content: center;
           z-index: 5;
         }
@@ -370,6 +379,31 @@ export default function LandscapeMobile() {
           background: #3b82f6;
           transform: scale(1.3);
         }
+
+        /* Chevron buttons */
+        .cyo-chevron {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 35px;
+          height: 35px;
+          border-radius: 30%;
+          background: rgba(255,255,255,0.06);
+          border: 1px solid rgba(255,255,255,0.1);
+          cursor: pointer;
+          transition: background 0.2s, border-color 0.2s;
+          flex-shrink: 0;
+          z-index: 6;
+        }
+
+        .cyo-chevron:hover {
+          background: rgba(59,130,246,0.18);
+          border-color: rgba(59,130,246,0.35);
+        }
+
+        .cyo-chevron svg {
+          display: block;
+        }
       `}</style>
 
       <div className="cyo-root">
@@ -379,7 +413,7 @@ export default function LandscapeMobile() {
           <h2 className="cyo-title">
             Choose your <span className="text-blue-400 drop-shadow-lg"> outcome </span><br />
           </h2>
-          <p className="text-[13px] font-light text-white/30 leading-snug mb-2 max-w-[300px]">
+          <p className="text-[12px] font-light text-white/30 leading-snug mb-2 max-w-[450px]">
             AI-powered tools that work while you don't.
           </p>
 
@@ -431,7 +465,14 @@ export default function LandscapeMobile() {
             </div>
           ))}
 
+          {/* Dots + chevrons */}
           <div className="progress-dots">
+            <button className="cyo-chevron" onClick={handlePrev} aria-label="Previous">
+              <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                <path d="M5 1.5L2.5 4 5 6.5" stroke="rgba(255,255,255,0.55)" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+
             {features.map((f) => (
               <div
                 key={f.id}
@@ -439,6 +480,12 @@ export default function LandscapeMobile() {
                 onClick={() => handleSelect(f.id)}
               />
             ))}
+
+            <button className="cyo-chevron" onClick={handleNext} aria-label="Next">
+              <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                <path d="M3 1.5L5.5 4 3 6.5" stroke="rgba(255,255,255,0.55)" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
