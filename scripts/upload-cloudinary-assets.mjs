@@ -16,6 +16,15 @@ const OUTPUT_FILE = path.join(ROOT, "src/constants/cloudinaryAssets.ts");
 const CAREERS_HERO_DIR = path.join(PUBLIC_DIR, "HeroCareers-Images");
 const MENTORS_BG_REMOVED_DIR = path.join(PUBLIC_DIR, "mentor's-bg-removed");
 const INTERVIEW_LAPTOP_FILE = path.join(PUBLIC_DIR, "macbook-bg-less.svg");
+const WHATSAPP_SCREENSHOTS_DIR = path.join(PUBLIC_DIR, "Whatsapp_testimonial_screenshots");
+const TEAM_PICS_DIR = path.join(PUBLIC_DIR, "Team's Pic Website");
+const THUMBNAILS_DIR = path.join(PUBLIC_DIR, "thumbnails");
+const VIDEO_TESTIMONIAL_FILES = [
+  "testimonial3.mp4",
+  "testinomial1.mp4",
+  "testinomial2.mp4",
+  "testinomial4.mp4",
+].map((file) => path.join(PUBLIC_DIR, file));
 
 const toSlug = (value) =>
   value
@@ -39,7 +48,7 @@ async function uploadImage(localPath, publicId) {
   console.log(`[upload:start] ${publicId}`);
   const result = await cloudinary.uploader.upload(localPath, {
     public_id: publicId,
-    resource_type: "image",
+    resource_type: "auto",
     overwrite: true,
     invalidate: true,
   });
@@ -56,12 +65,34 @@ async function listFiles(dirPath) {
     .sort((a, b) => a.localeCompare(b));
 }
 
-function buildConstantsFile({ laptopUrl, careersHero, mentorsBgRemoved }) {
+function buildConstantsFile({
+  laptopUrl,
+  careersHero,
+  mentorsBgRemoved,
+  whatsappScreenshots,
+  videoTestimonials,
+  videoThumbnails,
+  teamPics,
+}) {
   const careersLines = Object.entries(careersHero)
     .map(([key, url]) => `  ${quote(key)}: ${quote(url)},`)
     .join("\n");
 
   const mentorLines = Object.entries(mentorsBgRemoved)
+    .map(([filename, url]) => `  ${quote(filename)}: ${quote(url)},`)
+    .join("\n");
+
+  const whatsappLines = whatsappScreenshots.map((url) => `  ${quote(url)},`).join("\n");
+
+  const videoLines = Object.entries(videoTestimonials)
+    .map(([filename, url]) => `  ${quote(filename)}: ${quote(url)},`)
+    .join("\n");
+
+  const thumbnailLines = Object.entries(videoThumbnails)
+    .map(([filename, url]) => `  ${quote(filename)}: ${quote(url)},`)
+    .join("\n");
+
+  const teamPicLines = Object.entries(teamPics)
     .map(([filename, url]) => `  ${quote(filename)}: ${quote(url)},`)
     .join("\n");
 
@@ -79,6 +110,22 @@ ${careersLines}
 export const CLOUDINARY_MENTORS_BG_REMOVED = {
 ${mentorLines}
 } as const;
+
+export const CLOUDINARY_WHATSAPP_SCREENSHOTS = [
+${whatsappLines}
+] as const;
+
+export const CLOUDINARY_VIDEO_TESTIMONIALS = {
+${videoLines}
+} as const;
+
+export const CLOUDINARY_VIDEO_THUMBNAILS = {
+${thumbnailLines}
+} as const;
+
+export const CLOUDINARY_TEAM_PICS = {
+${teamPicLines}
+} as const;
 `;
 }
 
@@ -87,8 +134,14 @@ async function main() {
   console.log(`[init] Root directory: ${ROOT}`);
   const careersFiles = await listFiles(CAREERS_HERO_DIR);
   const mentorFiles = await listFiles(MENTORS_BG_REMOVED_DIR);
+  const whatsappScreenshotFiles = await listFiles(WHATSAPP_SCREENSHOTS_DIR);
+  const teamPicFiles = await listFiles(TEAM_PICS_DIR);
+  const thumbnailFiles = await listFiles(THUMBNAILS_DIR);
   console.log(`[scan] Careers hero files found: ${careersFiles.length}`);
   console.log(`[scan] Mentor bg-removed files found: ${mentorFiles.length}`);
+  console.log(`[scan] WhatsApp screenshot files found: ${whatsappScreenshotFiles.length}`);
+  console.log(`[scan] Team pic files found: ${teamPicFiles.length}`);
+  console.log(`[scan] Video thumbnail files found: ${thumbnailFiles.length}`);
 
   if (!(await fileExists(INTERVIEW_LAPTOP_FILE))) {
     throw new Error(`Missing laptop file: ${INTERVIEW_LAPTOP_FILE}`);
@@ -124,7 +177,62 @@ async function main() {
   }
   console.log("[step] Mentor bg-removed uploads completed");
 
-  const output = buildConstantsFile({ laptopUrl, careersHero, mentorsBgRemoved });
+  const whatsappScreenshots = [];
+  for (const filename of whatsappScreenshotFiles) {
+    const key = toSlug(filename);
+    const localPath = path.join(WHATSAPP_SCREENSHOTS_DIR, filename);
+    console.log(`[whatsapp-screenshots] Uploading ${filename} as key "${key}"`);
+    const uploadedUrl = await uploadImage(
+      localPath,
+      `mentorque/whatsapp-testimonials/screenshots/${key}`
+    );
+    whatsappScreenshots.push(uploadedUrl);
+  }
+  console.log("[step] WhatsApp screenshot uploads completed");
+
+  const teamPics = {};
+  for (const filename of teamPicFiles) {
+    const key = toSlug(filename);
+    const localPath = path.join(TEAM_PICS_DIR, filename);
+    console.log(`[team-pics] Uploading ${filename} as key "${key}"`);
+    teamPics[filename] = await uploadImage(localPath, `mentorque/team-pics/${key}`);
+  }
+  console.log("[step] Team picture uploads completed");
+
+  const videoThumbnails = {};
+  for (const filename of thumbnailFiles) {
+    const key = toSlug(filename);
+    const localPath = path.join(THUMBNAILS_DIR, filename);
+    console.log(`[video-thumbnails] Uploading ${filename} as key "${key}"`);
+    videoThumbnails[filename] = await uploadImage(
+      localPath,
+      `mentorque/video-testimonials/thumbnails/${key}`
+    );
+  }
+  console.log("[step] Video thumbnail uploads completed");
+
+  const videoTestimonials = {};
+  for (const localPath of VIDEO_TESTIMONIAL_FILES) {
+    if (!(await fileExists(localPath))) continue;
+    const filename = path.basename(localPath);
+    const key = toSlug(filename);
+    console.log(`[video-testimonials] Uploading ${filename} as key "${key}"`);
+    videoTestimonials[filename] = await uploadImage(
+      localPath,
+      `mentorque/video-testimonials/videos/${key}`
+    );
+  }
+  console.log("[step] Video testimonial uploads completed");
+
+  const output = buildConstantsFile({
+    laptopUrl,
+    careersHero,
+    mentorsBgRemoved,
+    whatsappScreenshots,
+    videoTestimonials,
+    videoThumbnails,
+    teamPics,
+  });
   await fs.mkdir(path.dirname(OUTPUT_FILE), { recursive: true });
   await fs.writeFile(OUTPUT_FILE, output, "utf8");
   console.log("[step] Constants file written");
@@ -132,6 +240,10 @@ async function main() {
   console.log(`Uploaded laptop: 1`);
   console.log(`Uploaded careers hero images: ${Object.keys(careersHero).length}`);
   console.log(`Uploaded mentor bg-removed images: ${Object.keys(mentorsBgRemoved).length}`);
+  console.log(`Uploaded WhatsApp screenshots: ${whatsappScreenshots.length}`);
+  console.log(`Uploaded team pics: ${Object.keys(teamPics).length}`);
+  console.log(`Uploaded video thumbnails: ${Object.keys(videoThumbnails).length}`);
+  console.log(`Uploaded video testimonials: ${Object.keys(videoTestimonials).length}`);
   console.log(`Wrote constants: ${OUTPUT_FILE}`);
 }
 

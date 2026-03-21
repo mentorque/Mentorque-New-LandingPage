@@ -2,16 +2,7 @@ import { useEffect, useMemo, useState } from "react"
 import { ArrowUpRight, Calendar } from "lucide-react"
 import { Link } from "react-router-dom"
 import MobileTestimonialsGallery from "@/components/MobileTestimonialsGallery"
-
-const testimonialAssetModules = import.meta.glob<
-  true,
-  string,
-  string
->("/public/Whatsapp_testimonial_screenshots/*.{png,jpg,jpeg,webp}", {
-  query: '?url',
-  import: 'default',
-  eager: true,
-})
+import { CLOUDINARY_WHATSAPP_SCREENSHOTS } from "@/constants/cloudinaryWhatsAppAssets"
 
 const layoutSlots = [
   { rotation: -2, desktop: { top: "4%", left: "10%" }, width: "221px", delay: 0 },
@@ -51,12 +42,6 @@ const fallbackImages = [
   "/screen/14.png",
 ] as const
 
-const naturalCompare = (a: string, b: string) =>
-  a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" })
-
-const sanitisePublicUrl = (url: string) =>
-  url.startsWith("/public/") ? url.replace("/public", "") : url
-
 const toTitle = (fileName: string) =>
   fileName
     .replace(/[-_]/g, " ")
@@ -67,13 +52,10 @@ const toTitle = (fileName: string) =>
 const toUniqueArray = <T,>(items: T[]) => Array.from(new Set(items))
 
 const TestimonialsGallery = () => {
-  const testimonialImages = useMemo(() => {
-    const entries = Object.entries(testimonialAssetModules) as [string, string][]
-
-    return entries
-      .sort(([a], [b]) => naturalCompare(a, b))
-      .map(([, url]) => sanitisePublicUrl(url))
-  }, [])
+  const testimonialImages = useMemo(
+    () => Array.from(CLOUDINARY_WHATSAPP_SCREENSHOTS),
+    []
+  )
 
   const uniqueImages = useMemo(() => {
     const source = testimonialImages.length ? testimonialImages : Array.from(fallbackImages)

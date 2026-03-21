@@ -1,16 +1,7 @@
 import { ReactNode, useMemo } from "react"
 import { ArrowUpRight, Calendar } from "lucide-react"
 import { Link } from "react-router-dom"
-
-const testimonialAssetModules = import.meta.glob<
-  true,
-  string,
-  string
->("/public/Whatsapp_testimonial_screenshots/*.{png,jpg,jpeg,webp}", {
-  query: '?url',
-  import: 'default',
-  eager: true,
-})
+import { CLOUDINARY_WHATSAPP_SCREENSHOTS } from "@/constants/cloudinaryWhatsAppAssets"
 
 const previewLayout = [
   {
@@ -57,12 +48,6 @@ const fallbackImages = [
   "/screen/17.png",
   "/screen/18.jpeg",
 ]
-
-const naturalCompare = (a: string, b: string) =>
-  a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" })
-
-const sanitisePublicUrl = (url: string) =>
-  url.startsWith("/public/") ? url.replace("/public", "") : url
 
 const shuffleArray = <T,>(input: T[]) => {
   const array = [...input]
@@ -116,20 +101,10 @@ export default function TestimonialGallery({
   statSuffix = "Receipts",
 }: TestimonialGalleryProps) {
   const testimonialImages = useMemo(() => {
-    const entries = Object.entries(testimonialAssetModules) as [
-      string,
-      string
-    ][]
-
-    if (!entries.length) {
+    if (!CLOUDINARY_WHATSAPP_SCREENSHOTS.length) {
       return shuffleArray(fallbackImages)
     }
-
-    const sortedImages = entries
-      .sort(([a], [b]) => naturalCompare(a, b))
-      .map(([, url]) => sanitisePublicUrl(url))
-
-    return shuffleArray(sortedImages)
+    return shuffleArray(Array.from(CLOUDINARY_WHATSAPP_SCREENSHOTS))
   }, [])
 
   const previewCards = useMemo(() => {

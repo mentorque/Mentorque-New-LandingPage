@@ -3,23 +3,27 @@
 import { useRef, useState, useCallback, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { Play, Pause, Calendar, ArrowUpRight } from "lucide-react"
+import {
+  CLOUDINARY_VIDEO_TESTIMONIALS,
+  CLOUDINARY_VIDEO_THUMBNAILS,
+} from "@/constants/cloudinaryWhatsAppAssets"
 
 const videoTestimonials = [
   {
-    src: "/testinomial1.mp4",
-    thumb: "/thumbnails/Thumbnail Sreelaxmi.png",
+    src: CLOUDINARY_VIDEO_TESTIMONIALS["testinomial1.mp4"],
+    thumb: CLOUDINARY_VIDEO_THUMBNAILS["Thumbnail Sreelaxmi.png"],
   },
   {
-    src: "/testinomial2.mp4",
-    thumb: "/thumbnails/Thumbnail Morgan.png",
+    src: CLOUDINARY_VIDEO_TESTIMONIALS["testinomial2.mp4"],
+    thumb: CLOUDINARY_VIDEO_THUMBNAILS["Thumbnail Morgan.png"],
   },
   {
-    src: "/testimonial3.mp4",
-    thumb: "/thumbnails/Thumbnail Snehashish.png",
+    src: CLOUDINARY_VIDEO_TESTIMONIALS["testimonial3.mp4"],
+    thumb: CLOUDINARY_VIDEO_THUMBNAILS["Thumbnail Snehashish.png"],
   },
   {
-    src: "/testinomial4.mp4",
-    thumb: "/thumbnails/Thumbnail Debmaliya.png",
+    src: CLOUDINARY_VIDEO_TESTIMONIALS["testinomial4.mp4"],
+    thumb: CLOUDINARY_VIDEO_THUMBNAILS["Thumbnail Debmaliya.png"],
   },
 ]
 

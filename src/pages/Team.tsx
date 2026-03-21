@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
+import { CLOUDINARY_TEAM_PICS } from "@/constants/cloudinaryWhatsAppAssets";
 
 interface TeamMember {
   id: string;
@@ -16,14 +17,12 @@ interface TeamMember {
   linkedinUrl?: string;
 }
 
-const TEAM_PIC_BASE = "/Team's Pic Website";
-
 const teamMembers: TeamMember[] = [
   {
     id: "raajit",
     name: "Raajit",
     role: "Founder",
-    photo: `${TEAM_PIC_BASE}/Raajit Website.png`,
+    photo: CLOUDINARY_TEAM_PICS["Raajit Website.png"],
     collegeImage: "/Team Colleges/UCC (Raajit).png",
     companyImage: "/Team Companies/Vico Advirsory (Raajit).png",
     collegeName: "UCC",
@@ -33,7 +32,7 @@ const teamMembers: TeamMember[] = [
     id: "shresth",
     name: "Shresth",
     role: "Head of Ops",
-    photo: `${TEAM_PIC_BASE}/Shresth Website.png`,
+    photo: CLOUDINARY_TEAM_PICS["Shresth Website.png"],
     collegeImage: "/Team Colleges/IIT-Kharagpur (Shresth).png",
     companyImage: "/Team Companies/OLA (Shresth).png",
     collegeName: "IIT Kharagpur",
@@ -42,7 +41,7 @@ const teamMembers: TeamMember[] = [
     id: "gokul",
     name: "Gokul",
     role: "Lead Engineer",
-    photo: `${TEAM_PIC_BASE}/Gokul Website.png`,
+    photo: CLOUDINARY_TEAM_PICS["Gokul Website.png"],
     collegeImage: "/Team Colleges/Dayananda sagar (Gokul).png",
     companyImage: "/Team Companies/Mentorque (Gokul).png",
     collegeName: "Dayananda Sagar",
@@ -52,7 +51,7 @@ const teamMembers: TeamMember[] = [
     id: "afeef",
     name: "Afeef",
     role: "Growth & Rev Ops",
-    photo: `${TEAM_PIC_BASE}/Afeef Website.png`,
+    photo: CLOUDINARY_TEAM_PICS["Afeef Website.png"],
     collegeImage: "/Team Colleges/UCC (Raajit).png",
     companyImage: "/Team Companies/Mentorque (Gokul).png",
     collegeName: "RNSIT",
@@ -62,7 +61,7 @@ const teamMembers: TeamMember[] = [
     id: "shikhar",
     name: "Shikhar",
     role: "Growth Head",
-    photo: `${TEAM_PIC_BASE}/Shikhar Website.png`,
+    photo: CLOUDINARY_TEAM_PICS["Shikhar Website.png"],
     collegeImage: "/Team Colleges/IIT Banaras (Shikhar).png",
     companyImage: "/Team Companies/Aramya (Shikhar).png",
     collegeName: "IIT Banaras",
@@ -72,7 +71,7 @@ const teamMembers: TeamMember[] = [
     id: "anchita",
     name: "Anchita",
     role: "Marketing Lead",
-    photo: `${TEAM_PIC_BASE}/Anchita Website.png`,
+    photo: CLOUDINARY_TEAM_PICS["Anchita Website.png"],
     collegeImage: "/Team Colleges/UCD (Anchita).png",
     companyImage: "/Team Companies/TISS (Anchita).png",
     collegeName: "UCD",
@@ -82,7 +81,7 @@ const teamMembers: TeamMember[] = [
     id: "palak",
     name: "Palak",
     role: "Software Developer",
-    photo: `${TEAM_PIC_BASE}/Palak Website.png`,
+    photo: CLOUDINARY_TEAM_PICS["Palak Website.png"],
     collegeImage: "/Team Colleges/Alison Learnings (Umang).png",
     companyImage: "/Team Companies/Mentorque (Gokul).png",
     collegeName: "Alison Learnings",
@@ -92,7 +91,7 @@ const teamMembers: TeamMember[] = [
     id: "nyai",
     name: "Nyai",
     role: "Leads UI/UX and Marketing",
-    photo: `${TEAM_PIC_BASE}/Nyai Website.png`,
+    photo: CLOUDINARY_TEAM_PICS["Nyai Website.png"],
     collegeImage: "/Team Colleges/Pearl Academy (Nyai).jpg",
     companyImage: "/Team Companies/Myntra (Nyai).png",
     collegeName: "Pearl Academy",
