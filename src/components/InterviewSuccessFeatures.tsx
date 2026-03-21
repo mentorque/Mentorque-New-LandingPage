@@ -455,6 +455,8 @@ terview            padding: 16px 20px 24px;
                 src={CLOUDINARY_INTERVIEW_SUCCESS.laptop}
                 alt=""
                 className="ifs-macbook-img"
+                loading="eager"
+                fetchPriority="high"
               />
               <div className="ifs-macbook-screen">
                 {/* Movable group: adjust left/right/top/bottom to position the whole block */}
