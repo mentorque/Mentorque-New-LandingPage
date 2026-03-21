@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Sparkles, Flame } from 'lucide-react';
+import { CLOUDINARY_CAREERS_HERO } from '@/constants/cloudinaryAssets';
 
 const HERO_STATS = [
   "1 in 30 applications shortlisted",
@@ -20,7 +21,7 @@ const CareersHero = () => {
   const heroImages = [
     {
       key: "dublin-sunset",
-      src: "/HeroCareers-Images/Dublin%20stock.jpg",
+      src: CLOUDINARY_CAREERS_HERO["dublin-stock"],
       alt: "Sunset view of Dublin city streets",
       gridClass: "order-1 md:order-1 lg:col-start-1 lg:row-start-1 justify-self-start lg:self-end",
       frameClass:
@@ -30,7 +31,7 @@ const CareersHero = () => {
     },
     {
       key: "Apple-park",
-      src: "/HeroCareers-Images/apple.png",
+      src: CLOUDINARY_CAREERS_HERO.apple,
       alt: "Playful smiley wallpaper on bright desktop",
       gridClass: "order-2 md:order-2 lg:col-start-2 lg:row-start-1 justify-self-center lg:self-start",
       frameClass:
@@ -40,7 +41,7 @@ const CareersHero = () => {
     },
     {
       key: "global-crew",
-      src: "/HeroCareers-Images/GoogleHq.jpg",
+      src: CLOUDINARY_CAREERS_HERO.googlehq,
       alt: "Team celebrating together at Google campus",
       gridClass: "order-3 md:order-3 lg:col-start-3 lg:row-start-1 justify-self-end lg:self-end",
       frameClass:
@@ -64,7 +65,7 @@ const CareersHero = () => {
     },
     {
       key: "bangalore-skyline",
-      src: "/HeroCareers-Images/bangalore.jpg",
+      src: CLOUDINARY_CAREERS_HERO.bangalore,
       alt: "Bangalore skyline during golden hour",
       gridClass: "order-4 md:order-4 lg:col-start-1 lg:row-start-2 justify-self-center lg:self-start",
       frameClass:
@@ -81,7 +82,7 @@ const CareersHero = () => {
     },
     {
       key: "mentorque-interior",
-      src: "/HeroCareers-Images/london%20stock%20photo.jpg",
+      src: CLOUDINARY_CAREERS_HERO["london-stock-photo"],
       alt: "Modern workspace interior with warm lighting",
       gridClass: "order-5 md:order-5 lg:col-start-2 lg:row-start-2 justify-self-center",
       frameClass:
@@ -115,7 +116,7 @@ const CareersHero = () => {
     },
     {
       key: "london-twilight",
-      src: "/HeroCareers-Images/Amazon%20stock.jpg",
+      src: CLOUDINARY_CAREERS_HERO["amazon-stock"],
       alt: "Modern cityscape from above in twilight",
       gridClass: "order-6 md:order-6 lg:col-start-3 lg:row-start-2 justify-self-end lg:self-end",
       frameClass:

@@ -57,7 +57,7 @@ const AnimatedTestimonials = ({
     <div className="mx-auto max-w-sm px-4 py-12 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12">
       <div className="relative grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-20">
         {/* Image Section */}
-        <div className="flex items-center justify-center">
+        <div className="flex flex-col items-center justify-center">
           <div className="relative h-80 w-full max-w-xs">
             <AnimatePresence>
               {testimonials.map((testimonial, index) => (
@@ -99,6 +99,24 @@ const AnimatedTestimonials = ({
               ))}
             </AnimatePresence>
           </div>
+          <div className="mt-6 flex gap-4 md:hidden">
+            <button
+              type="button"
+              onClick={handlePrev}
+              aria-label="Previous testimonial"
+              className="group flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800 border border-neutral-700 transition-colors hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 focus:ring-offset-transparent"
+            >
+              <ArrowLeft className="h-5 w-5 text-neutral-300 transition-transform duration-300 group-hover:-translate-x-1" />
+            </button>
+            <button
+              type="button"
+              onClick={handleNext}
+              aria-label="Next testimonial"
+              className="group flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800 border border-neutral-700 transition-colors hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 focus:ring-offset-transparent"
+            >
+              <ArrowRight className="h-5 w-5 text-neutral-300 transition-transform duration-300 group-hover:translate-x-1" />
+            </button>
+          </div>
         </div>
 
         {/* Text and Controls Section */}
@@ -137,7 +155,7 @@ const AnimatedTestimonials = ({
               </div>
             </motion.div>
           </AnimatePresence>
-          <div className="flex gap-4 pt-12">
+          <div className="hidden gap-4 pt-12 md:flex">
             <button
               type="button"
               onClick={handlePrev}

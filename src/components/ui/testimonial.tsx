@@ -2,8 +2,7 @@
 
 import { TimelineContent } from "@/components/ui/timeline-animation";
 import { useRef } from "react";
-
-const MENTORS_IMG_DIR = "/mentor's-bg-removed";
+import { CLOUDINARY_MENTORS_BG_REMOVED } from "@/constants/cloudinaryAssets";
 
 // Mentors from mentor's-bg-removed — short, conversational; mention AI tools, job trackers, weeks program, mock interviews
 const MENTOR_QUOTES = [
@@ -12,7 +11,7 @@ const MENTOR_QUOTES = [
       "The AI resume tools and job trackers I recommend aren't just theoretical—my mentees actively use them as part of their preparation strategy. In fact, two of them recently secured calls at Paypal and Vodafone.",
     name: "Ashwini ",
     role: " SDE, Amazon",
-    image: `${MENTORS_IMG_DIR}/Aswini.png`,
+    image: CLOUDINARY_MENTORS_BG_REMOVED["Aswini.png"],
 
 
   },
@@ -21,35 +20,35 @@ const MENTOR_QUOTES = [
       "Mock interviews and the weeks program. That structure is what got my mentees calls from Amazon and Samsung.",
     name: "Tripti Kumari",
     role: "Senior Software Engineer, Sprinklr",
-    image: `${MENTORS_IMG_DIR}/Tripti Kumari.png`,
+    image: CLOUDINARY_MENTORS_BG_REMOVED["Tripti Kumari.png"],
   },
   {
     quote:
       "The mock interviews are where I see the biggest shift. It's not just about getting the right answer—it's about learning to think on your feet. My mentees go into real interviews knowing they've already handled tougher questions in practice.",
     name: "Agniva Dutta",
     role: "Senior Software Engineer, Microsoft",
-    image: `${MENTORS_IMG_DIR}/Agniva Dutta.png`,
+    image: CLOUDINARY_MENTORS_BG_REMOVED["Agniva Dutta.png"],
   },
   {
     quote:
       "The transformation in how my mentees communicate—that's what I notice most. They start off unsure, hesitant. By the end, they're articulating their experience with clarity and owning their story. It's not just interview prep; it's professional confidence.",
     name: "Adori Medhi",
     role: "Senior Business Analyst, AWS",
-    image: `${MENTORS_IMG_DIR}/Adori.png`,
+    image: CLOUDINARY_MENTORS_BG_REMOVED["Adori.png"],
   },
   {
     quote:
       "From an HR lens, the biggest gap is always storytelling. Candidates have the skills but can't frame them. My mentees walk in knowing exactly how to connect their experience to what the room needs to hear.",
     name: "Pratibha Gowrishankar",
     role: "HR Business Partner, HSE",
-    image: `${MENTORS_IMG_DIR}/Pratibha Gowrishankar.png`,
+    image: CLOUDINARY_MENTORS_BG_REMOVED["Pratibha Gowrishankar.png"],
   },
   {
     quote:
       "The weekly structure creates momentum. When someone knows we're meeting every Wednesday, they show up with progress. It's small wins compounding—and that builds real belief.",
     name: "Nirvan Kashyap",
     role: "Sales and Marketing, Google",
-    image: `${MENTORS_IMG_DIR}/Nirvan Kashyap.png`,
+    image: CLOUDINARY_MENTORS_BG_REMOVED["Nirvan Kashyap.png"],
   },
 ];
 

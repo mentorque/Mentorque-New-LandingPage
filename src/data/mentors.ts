@@ -1,3 +1,5 @@
+import { CLOUDINARY_MENTORS_BG_REMOVED } from "@/constants/cloudinaryAssets";
+
 /**
  * Mentor profiles: name, company, profile image path, company logo (when available), short intro.
  * Profile images from public/mentor's-bg-removed; company logos from public/mentor's-company.
@@ -6,6 +8,9 @@
 export const MENTORS_IMG_DIR = "/mentor's-bg-removed";
 /** Use encoded apostrophe so img src URLs resolve: public/mentor's-company */
 export const MENTOR_COMPANY_DIR = "/mentor%27s-company";
+
+const cloudinaryMentorImage = (filename: keyof typeof CLOUDINARY_MENTORS_BG_REMOVED) =>
+  CLOUDINARY_MENTORS_BG_REMOVED[filename];
 
 export const COMPANY_LOGOS: Record<string, { src: string; name: string }> = {
   Microsoft: { src: `${MENTOR_COMPANY_DIR}/microsoft.png`, name: "Microsoft" },
@@ -37,7 +42,7 @@ export const MENTORS: Mentor[] = [
     name: "Tripti Kumari",
     designation: "Senior Software Engineer",
     company: "Sprinklr · Gurugram, India",
-    profileImagePath: `${MENTORS_IMG_DIR}/Tripti Kumari.png`,
+    profileImagePath: cloudinaryMentorImage("Tripti Kumari.png"),
     companyLogo: { src: `${MENTOR_COMPANY_DIR}/tripti.png`, name: "Sprinklr" },
     intro: "Senior Software Engineer at Sprinklr, Gurugram. Scalable systems and coding interviews.",
   },
@@ -53,7 +58,7 @@ export const MENTORS: Mentor[] = [
     name: "Adori Medhi",
     designation: "Senior Business Analyst",
     company: "AWS · Dublin, Ireland",
-    profileImagePath: `${MENTORS_IMG_DIR}/Adori.png`,
+    profileImagePath: cloudinaryMentorImage("Adori.png"),
     companyLogo: { src: `${MENTOR_COMPANY_DIR}/adori.png`, name: "AWS" },
     intro: "Senior Business Analyst at AWS, Dublin. Product and business case interviews.",
   },
@@ -61,7 +66,7 @@ export const MENTORS: Mentor[] = [
     name: "Ashwini Harle",
     designation: "SDE",
     company: "Amazon · Pune, India",
-    profileImagePath: `${MENTORS_IMG_DIR}/Aswini.png`,
+    profileImagePath: cloudinaryMentorImage("Aswini.png"),
     companyLogo: { src: `${MENTOR_COMPANY_DIR}/ashwini.png`, name: "Amazon" },
     intro: "SDE at Amazon, Pune. DSA, algorithms, and leadership principles.",
   },
@@ -69,7 +74,7 @@ export const MENTORS: Mentor[] = [
     name: "Ayush Shankar",
     designation: "Recruitment Officer",
     company: "HSE · Dublin, Ireland",
-    profileImagePath: `${MENTORS_IMG_DIR}/Ayush Shankar.png`,
+    profileImagePath: cloudinaryMentorImage("Ayush Shankar.png"),
     companyLogo: { src: `${MENTOR_COMPANY_DIR}/ayush.png`, name: "HSE" },
     intro: "Recruitment Officer at HSE, Dublin. Hiring and interview best practices.",
   },
@@ -77,7 +82,7 @@ export const MENTORS: Mentor[] = [
     name: "Agniva Dutta",
     designation: "Senior Software Engineer",
     company: "Microsoft · Hyderabad, India",
-    profileImagePath: `${MENTORS_IMG_DIR}/Agniva Dutta.png`,
+    profileImagePath: cloudinaryMentorImage("Agniva Dutta.png"),
     companyLogo: { src: `${MENTOR_COMPANY_DIR}/agniva.png`, name: "Microsoft" },
     intro: "Senior Software Engineer at Microsoft, Hyderabad. Coding rounds and system design.",
   },
@@ -85,7 +90,7 @@ export const MENTORS: Mentor[] = [
     name: "Aryan Chandna",
     designation: "SDE 2",
     company: "Grappus · New Delhi, India",
-    profileImagePath: `${MENTORS_IMG_DIR}/Aryan Chandna.png`,
+    profileImagePath: cloudinaryMentorImage("Aryan Chandna.png"),
     companyLogo: { src: `${MENTOR_COMPANY_DIR}/aryan.png`, name: "Grappus" },
     intro: "SDE 2 at Grappus, New Delhi. Full-stack and front-end interview prep.",
   },
@@ -93,7 +98,7 @@ export const MENTORS: Mentor[] = [
     name: "Abhik Mehta",
     designation: "Software Engineer",
     company: "Stripe · Bengaluru, India",
-    profileImagePath: `${MENTORS_IMG_DIR}/Abhik Mehta.png`,
+    profileImagePath: cloudinaryMentorImage("Abhik Mehta.png"),
     companyLogo: { src: `${MENTOR_COMPANY_DIR}/abhik.png`, name: "Stripe" },
     intro: "Software Engineer at Stripe, Bengaluru. APIs, payments, and high-bar tech interviews.",
   },
@@ -101,7 +106,7 @@ export const MENTORS: Mentor[] = [
     name: "Pratibha Gowrishankar",
     designation: "HR Business Partner",
     company: "HSE · Dublin, Ireland",
-    profileImagePath: `${MENTORS_IMG_DIR}/Pratibha Gowrishankar.png`,
+    profileImagePath: cloudinaryMentorImage("Pratibha Gowrishankar.png"),
     companyLogo: { src: `${MENTOR_COMPANY_DIR}/prathibha.png`, name: "HSE" },
     intro: "HR Business Partner at HSE, Dublin. Behavioural interviews and career transitions.",
   },
@@ -109,7 +114,7 @@ export const MENTORS: Mentor[] = [
     name: "Harshal Desai",
     designation: "SDE",
     company: "Amazon Web Services (AWS) · Dublin, Ireland",
-    profileImagePath: `${MENTORS_IMG_DIR}/Harshal Desai.png`,
+    profileImagePath: cloudinaryMentorImage("Harshal Desai.png"),
     companyLogo: { src: `${MENTOR_COMPANY_DIR}/harshal.png`, name: "AWS" },
     intro: "SDE at AWS, Dublin. DSA and real-world problem-solving for tech roles.",
   },
@@ -117,7 +122,7 @@ export const MENTORS: Mentor[] = [
     name: "Sparsh Prasad",
     designation: "Senior Software Engineer",
     company: "Salesforce · Bengaluru, India",
-    profileImagePath: `${MENTORS_IMG_DIR}/Sparsh Prasad.png`,
+    profileImagePath: cloudinaryMentorImage("Sparsh Prasad.png"),
     companyLogo: { src: `${MENTOR_COMPANY_DIR}/sparsh.png`, name: "Salesforce" },
     intro: "Senior Software Engineer at Salesforce, Bengaluru. Cloud and platform engineering interviews.",
   },
@@ -125,7 +130,7 @@ export const MENTORS: Mentor[] = [
     name: "Nirvan Kashyap",
     designation: "Sales and Marketing",
     company: "Google · Dublin, Ireland",
-    profileImagePath: `${MENTORS_IMG_DIR}/Nirvan Kashyap.png`,
+    profileImagePath: cloudinaryMentorImage("Nirvan Kashyap.png"),
     companyLogo: { src: `${MENTOR_COMPANY_DIR}/nirvan.png`, name: "Google" },
     intro: "Sales and Marketing at Google, Dublin. Go-to-market and non-engineering interview paths.",
   },
@@ -133,7 +138,7 @@ export const MENTORS: Mentor[] = [
     name: "Shivanjali Verma",
     designation: "SWE",
     company: "Microsoft · Bengaluru, India",
-    profileImagePath: `${MENTORS_IMG_DIR}/Shivanjali Verma.png`,
+    profileImagePath: cloudinaryMentorImage("Shivanjali Verma.png"),
     companyLogo: { src: `${MENTOR_COMPANY_DIR}/shivanjali.png`, name: "Microsoft" },
     intro: "SWE at Microsoft, Bengaluru. Coding, design, and behavioural rounds for product companies.",
   },
@@ -141,7 +146,7 @@ export const MENTORS: Mentor[] = [
     name: "Gayatri Poddar",
     designation: "Data Scientist",
     company: "Optum · Dublin, Ireland",
-    profileImagePath: `${MENTORS_IMG_DIR}/Gayatri Poddar.png`,
+    profileImagePath: cloudinaryMentorImage("Gayatri Poddar.png"),
     companyLogo: { src: `${MENTOR_COMPANY_DIR}/gayatri.png`, name: "Optum" },
     intro: "Data Scientist at Optum, Dublin. Data and analytics for decision-making.",
   },
@@ -149,7 +154,7 @@ export const MENTORS: Mentor[] = [
     name: "Akash Anand",
     designation: "Senior Software Engineer",
     company: "Samsung · Bengaluru, India",
-    profileImagePath: `${MENTORS_IMG_DIR}/Akash Anand.png`,
+    profileImagePath: cloudinaryMentorImage("Akash Anand.png"),
     companyLogo: { src: `${MENTOR_COMPANY_DIR}/aakash.png`, name: "Samsung" },
     intro: "Senior Software Engineer at Samsung, Bengaluru. System design and backend roles.",
   },

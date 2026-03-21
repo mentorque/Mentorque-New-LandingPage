@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { CLOUDINARY_INTERVIEW_SUCCESS } from "@/constants/cloudinaryAssets";
 
 const TARGET_PERCENT = 90;
 const DURATION_MS = 2200;
@@ -451,7 +452,7 @@ terview            padding: 16px 20px 24px;
           <div className={`ifs-right ${visible ? "visible" : ""}`}>
             <div className="ifs-macbook-wrap">
               <img
-                src="/macbook-bg-less.svg"
+                src={CLOUDINARY_INTERVIEW_SUCCESS.laptop}
                 alt=""
                 className="ifs-macbook-img"
               />
